@@ -13,14 +13,14 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.01",
-	name: "The Beginning",
+	num: "0.111",
+	name: "New Layer!"
 }
 
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.0</h3><br>
-		- Added things.<br>
-		- Added stuff.`
+		- Added Button Power.<br>
+		- Added New Upgrades.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -39,11 +39,22 @@ function canGenPoints(){
 
 // Calculate points/sec!
 function getPointGen() {
+	
 	if(!canGenPoints())
-		return new Decimal(0)
+		return new Decimal(1)
 
-	let gain = new Decimal(1)
+	let gain = new Decimal(1).mul(tmp["b"].effect)
+	if (hasUpgrade('p', 11)) gain = gain.times(2)
+	if (hasUpgrade('p', 12)) gain = gain.times(upgradeEffect('p', 12))
+	if (hasUpgrade('p', 14)) gain = gain.times(3)
+	if (hasUpgrade('p', 15)) gain = gain.times(2)
+	if (hasUpgrade('p', 23)) gain = gain.times(10)
+	if (hasUpgrade('p', 25)) gain = gain.times(1e3)
+	if (hasUpgrade('b', 11)) gain = gain.times(10)
+	if (hasUpgrade('b', 12)) gain = gain.times(upgradeEffect('b', 12))
+	if (hasUpgrade('b', 13)) gain = gain.times(69)
 	return gain
+	
 }
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
