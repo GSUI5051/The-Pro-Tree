@@ -155,7 +155,7 @@ addLayer("p", {
         },
         34: { title: "More Prestiging x2!",
         description: "69,420x Prestige Points.",
-        cost: new Decimal(1e58),
+        cost: new Decimal(1e55),
         unlocked() {
             return hasUpgrade("p", 33)
         }
