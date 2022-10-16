@@ -461,7 +461,7 @@ addLayer("a", {
         */
       },
       effect(){
-        return player[this.layer].points.max(100).pow(500).log10().max(100)
+        return player[this.layer].points.max(1).pow(500).log10().max(1)
       },
       effectDescription(){
 
@@ -612,7 +612,7 @@ addLayer("g", {
         */
       },
       effect(){
-        return player[this.layer].points.max(1000).times(1000).max(1000)
+        return player[this.layer].points.max(10).times(1000).max(10)
       },
       effectDescription(){
 
