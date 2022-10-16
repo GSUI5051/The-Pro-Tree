@@ -13,13 +13,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.111",
-	name: "New Layer!"
+	num: "0.26",
+	name: "Ascension!"
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.0</h3><br>
-		- Added Button Power.<br>
+	<h3>v0.26</h3><br>
+		- Added Ascension.<br>
+		- Added Milestones.<br>
+		- Added Branches.<br>
 		- Added New Upgrades.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
@@ -43,16 +45,30 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(1)
 
-	let gain = new Decimal(1).mul(tmp["b"].effect)
+	let gain = new Decimal(1).mul(tmp["b"].effect).mul(tmp["a"].effect)
 	if (hasUpgrade('p', 11)) gain = gain.times(2)
 	if (hasUpgrade('p', 12)) gain = gain.times(upgradeEffect('p', 12))
 	if (hasUpgrade('p', 14)) gain = gain.times(3)
 	if (hasUpgrade('p', 15)) gain = gain.times(2)
 	if (hasUpgrade('p', 23)) gain = gain.times(10)
-	if (hasUpgrade('p', 25)) gain = gain.times(1e3)
+	if (hasUpgrade('p', 25)) gain = gain.times(upgradeEffect("p", 25))
 	if (hasUpgrade('b', 11)) gain = gain.times(10)
 	if (hasUpgrade('b', 12)) gain = gain.times(upgradeEffect('b', 12))
 	if (hasUpgrade('b', 13)) gain = gain.times(69)
+	if (hasUpgrade('b', 23)) gain = gain.times(6969)
+	if (hasUpgrade('b', 33)) gain = gain.times(1000)
+	if (hasUpgrade('p', 32)) gain = gain.pow(1.01)
+	if (hasUpgrade('b', 31)) gain = gain.pow(1.01)
+	if (hasUpgrade('p', 34)) gain = gain.pow(1.11)
+	if (hasUpgrade('p', 42)) gain = gain.pow(1.111)
+	if (hasUpgrade('p', 35)) gain = gain.times(69420)
+	if (hasUpgrade('a', 11)) gain = gain.times(1000)
+	if (hasUpgrade('a', 12)) gain = gain.times(upgradeEffect('a', 12))
+	if (hasUpgrade('a', 13)) gain = gain.times(69420)
+	if (hasUpgrade('a', 23)) gain = gain.times(1e6)
+	if (hasUpgrade('p', 43)) gain = gain.times(1e9)
+	if (hasUpgrade('p', 52)) gain = gain.times(1e12)
+	if (hasUpgrade('p', 55)) gain = gain.pow(1.01)
 	return gain
 	
 }
@@ -63,6 +79,10 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
+	function(){
+		let a = "Current endgame: 59 Ascensions."
+		return a
+	},
 ]
 
 // Determines when the game "ends"
