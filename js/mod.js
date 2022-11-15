@@ -331,7 +331,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function(){
-		let a = "Current endgame: 1F6 Points."
+		let a = "Current endgame: 1F6 Points & 70 Achievements."
 		return a
 	},
 ]
