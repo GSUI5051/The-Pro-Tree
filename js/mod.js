@@ -3,22 +3,28 @@ let modInfo = {
 	id: "1",
 	author: "ProGamesGrinder",
 	pointsName: "points",
-	modFiles: ["layers.js", "tree.js", "buttonpower.js", "ascension.js", "grass.js", "cups.js", "dices.js", "fruits.js", "electricity.js", "houses.js", "ice.js"],
-
+	modFiles: ["layers.js", "tree.js", "buttonpower.js", "ascension.js", "grass.js", "cups.js", "dices.js", "fruits.js", "electricity.js", "houses.js", "ice.js", "achievements.js", "jetpacks.js", "keys.js", "lights.js", "money.js", "notes.js"],
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new ExpantaNum (0), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.4",
-	name: "Row 4!"
+	num: "0.5",
+	name: "BIG UPDATE!"
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-			<h3>v0.4</h3><br>
+<h3>v0.5</h3><br>
+		- Added 5 new layers.<br>
+		- Added new milestones.<br>
+		- Added new upgrades.<br>
+		- Added new Challenges.<br>
+		- Added Achievements.<br>
+		- Rebalances + Bug fixes.<br>
+<h3>v0.4</h3><br>
 		- Added 4 new layers.<br>
 		- Added new milestones.<br>
 		- Added new upgrades.<br>
@@ -53,7 +59,7 @@ let winText = `Congratulations! You have reached the end and beaten this game, b
 var doNotCallTheseFunctionsEveryTick = ["blowUpEverything"]
 
 function getStartPoints(){
-    return new Decimal(modInfo.initialStartPoints)
+    return new ExpantaNum(modInfo.initialStartPoints)
 }
 
 // Determines if it should show points/sec
@@ -65,12 +71,15 @@ function canGenPoints(){
 function getPointGen() {
 	
 	if(!canGenPoints())
-		return new Decimal(1)
+		return new ExpantaNum(1)
 
-	let gain = new Decimal(1).mul(tmp["b"].effect).mul(tmp["a"].effect).mul(tmp["g"].effect).mul(tmp["c"].effect).mul(tmp["d"].effect).mul(tmp["f"].effect).mul(tmp["e"].effect).mul(tmp["h"].effect).mul(tmp["i"].effect)
-	if (hasUpgrade('p', 11)) gain = gain.times(2)
+	let gain = new ExpantaNum(1).mul(tmp["b"].effect).mul(tmp["asc"].effect).mul(tmp["g"].effect).mul(tmp["c"].effect).mul(tmp["d"].effect).mul(tmp["f"].effect).mul(tmp["e"].effect).mul(tmp["h"].effect).mul(tmp["i"].effect).mul(tmp["j"].effect).mul(tmp["k"].effect).mul(tmp["l"].effect).pow(tmp["m"].effect).pow(tmp["n"].effect)
+	
+	if (hasUpgrade('p', 11)) gain = gain.times("2")
+	if (hasAchievement("a", 11) && (!inChallenge("b", 11) && (!inChallenge("b",13)))) gain = gain.times(player.a.points.add(1).pow(0.56).pow(player.a.points.sub(1.2e60).max(1)))
 	if (hasUpgrade('p', 12)) gain = gain.times(upgradeEffect('p', 12))
-	if (hasUpgrade('p', 14)) gain = gain.times(3)
+	if (hasUpgrade('p', 14)) gain = gain.times("3")
+	if (hasUpgrade('p', 15)) gain = gain.times(2)
 	if (hasUpgrade('p', 15)) gain = gain.times(2)
 	if (hasUpgrade('p', 23)) gain = gain.times(10)
 	if (hasUpgrade('p', 25)) gain = gain.times(upgradeEffect("p", 25))
@@ -84,10 +93,10 @@ function getPointGen() {
 	if (hasUpgrade('p', 34)) gain = gain.pow(1.11)
 	if (hasUpgrade('p', 42)) gain = gain.pow(1.111)
 	if (hasUpgrade('p', 35)) gain = gain.times(69420)
-	if (hasUpgrade('a', 11)) gain = gain.times(1000)
-	if (hasUpgrade('a', 12)) gain = gain.times(upgradeEffect('a', 12))
-	if (hasUpgrade('a', 13)) gain = gain.times(69420)
-	if (hasUpgrade('a', 23)) gain = gain.times(1e6)
+	if (hasUpgrade('asc', 11)) gain = gain.times(1000)
+	if (hasUpgrade('asc', 12)) gain = gain.times(upgradeEffect('asc', 12))
+	if (hasUpgrade('asc', 13)) gain = gain.times(69420)
+	if (hasUpgrade('asc', 23)) gain = gain.times(1e6)
 	if (hasUpgrade('p', 43)) gain = gain.times(1e9)
 	if (hasUpgrade('p', 52)) gain = gain.times(1e12)
 	if (hasUpgrade('p', 55)) gain = gain.pow(1.01)
@@ -100,7 +109,7 @@ function getPointGen() {
 	if (hasUpgrade('b', 53)) gain = gain.times(1e10)
 	if (hasUpgrade('b', 54)) gain = gain.times(1e5)
 	if (hasUpgrade('b', 55)) gain = gain.pow(1.0015)
-	if (hasUpgrade('a', 32)) gain = gain.times(6.969e69)
+	if (hasUpgrade('asc', 32)) gain = gain.times(6.969e69)
 	if (hasUpgrade('c', 11)) gain = gain.times(1e20)
 	if (hasUpgrade('c', 12)) gain = gain.times(upgradeEffect('c', 12))
 	if (hasUpgrade('c', 13)) gain = gain.times(1e25)
@@ -108,10 +117,10 @@ function getPointGen() {
 	if (hasUpgrade('c', 22)) gain = gain.times(1e50)
 	if (hasUpgrade('c', 24)) gain = gain.times(1e69)
 	if (hasUpgrade('c', 25)) gain = gain.times(1e30)
-	if (hasUpgrade('a', 41)) gain = gain.times(1e10)
-	if (hasUpgrade('a', 42)) gain = gain.times(1e20)
-	if (hasUpgrade('a', 43)) gain = gain.times(1e40)
-	if (hasUpgrade('a', 44)) gain = gain.times(1e69)
+	if (hasUpgrade('asc', 41)) gain = gain.times(1e10)
+	if (hasUpgrade('asc', 42)) gain = gain.times(1e20)
+	if (hasUpgrade('asc', 43)) gain = gain.times(1e40)
+	if (hasUpgrade('asc', 44)) gain = gain.times(1e69)
 	if (hasUpgrade('d', 11)) gain = gain.times(1e30)
 	if (hasUpgrade('d', 12)) gain = gain.times(upgradeEffect('d', 12))
 	if (hasUpgrade('d', 13)) gain = gain.times(1e42)
@@ -119,7 +128,7 @@ function getPointGen() {
 	if (hasUpgrade('d', 24)) gain = gain.times(1e125)
 	if (hasUpgrade('c', 33)) gain = gain.times(1e200)
 	if (hasUpgrade('c', 35)) gain = gain.times(1.111e111)
-	if (hasUpgrade('a', 55)) gain = gain.times(1e100)
+	if (hasUpgrade('asc', 55)) gain = gain.times(1e100)
 	if (hasUpgrade('d', 31)) gain = gain.times(1e50)
 	if (hasUpgrade('d', 32)) gain = gain.times(1e100)
 	if (hasUpgrade('d', 33)) gain = gain.times(1e150)
@@ -200,7 +209,7 @@ function getPointGen() {
 	if (hasUpgrade("i", 14)) gain = gain.times("1e100000000")
 	if (hasUpgrade("i", 15)) gain = gain.times("1e300000003")
 	if (hasUpgrade("i", 22)) gain = gain.times("1e300000003")
-	if (hasUpgrade("i", 22)) gain = gain.times("1e420000000")
+	if (hasUpgrade("i", 23)) gain = gain.times("1e420000000")
 	if (hasUpgrade("i", 24)) gain = gain.pow("1.001")
 	if (hasUpgrade("i", 25)) gain = gain.times("ee9")
 	if (hasUpgrade("i", 31)) gain = gain.times("ee9")
@@ -222,6 +231,95 @@ function getPointGen() {
 	if (hasUpgrade("i", 42)) gain = gain.times("ee13")
 	if (hasUpgrade("i", 43)) gain = gain.times("ee13")
 	if (hasUpgrade("i", 44)) gain = gain.times("ee14")
+	if (hasUpgrade("i", 45)) gain = gain.times("ee15")
+	if (hasUpgrade("j", 11)) gain = gain.times("ee12")
+	if (hasUpgrade("j", 12)) gain = gain.times("ee14")
+	if (hasUpgrade("j", 12)) gain = gain.times("ee15")
+	if (hasUpgrade("j", 14)) gain = gain.times("ee17")
+	if (hasUpgrade("j", 21)) gain = gain.times("ee18")
+	if (hasUpgrade("j", 23)) gain = gain.times("ee19")
+	if (hasUpgrade("j", 31)) gain = gain.times("ee20")
+	if (hasUpgrade("j", 41)) gain = gain.times("ee21")
+	if (hasUpgrade("j", 43)) gain = gain.times("ee22")
+	if (hasUpgrade("j", 45)) gain = gain.times("ee23")
+	if (inChallenge("j", 11)) gain = gain.pow(0.000000000000001)
+	if (hasChallenge("j", 11)) gain = gain.pow(1.01)
+	if (hasUpgrade("f", 51)) gain = gain.pow(1.001)
+	if (hasUpgrade("f", 52)) gain = gain.pow(1.001)
+	if (hasUpgrade("f", 53)) gain = gain.pow(1.001)
+	if (hasUpgrade("f", 54)) gain = gain.pow(1.001)
+	if (hasUpgrade("f", 55)) gain = gain.pow(1.001)
+	if (hasUpgrade("e", 51)) gain = gain.pow(1.01)
+	if (hasUpgrade("e", 52)) gain = gain.pow(1.01)
+	if (hasUpgrade("e", 53)) gain = gain.pow(1.01)
+	if (hasUpgrade("e", 54)) gain = gain.pow(1.01)
+	if (hasUpgrade("e", 55)) gain = gain.pow(1.01)
+	if (hasUpgrade("h", 51)) gain = gain.pow(1.1)
+	if (hasUpgrade("h", 52)) gain = gain.pow(1.1)
+	if (hasUpgrade("h", 53)) gain = gain.pow(1.1)
+	if (hasUpgrade("h", 54)) gain = gain.pow(1.1)
+	if (hasUpgrade("h", 55)) gain = gain.pow(1.1)
+	if (hasUpgrade("i", 51)) gain = gain.pow(2)
+	if (hasUpgrade("i", 52)) gain = gain.pow(4)
+	if (hasUpgrade("i", 53)) gain = gain.pow(8)
+	if (hasUpgrade("i", 54)) gain = gain.pow(16)
+	if (hasUpgrade("i", 55)) gain = gain.pow(32)
+	if (hasUpgrade("p", 64)) gain = gain.pow(128)
+	if (hasUpgrade("p", 65)) gain = gain.pow(1024)
+	if (hasUpgrade("p", 71)) gain = gain.pow(1e100)
+	if (hasUpgrade("p", 72)) gain = gain.pow(1e308)
+	if (hasUpgrade("p", 73)) gain = gain.pow("1e3003")
+	if (hasUpgrade("p", 74)) gain = gain.pow("1e300003")
+	if (hasUpgrade("p", 75)) gain = gain.pow("1e3000003")
+	if (hasUpgrade("k", 11)) gain = gain.pow("ee9")
+	if (hasUpgrade("k", 13)) gain = gain.pow("ee10")
+	if (hasUpgrade("k", 15)) gain = gain.pow("ee11")
+	if (hasUpgrade("k", 24)) gain = gain.pow("ee12")
+	if (hasUpgrade("k", 33)) gain = gain.pow("ee13")
+	if (hasUpgrade("k", 41)) gain = gain.pow("ee14")
+	if (hasUpgrade("k", 42)) gain = gain.pow("ee16")
+	if (hasUpgrade("k", 43)) gain = gain.pow("ee20")
+	if (hasUpgrade("k", 44)) gain = gain.pow("ee28")
+	if (hasUpgrade("k", 45)) gain = gain.pow("ee44")
+	if (hasUpgrade("j", 51)) gain = gain.pow("ee60")
+	if (hasUpgrade("j", 52)) gain = gain.pow("ee76")
+	if (hasUpgrade("j", 53)) gain = gain.pow("ee108")
+	if (hasUpgrade("j", 54)) gain = gain.pow("ee197")
+	if (hasUpgrade("j", 55)) gain = gain.pow("ee305")
+	if (hasUpgrade("l", 25)) gain = gain.pow("ee1024")
+	if (inChallenge("j", 12)) gain = gain.pow("1e-1024")
+	if (hasUpgrade("p", 81)) gain = gain.times("69420")
+	if (hasUpgrade("b", 61)) gain = gain.times("1e109")
+	if (hasUpgrade("asc", 61)) gain = gain.times("1e1014")
+	if (hasUpgrade("g", 61)) gain = gain.times("1e6969")
+	if (hasUpgrade("c", 61)) gain = gain.times("1e69420")
+	if (hasUpgrade("d", 61)) gain = gain.times("6.666e666666")
+	if (hasUpgrade("f", 61)) gain = gain.times("e500000000")
+	if (hasUpgrade("e", 61)) gain = gain.times("ee10")
+	if (hasUpgrade("h", 61)) gain = gain.times("ee100")
+	if (hasUpgrade("i", 61)) gain = gain.times("ee1.79e308")
+	if (hasChallenge("j", 12)) gain = gain.pow("ee3000")
+	if (hasUpgrade("l", 45)) gain = gain.pow("ee10000")
+	if (hasUpgrade("m", 25)) gain = gain.pow("ee30000")
+	if (hasUpgrade("m", 31)) gain = gain.pow("ee100000")
+	if (hasUpgrade("k", 55)) gain = gain.pow("ee1000000")
+	if (hasUpgrade("m", 45)) gain = gain.pow("ee10000000")
+	if (hasUpgrade("l", 52)) gain = gain.pow("ee100000000")
+	if (hasUpgrade("l", 53)) gain = gain.pow("ee1000000000")
+	if (hasUpgrade("l", 54)) gain = gain.pow("eee11")
+	if (hasUpgrade("l", 55)) gain = gain.times("eeee22")
+	if (hasUpgrade("n", 12)) gain = gain.times("eeee50")
+	if (hasUpgrade("n", 15)) gain = gain.times("eeee100")
+	if (hasUpgrade("n", 15)) gain = gain.times("eeee308")
+	if (hasUpgrade("n", 25)) gain = gain.times("eeee1000")
+	if (hasUpgrade("n", 33)) gain = gain.times("eeee3003")
+	if (hasUpgrade("n", 35)) gain = gain.times("eeee10000")
+	if (hasUpgrade("n", 42)) gain = gain.times("eeee100000")
+	if (hasUpgrade("n", 45)) gain = gain.times("eeee1000000")
+	if (hasUpgrade("m", 55)) gain = gain.times("eeee10000000")
+	if (hasUpgrade("n", 51)) gain = gain.times("eeee100000000")
+	if (hasUpgrade("n", 53)) gain = gain.times("eeee1000000000")
+	if (hasUpgrade("n", 55)) gain = gain.times("eeee10000000000")
 	return gain
 	
 }
@@ -233,16 +331,15 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function(){
-		let a = "Current endgame: 33 Ices."
+		let a = "Current endgame: 1F6 Points."
 		return a
 	},
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("ee280000000"))
+return false
 }
-
 
 
 // Less important things beyond this point!

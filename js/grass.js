@@ -3,7 +3,7 @@ addLayer("g", {
 
     },
     effect(){
-        return Decimal.pow(2, player[this.layer].points)
+        return ExpantaNum.pow(2, player[this.layer].points)
         /*
           you should use this.layer instead of <layerID>
           Decimal.pow(num1, num2) is an easier way to do
@@ -33,12 +33,12 @@ effectDescription(){
     upgrades: {
         11: { title: "76",
         description: "1e10x Points.",
-        cost: new Decimal("1"),
+        cost: new EN("1"),
 
         },
         12: { title: "77",
         description: "Point gain is boosted by Grass.",
-        cost: new Decimal(5),
+        cost: new EN(5),
         effect() {
             return player[this.layer].points.add(69420).pow(0.420)
         },
@@ -49,14 +49,14 @@ effectDescription(){
         },
         13: { title: "78",
         description: "Gain 1e14x Points.",
-        cost: new Decimal("15"),
+        cost: new EN("15"),
         unlocked() {
             return hasUpgrade("g", 12)
         }
         },
         14: { title: "79",
         description: "Keep 4 Rows Prestige Upgrades on reset and gain 1e10x Button Power.",
-        cost: new Decimal("50"),
+        cost: new EN("50"),
         unlocked() {
             return hasUpgrade("g", 13)
         }
@@ -64,28 +64,28 @@ effectDescription(){
         },
         15: { title: "80",
         description: "Gain 1e20x Prestige Points.",
-        cost: new Decimal("200"),
+        cost: new EN("200"),
         unlocked() {
             return hasUpgrade("g", 14)
         }
         },
         21: { title: "81",
         description: "Gain ^1.025 Points.",
-        cost: new Decimal("500"),
+        cost: new EN("500"),
         unlocked() {
             return hasUpgrade("g", 15)
         }
         },
         22: { title: "82",
         description: "Gain 1e21x Points.",
-        cost: new Decimal("1e5"),
+        cost: new EN("1e5"),
         unlocked() {
             return hasUpgrade("g", 21)
         }
         },
         23: { title: "83",
         description: "Grass gain is boosted by Points.",
-        cost: new Decimal("1e6"),
+        cost: new EN("1e6"),
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         effect() {
             return player.points.add(1).pow(0.0001)
@@ -97,121 +97,128 @@ effectDescription(){
         },
         24: { title: "84",
         description: "Gain 1e30x Points and Keep Row 5 Prestige Upgrades.",
-        cost: new Decimal("5e6"),
+        cost: new EN("5e6"),
         unlocked() {
             return hasUpgrade("g", 23)
         }
         },
         25: { title: "85",
         description: "Unlock more button power and ascension upgrades, and autobuy ascension.",
-        cost: new Decimal("1e9"),
+        cost: new EN("1e9"),
         unlocked() {
             return hasUpgrade("g", 24)
         }
         },
         31: { title: "86",
         description: "^1.01 BP, ^1.04 PP",
-        cost: new Decimal("1e52"),
+        cost: new EN("1e52"),
         unlocked() {
-            return hasUpgrade("a", 45)
+            return hasUpgrade("asc", 45)
         }
         },
         32: { title: "87",
         description: "69x Cups and 420x Grass.",
-        cost: new Decimal("1e55"),
+        cost: new EN("1e55"),
         unlocked() {
             return hasUpgrade("g", 31)
         }
         },
         33: { title: "88",
         description: "1e69x Button Power.",
-        cost: new Decimal("1e58"),
+        cost: new EN("1e58"),
         unlocked() {
             return hasUpgrade("g", 32)
         }
         },
         34: { title: "89",
         description: "1e69x Prestige Point.",
-        cost: new Decimal("2e61"),
+        cost: new EN("2e61"),
         unlocked() {
             return hasUpgrade("g", 33)
         }
         },
         35: { title: "90",
         description: "100x Cups, 1,000x Grass and unlock a new layer.",
-        cost: new Decimal("1e64"),
+        cost: new EN("1e64"),
         unlocked() {
             return hasUpgrade("g", 34)
         }
         },
         41: { title: "91",
         description: "^1.01 Fruits, ^1.02 Cups, ^1.04 Grass.",
-        cost: new Decimal("1e1490"),
+        cost: new EN("1e1490"),
         unlocked() {
             return hasUpgrade("c", 45)
         }
         },
         42: { title: "92",
         description: "^1.01 BP, ^1.02 PP.",
-        cost: new Decimal("4e1502"),
+        cost: new EN("4e1502"),
         unlocked() {
             return hasUpgrade("g", 41)
         }
         },
         43: { title: "93",
         description: "1e300x Points.",
-        cost: new Decimal("1e1720"),
+        cost: new EN("1e1720"),
         unlocked() {
             return hasUpgrade("g", 42)
         }
         },
         44: { title: "94",
         description: "1e300x Points again.",
-        cost: new Decimal("1e1794"),
+        cost: new EN("1e1794"),
         unlocked() {
             return hasUpgrade("g", 43)
         }
         },
         45: { title: "95",
         description: "1e200x Points.",
-        cost: new Decimal("1e1870"),
+        cost: new EN("1e1870"),
         unlocked() {
             return hasUpgrade("g", 44)
         }
         },
         51: { title: "96",
         description: "1e150x Points.",
-        cost: new Decimal("1e1920"),
+        cost: new EN("1e1920"),
         unlocked() {
             return hasUpgrade("g", 45)
         }
         },
         52: { title: "97",
         description: "1e100x Points.",
-        cost: new Decimal("1e1959"),
+        cost: new EN("1e1959"),
         unlocked() {
             return hasUpgrade("g", 51)
         }
         },
         53: { title: "98",
         description: "69x Fruits, 1e25x Cups, 1e100x Grass.",
-        cost: new Decimal("1e1984"),
+        cost: new EN("1e1984"),
         unlocked() {
             return hasUpgrade("g", 52)
         }
         },
         54: { title: "99",
         description: "1e10x Grass.",
-        cost: new Decimal("1e2097"),
+        cost: new EN("1e2097"),
         unlocked() {
             return hasUpgrade("g", 53)
         }
         },
         55: { title: "100",
         description: "1e1,000x Points!",
-        cost: new Decimal("1e2109"),
+        cost: new EN("1e2109"),
         unlocked() {
-            return hasUpgrade("g", 53)
+            return hasUpgrade("g", 54)
+        }
+        },
+        61: { title: "?",
+        description: "1e6,969x Points!",
+        cost: new EN("1e3364"),
+        unlocked() {
+            return hasUpgrade("asc", 61)
         }
         },
     },
@@ -259,7 +266,7 @@ effectDescription(){
                     23: {
                         name: "Pointe",
                         challengeDescription: "Raise Point Gain ^0.1.",
-                        goalDescription: "1.00e1400 Points.",
+                        goalDescription: "1e1,400 Points.",
                         rewardDescription: "Gain 1e3,003x Points and unlock 1 new row dice upgrades.",
                         canComplete: function() {return player.points.gte("e1400")},
                         unlocked() { return (hasChallenge('g', 22)) },
@@ -270,10 +277,10 @@ effectDescription(){
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
-		points: new Decimal(0),
+		points: new EN(0),
     }},
     color: "#13D022",
-    requires: new Decimal("1e1130"), // Can be a function that takes requirement increases into account
+    requires: new EN("1e1130"), // Can be a function that takes requirement increases into account
     resource: "Grass", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -281,11 +288,11 @@ effectDescription(){
     branches: ["b"],
     exponent: 0.005, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
+        mult = new EN(1)
         return mult
     },
     gainMult() {
-        let mult = new Decimal(1)
+        let mult = new EN(1)
         if (hasUpgrade('g', 23)) mult = mult.times(upgradeEffect('g', 23))
         if (hasUpgrade('b', 45)) mult = mult.times(100)
         if (hasUpgrade('c', 15)) mult = mult.times(1000)
@@ -294,10 +301,11 @@ effectDescription(){
         if (hasUpgrade('d', 14)) mult = mult.times(100)
         if (hasUpgrade('d', 15)) mult = mult.times(69420)
         if (hasUpgrade('d', 22)) mult = mult.pow(1.01)
+        if (hasUpgrade('d', 23)) mult = mult.times(4)
         if (hasUpgrade('c', 31)) mult = mult.times(69420)
         if (hasUpgrade('c', 32)) mult = mult.pow(1.02)
         if (hasUpgrade('c', 34)) mult = mult.times(69420)
-        if (hasUpgrade('a', 53)) mult = mult.times(1e10)
+        if (hasUpgrade('asc', 53)) mult = mult.times(1e10)
         if (hasUpgrade('d', 35)) mult = mult.pow(1.02)
         if (hasUpgrade('d', 35)) mult = mult.times(1e69)
         if (hasUpgrade('f', 15)) mult = mult.times(1e25)
@@ -311,31 +319,25 @@ effectDescription(){
         if (inChallenge("f", 11)) mult = mult.pow(0.001)
         if (inChallenge("f", 11)) mult = mult.pow(0.1)
         if (hasUpgrade('i', 21)) mult = mult.pow(2)
+        if (inChallenge("j", 11)) mult = mult.pow(0.1)
+
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        return new EN(1)
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "g", description: "G: Reset for Grass", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "G", description: "G: Reset for Grass", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     passiveGeneration() { return (hasMilestone("f", 1)&&player.current!="g")?1:0 },
     layerShown(){return (hasUpgrade("p", 55) || player[this.layer].unlocked)},
     milestones: {
         1: {
             requirementDescription: "5 Grass",
-            effectDescription: "Gain 100% of Button Power and Prestige Points every second.",
+            effectDescription: "Gain 100% of Button Power every second.",
             done() { return player.g.points.gte(5) }
-        }, 2: {requirementDescription: "10 Grass",
-          effectDescription: "Keep Ascension Milestones on reset.",
-             done() { return player.g.points.gte(10)},},
-             3: {requirementDescription: "25 Grass",
-             effectDescription: "Keep Ascension Upgrades on reset.",
-                done() { return player.g.points.gte(25)},},
-                4: {requirementDescription: "100,000 Grass",
-             effectDescription: "Keep Button Power Upgrades on reset.",
-                done() { return player.g.points.gte(100000)},},
+        },
     },
         },
 )

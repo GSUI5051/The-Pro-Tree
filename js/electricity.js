@@ -2,12 +2,12 @@ addLayer("e", {
     upgrades: {
         11: { title: "176",
         description: "1e6,969x Points.",
-        cost: new Decimal("1"),
+        cost: new EN("1"),
 
         },
         12: { title: "177",
         description: "Gain more points based on Electricity.",
-        cost: new Decimal("2"),
+        cost: new EN("2"),
         effect() {
             return player[this.layer].points.add(1e69).pow(0.420)
         },
@@ -18,137 +18,178 @@ addLayer("e", {
         },
         13: { title: "178",
         description: "Unlock a new prestige upgrade.",
-        cost: new Decimal("2"),
+        cost: new EN("2"),
         unlocked() {
             return hasUpgrade("e", 12)
         }
         },
         14: { title: "179",
         description: "1e10,000x Points.",
-        cost: new Decimal("5"),
+        cost: new EN("5"),
         unlocked() {
             return hasUpgrade("e", 13)
         }
         },
         15: { title: "180",
         description: "Unlock another prestige upgrade.",
-        cost: new Decimal("5"),
+        cost: new EN("5"),
         unlocked() {
             return hasUpgrade("e", 14)
         }
         },
         21: { title: "181",
         description: "1e6,969x Points.",
-        cost: new Decimal("8"),
+        cost: new EN("8"),
         unlocked() {
             return hasUpgrade("e", 15)
         }
         },
         22: { title: "182",
         description: "Square PP Gain.",
-        cost: new Decimal("8"),
+        cost: new EN("8"),
         unlocked() {
             return hasUpgrade("e", 21)
         }
         },
         23: { title: "183",
         description: "Square BP Gain.",
-        cost: new Decimal("8"),
+        cost: new EN("8"),
         unlocked() {
             return hasUpgrade("e", 22)
         }
         },
         24: { title: "184",
         description: "^1.1 Points.",
-        cost: new Decimal("8"),
+        cost: new EN("8"),
         unlocked() {
             return hasUpgrade("e", 23)
         }
         },
         25: { title: "185",
         description: "1e100,000x Points.",
-        cost: new Decimal("9"),
+        cost: new EN("9"),
         unlocked() {
             return hasUpgrade("e", 24)
         }
         },
         31: { title: "186",
         description: "Cube PP Gain!",
-        cost: new Decimal("9"),
+        cost: new EN("9"),
         unlocked() {
             return hasUpgrade("e", 25)
         }
         },
         32: { title: "187",
         description: "Cube BP Gain!",
-        cost: new Decimal("10"),
+        cost: new EN("10"),
         unlocked() {
             return hasUpgrade("e", 31)
         }
         },
         33: { title: "188",
         description: "^1.15 Points.",
-        cost: new Decimal("11"),
+        cost: new EN("11"),
         unlocked() {
             return hasUpgrade("e", 32)
         }
         },
         34: { title: "189",
         description: "^1.1 Points.",
-        cost: new Decimal("12"),
+        cost: new EN("12"),
         unlocked() {
             return hasUpgrade("e", 33)
         }
         },
         35: { title: "190",
         description: "^1.01 Points and unlock a challenge.",
-        cost: new Decimal("13"),
+        cost: new EN("13"),
         unlocked() {
             return hasUpgrade("e", 34)
         }
         },
         41: { title: "191",
         description: "ee10x Points.",
-        cost: new Decimal("86"),
+        cost: new EN("75"),
         unlocked() {
             return hasUpgrade("i", 35)
         }
         },
         42: { title: "192",
         description: "ee10x Points.",
-        cost: new Decimal("95"),
+        cost: new EN("83"),
         unlocked() {
             return hasUpgrade("e", 41)
         }
         },
         43: { title: "193",
         description: "ee10x Points.",
-        cost: new Decimal("101"),
+        cost: new EN("89"),
         unlocked() {
             return hasUpgrade("e", 42)
         }
         },
         44: { title: "194",
         description: "ee10x Points.",
-        cost: new Decimal("107"),
+        cost: new EN("93"),
         unlocked() {
             return hasUpgrade("e", 43)
         }
         },
         45: { title: "195",
         description: "ee11x Points.",
-        cost: new Decimal("111"),
+        cost: new EN("97"),
         unlocked() {
             return hasUpgrade("e", 44)
         }
         },
+        51: { title: "196",
+        description: "Speed up by a normal amount.",
+        cost: new EN("1e6"),
+        unlocked() {
+            return hasUpgrade("f", 55)
+        }
+        },
+        52: { title: "197",
+        description: "Speed up by a normal amount again.",
+        cost: new EN("5e6"),
+        unlocked() {
+            return hasUpgrade("e", 51)
+        }
+        },
+        53: { title: "198",
+        description: "Speed up by a normal amount yet again.",
+        cost: new EN("1e8"),
+        unlocked() {
+            return hasUpgrade("e", 52)
+        }
+        },
+        54: { title: "199",
+        description: "Speed up by a normal amount yet again and again.",
+        cost: new EN("2e9"),
+        unlocked() {
+            return hasUpgrade("e", 53)
+        }
+        },
+        55: { title: "200",
+        description: "Speed up by a normal amount yet again and again and again.",
+        cost: new EN("4e10"),
+        unlocked() {
+            return hasUpgrade("e", 54)
+        }
+        },
+        61: { title: "?",
+        description: "e1e10x Points.",
+        cost: new EN("16"),
+        unlocked() {
+            return hasUpgrade("f", 61)
+        }
+        },
+    },
+    autoPrestige() {
+        return hasMilestone("j", 6)
     },
     milestones: {
-        1: {
-            requirementDescription: "4 Electricity",
-            effectDescription: "Keep Dices Upgrades and milestones on reset.",
-            done() { return player.e.points.gte(4) }
-        }, 2: {requirementDescription: "10 Electricity",
+         1: {requirementDescription: "10 Electricity",
           effectDescription: "You can buy max Electricity.",
              done() { return player.e.points.gte(10)},},
     },
@@ -156,7 +197,7 @@ addLayer("e", {
 
     },
     effect(){
-        return Decimal.pow(2, player[this.layer].points)
+        return ExpantaNum.pow(2, player[this.layer].points)
         /*
           you should use this.layer instead of <layerID>
           Decimal.pow(num1, num2) is an easier way to do
@@ -181,11 +222,11 @@ effectDescription(){
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
-		points: new Decimal(0),
+		points: new EN(0),
         auto: false
     }},
     color: "#00FFFF",
-    requires: new Decimal("5e2142"), // Can be a function that takes requirement increases into account
+    requires: new EN("5e2142"), // Can be a function that takes requirement increases into account
     resource: "Electricity", // Name of prestige currency
     baseResource: "Cups", // Name of resource prestige is based on
     baseAmount() {return player.c.points}, // Get the current amount of baseResource
@@ -193,17 +234,23 @@ effectDescription(){
     branches: ["c"],
     exponent: 5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
-        if (hasUpgrade("f", 44)) mult = mult.div(upgradeEffect("f", 44))
+        mult = new EN(1)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        return new EN(1)
     },
-    canBuyMax() { return hasMilestone("e", 2) },
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("j", 3) && resettingLayer=="j", "k", "l", "m", "n") keep.push("milestones")
+        if (hasMilestone("j", 3) && resettingLayer=="j", "k", "l", "m", "n") keep.push("upgrades")
+        if (layers[resettingLayer].row > this.row) layerDataReset("e", keep)
+    },
+    canBuyMax() { return hasMilestone("e", 1) },
+    resetsNothing() {return hasMilestone("j", 6)},
     row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "e", description: "E: Reset for Electricity", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "E", description: "E: Reset for Electricity", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return (hasUpgrade("d", 55) || player[this.layer].unlocked)},
 })
