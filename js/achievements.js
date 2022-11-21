@@ -77,7 +77,7 @@ addLayer("a", {
         17: {
             name: "Upgrading more!",
             done() {
-                if (hasUpgrade("a", 21)) return true
+                if (hasUpgrade("asc", 21)) return true
             },
             tooltip: "Buy first upgrade in 2nd row of A upgrades. <br>Reward: 64 AP",
 			onComplete() {
