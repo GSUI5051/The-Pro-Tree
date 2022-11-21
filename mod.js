@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.5",
-	name: "BIG UPDATE!"
+	num: "0.5 Alpha",
+	name: "A bug fixed!"
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -331,7 +331,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function(){
-		let a = "Current endgame: 1F6 Points & 70 Achievements!"
+		let a = "Current endgame: 1F6 Points & 70 Achievements."
 		return a
 	},
 ]
