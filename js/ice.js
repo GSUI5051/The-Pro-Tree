@@ -1,4 +1,27 @@
 addLayer("i", {
+    tabFormat: [
+        "main-display",
+        "prestige-button",
+        ["microtabs", "stuff"],
+        ["blank", "25px"],
+    ],
+    microtabs: {
+        stuff: {
+                        "Upgrades": {
+                            unlocked() {return (hasAchievement("a", 11))},
+                    content: [
+                        ["blank", "15px"],
+                        ["upgrades", [1,2,3,4,5,6,7,8,9]]
+                    ]
+                },
+                        "Milestones": {
+                            content: [
+                                ["blank", "15px"],
+                                "milestones"
+                            ]
+                        },
+                },
+            },
     upgrades: {
         11: { title: "226",
         description: "1e100,000,000x Points.",
@@ -236,8 +259,8 @@ effectDescription(){
     canBuyMax() { return hasMilestone("i", 1) },
     doReset(resettingLayer) {
         let keep = [];
-        if (hasMilestone("j", 5) && resettingLayer=="j", "k", "l", "m", "n") keep.push("milestones")
-        if (hasMilestone("j", 5) && resettingLayer=="j", "k", "l", "m", "n") keep.push("upgrades")
+        if (hasMilestone("j", 5) && resettingLayer=="j", "k") keep.push("milestones")
+        if (hasMilestone("j", 5) && resettingLayer=="j", "k") keep.push("upgrades")
         if (layers[resettingLayer].row > this.row) layerDataReset("i", keep)
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)

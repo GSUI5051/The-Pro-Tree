@@ -3,41 +3,63 @@ let modInfo = {
 	id: "1",
 	author: "ProGamesGrinder",
 	pointsName: "points",
-	modFiles: ["layers.js", "tree.js", "buttonpower.js", "ascension.js", "grass.js", "cups.js", "dices.js", "fruits.js", "electricity.js", "houses.js", "ice.js", "achievements.js", "jetpacks.js", "keys.js", "lights.js", "money.js", "notes.js"],
-	discordName: "",
-	discordLink: "",
+	modFiles: ["layers.js", "tree.js", "buttonpower.js", "ascension.js", "grass.js", "cups.js", "dices.js", "fruits.js", "electricity.js", "houses.js", "ice.js", "achievements.js", "jetpacks.js", "keys.js", "lights.js", "money.js", "notes.js", "objects.js", "quantums.js", "rings.js", "sand.js", "trans.js", "universal.js"],
+	discordName: "The ProGames YT Fan Group",
+	discordLink: "https://discord.gg/8pwhpb8rtM",
 	initialStartPoints: new ExpantaNum (0), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.5 Alpha",
-	name: "A bug fixed!"
+	num: "0.6",
+	name: "Row 6 UPDATE!"
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-<h3>v0.5</h3><br>
+<h3>v0.6</h3><br>
+		- Endgame: F1,000,000 Points.<br>		
+		- Added 6 new layers!<br>
+		- Added buyables.<br>
+		- Added auto-buyables.<br>
+		- Added new milestones.<br>
+		- Added new upgrades.<br>
+		- Added new challenges.<br>
+		- Added new achievements.<br>
+		- Added auto upgrade.<br>
+		- Added a small christmas event.<br>
+		- Revamped the game a bit.<br>
+		- Added sub-currencies.<br>
+		- Removed some stuff.<br>
+		- Added a warning once you reach endgame.<br>
+		- The 2 other milestones will be out next upd.<br><br>
+		<h3>v0.5a</h3><br>
+		- Bug Fixes.<br><br>
+		<h3>v0.5</h3><br>
+		- Endgame: 1F6 Points.<br>
 		- Added 5 new layers.<br>
 		- Added new milestones.<br>
 		- Added new upgrades.<br>
 		- Added new Challenges.<br>
 		- Added Achievements.<br>
-		- Rebalances + Bug fixes.<br>
+		- Rebalances + Bug fixes.<br><br>
 <h3>v0.4</h3><br>
+		- Endgame: e1.000e17 Points.<br>
 		- Added 4 new layers.<br>
 		- Added new milestones.<br>
 		- Added new upgrades.<br>
 		- Added Challenges.
 		<h3></h3><br><br>	
 		<h3>v0.3</h3><br>
+		- Endgame: 1e75,000 Points.<br>
 		- Added 3 new layers.<br>
 		- Added new milestones.<br>
 		- Added new upgrades.<br>
 		- Added Ascension resets nothing.
 		<h3></h3><br><br>	
 		<h3>v0.2</h3><br>
-		- Added 2 new layers.<br>
+		- Endgame: 1e1,130 Points.<br>
+		- Added 1 new layer.<br>
 		- Added Milestones.<br>
 		- Added Branches.<br>
 		- Added New upgrades.<br>
@@ -47,11 +69,18 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added current endgame at top.
 			<h3></h3><br><br>
 			<h3>v0.1</h3><br>
+			- Endgame: 1.000e100 Points.<br>
 			- Added 1 new layer.<br>
 			- Added New Upgrades.
 			<h3></h3><br><br>
+			<h3>v0.0b</h3><br>
+			- Endgame: 10,000,000 Points.<br><br>
+			<h3>v0.0a</h3><br>
+			- Endgame: 1,000,000 Points.<br>
+			- Added 1 layer.<br>
+			- Added Upgrades.<br><br>
 			<h3>v0.0</h3><br>
-			- Added Upgrades.`
+			- Endgame: 1,000 Points.<br>`
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
@@ -75,7 +104,9 @@ function getPointGen() {
 
 	let gain = new ExpantaNum(1).mul(tmp["b"].effect).mul(tmp["asc"].effect).mul(tmp["g"].effect).mul(tmp["c"].effect).mul(tmp["d"].effect).mul(tmp["f"].effect).mul(tmp["e"].effect).mul(tmp["h"].effect).mul(tmp["i"].effect).mul(tmp["j"].effect).mul(tmp["k"].effect).mul(tmp["l"].effect).pow(tmp["m"].effect).pow(tmp["n"].effect)
 	
-	if (hasUpgrade('p', 11)) gain = gain.times("2")
+	if (hasUpgrade('p', 82)) gain = gain.times("2")
+	if (hasUpgrade('b', 62)) gain = gain.times("4")
+	if (hasUpgrade('a', 62)) gain = gain.times("16")
 	if (hasAchievement("a", 11) && (!inChallenge("b", 11) && (!inChallenge("b",13)))) gain = gain.times(player.a.points.add(1).pow(0.56).pow(player.a.points.sub(1.2e60).max(1)))
 	if (hasUpgrade('p', 12)) gain = gain.times(upgradeEffect('p', 12))
 	if (hasUpgrade('p', 14)) gain = gain.times("3")
@@ -320,8 +351,8 @@ function getPointGen() {
 	if (hasUpgrade("n", 51)) gain = gain.times("eeee100000000")
 	if (hasUpgrade("n", 53)) gain = gain.times("eeee1000000000")
 	if (hasUpgrade("n", 55)) gain = gain.times("eeee10000000000")
+	if (hasUpgrade('o', 66)) gain = gain.times(upgradeEffect('o', 66))
 	return gain
-	
 }
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
@@ -331,15 +362,15 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function(){
-		let a = "Current endgame: 1F6 Points & 70 Achievements."
-		return a
+		let a = "Current endgame: F1,000,000 Points & 100 Achievements."
+		let d = isEndgame()?makeBlue("<br>You are past endgame,<br>and the game might not be balanced here."):""
+		return a+d
 	},
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-return false
-}
+return player.points.gte("10^^1000000")}
 
 
 // Less important things beyond this point!

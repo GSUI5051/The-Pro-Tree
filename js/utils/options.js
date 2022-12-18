@@ -63,19 +63,17 @@ function milestoneShown(layer, id) {
 	switch (options.msDisplay) {
 		case "always":
 			return true;
-			break;
+			
 		case "last":
 			return (auto) || !complete || player[layer].lastMilestone === id;
-			break;
+			
 		case "automation":
 			return (auto) || !complete;
-			break;
+			
 		case "incomplete":
 			return !complete;
-			break;
 		case "never":
 			return false;
-			break;
 	}
 	return false;
 }

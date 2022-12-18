@@ -1,4 +1,27 @@
 addLayer("e", {
+    tabFormat: [
+        "main-display",
+        "prestige-button",
+        ["microtabs", "stuff"],
+        ["blank", "25px"],
+    ],
+    microtabs: {
+        stuff: {
+                        "Upgrades": {
+                            unlocked() {return (hasAchievement("a", 11))},
+                    content: [
+                        ["blank", "15px"],
+                        ["upgrades", [1,2,3,4,5,6,7,8,9]]
+                    ]
+                },
+                        "Milestones": {
+                            content: [
+                                ["blank", "15px"],
+                                "milestones"
+                            ]
+                        },
+                },
+            },
     upgrades: {
         11: { title: "176",
         description: "1e6,969x Points.",

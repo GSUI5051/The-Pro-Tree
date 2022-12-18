@@ -1,4 +1,21 @@
 addLayer("k", {
+    tabFormat: [
+        "main-display",
+        "prestige-button",
+        ["microtabs", "stuff"],
+        ["blank", "25px"],
+    ],
+    microtabs: {
+        stuff: {
+                        "Upgrades": {
+                            unlocked() {return (hasAchievement("a", 11))},
+                    content: [
+                        ["blank", "15px"],
+                        ["upgrades", [1,2,3,4,5,6,7,8,9]]
+                    ]
+                },
+            },
+        },
     upgrades: {
         11: { title: "276",
         description: "Point gain is increased by a UNOBTANIUM AMOUNT! Gain x2 Keys.",
@@ -173,6 +190,41 @@ addLayer("k", {
             return hasUpgrade("m", 35)
         }
         },
+        61: { title: "?",
+        description: "Increase something.",
+        cost: new EN("25000"),
+        unlocked() {
+            return inChallenge("o", 11)
+        }
+        },
+        62: { title: "?",
+        description: "Increase even more.",
+        cost: new EN("1e74"),
+        unlocked() {
+            return inChallenge("o", 11)
+        }
+        },
+        63: { title: "?",
+        description: "Increase a lot more.",
+        cost: new EN("1e1411"),
+        unlocked() {
+            return inChallenge("o", 11)
+        }
+        },
+        64: { title: "?",
+        description: "Increase by more more and more.",
+        cost: new EN("1e70831"),
+        unlocked() {
+            return inChallenge("o", 11)
+        }
+        },
+        65: { title: "?",
+        description: "uNlOcK sOmEthIng.",
+        cost: new EN("e5e9"),
+        unlocked() {
+            return inChallenge("o", 11)
+        }
+        },
     },
     effect(){
 
@@ -266,14 +318,76 @@ effectDescription(){
         if (hasUpgrade('m', 52)) mult = mult.pow(4194304)
         if (hasUpgrade('m', 53)) mult = mult.pow(8388608)
         if (hasUpgrade('m', 54)) mult = mult.pow(16777216)
+        if (hasUpgrade("o", 11)) mult = mult.pow("1.1")
+        if (hasUpgrade("o", 12)) mult = mult.pow("2")
+        if (hasUpgrade("o", 13)) mult = mult.pow("3")
+        if (hasUpgrade('o', 14)) mult = mult.times(64)
+        if (hasUpgrade("o", 15)) mult = mult.pow("4")
+        if (hasUpgrade("o", 21)) mult = mult.pow("6")
+        if (hasUpgrade("o", 22)) mult = mult.pow("36")
+        if (hasUpgrade("o", 23)) mult = mult.pow("256")
+        if (hasUpgrade("o", 24)) mult = mult.pow("3125")
+        if (hasUpgrade("o", 25)) mult = mult.pow("46656")
+        if (hasUpgrade("o", 31)) mult = mult.pow("16777216")
+        if (hasUpgrade("o", 32)) mult = mult.pow("1e10")
+        if (hasUpgrade("o", 33)) mult = mult.pow("3e14")
+        if (hasUpgrade("o", 34)) mult = mult.pow("1.8e19")
+        if (hasUpgrade("o", 35)) mult = mult.pow("1e26")
+        if (hasUpgrade("o", 41)) mult = mult.pow("1e35")
+        if (hasUpgrade("o", 42)) mult = mult.pow("2e44")
+        if (hasUpgrade("o", 43)) mult = mult.pow("1e69")
+        if (hasUpgrade("o", 44)) mult = mult.pow("1e100")
+        if (hasUpgrade("o", 45)) mult = mult.pow("1e153")
+        if (hasUpgrade("o", 51)) mult = mult.pow("1e308")
+        if (hasUpgrade("o", 52)) mult = mult.pow("1e420")
+        if (hasUpgrade("o", 53)) mult = mult.pow("1e666")
+        if (hasUpgrade("o", 54)) mult = mult.pow("1e1000")
+        if (hasUpgrade("o", 55)) mult = mult.pow("1e3003")
+        if (inChallenge("o", 11)) mult = mult.pow("4e-6013")
+        if (hasUpgrade('j', 61)) mult = mult.times(69)
+        if (hasUpgrade('k', 61)) mult = mult.times(6.969e69)
+        if (hasUpgrade('k', 62)) mult = mult.times("1e1337")
+        if (hasUpgrade('k', 63)) mult = mult.times("1e69420")
+        if (hasUpgrade('k', 64)) mult = mult.times("ee10")
+        if (hasUpgrade('k', 65)) mult = mult.times("ee20")   
+        if (hasUpgrade('j', 62)) mult = mult.times("ee40")
+        if (hasUpgrade('j', 63)) mult = mult.times("ee80") 
+        if (hasUpgrade('j', 64)) mult = mult.times("ee160")   
+        if (hasUpgrade('j', 65)) mult = mult.times("ee256")   
+        if (hasUpgrade('o', 61)) mult = mult.times("ee309")
+        if (hasChallenge("o", 11)) mult = mult.pow("ee6")
+        if (hasChallenge("o", 12)) mult = mult.pow("ee10")
+        if (hasUpgrade('o', 64)) mult = mult.times("eee20")
+        if (hasChallenge("o", 13)) mult = mult.pow("ee100")
+        if (hasUpgrade("q", 12)) mult = mult.pow("ee1000")
+        if (hasUpgrade("q", 13)) mult = mult.pow("ee1000000")
+        if (hasUpgrade("q", 14)) mult = mult.pow("eee10")
+        if (hasUpgrade("q", 15)) mult = mult.pow("eee1000")
+        if (hasUpgrade("q", 21)) mult = mult.pow("eee1000000")
+        if (hasUpgrade("q", 22)) mult = mult.pow("eeee9")
+        if (hasUpgrade("q", 23)) mult = mult.pow("eeee10")
+        if (hasChallenge("o", 14)) mult = mult.pow("eeeee10")
+        if (hasUpgrade("r", 25)) mult = mult.pow("eeeeeeee10")
+        if (hasChallenge('o', 22)) mult = mult.pow("eeeeeeeeee10")
+        if (hasUpgrade('s', 54)) mult = mult.times("10^^20")
+        if (hasUpgrade('t', 54)) mult = mult.times("10^^40")
+        if (hasUpgrade('u', 54)) mult = mult.times("10^^500")
         return mult
     },
+    autoUpgrade() { if (hasUpgrade("o" , 13)) return true},
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new EN(1)
     },
     row: 4, // Row the layer is in on the tree (0 is the first row)
+    passiveGeneration() { return (hasMilestone("o", 1)&&player.current!="k")?1:0 },
+
     hotkeys: [
         {key: "K", description: "K: Reset for Keys", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return (hasUpgrade("p", 75) || player[this.layer].unlocked)},
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("o", 4) && resettingLayer=="o") keep.push("upgrades")
+        if (layers[resettingLayer].row > this.row) layerDataReset("k", keep)
+    },
 })

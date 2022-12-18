@@ -1,4 +1,21 @@
 addLayer("h", {
+    tabFormat: [
+        "main-display",
+        "prestige-button",
+        ["microtabs", "stuff"],
+        ["blank", "25px"],
+    ],
+    microtabs: {
+        stuff: {
+                        "Upgrades": {
+                            unlocked() {return (hasAchievement("a", 11))},
+                    content: [
+                        ["blank", "15px"],
+                        ["upgrades", [1,2,3,4,5,6,7,8,9]]
+                    ]
+                },
+            },
+        },
     upgrades: {
         11: { title: "201",
         description: "1e1,000,000x Points.",
@@ -252,7 +269,7 @@ effectDescription(){
         if (hasMilestone("j", 4) && resettingLayer=="j", "k", "l", "m", "n") keep.push("upgrades")
         if (layers[resettingLayer].row > this.row) layerDataReset("h", keep)
     },
-    passiveGeneration() { return (hasMilestone("j", 1)&&player.current!="g")?1:0 },
+    passiveGeneration() { return (hasMilestone("j", 1)&&player.current!="h")?1:0 },
     hotkeys: [
         {key: "H", description: "H: Reset for House", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],

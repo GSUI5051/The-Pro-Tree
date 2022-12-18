@@ -1,4 +1,34 @@
 addLayer("j", {
+    tabFormat: [
+        "main-display",
+        "prestige-button",
+        ["microtabs", "stuff"],
+        ["blank", "25px"],
+    ],
+      microtabs: {
+        stuff: {
+                        "Upgrades": {
+                            unlocked() {return (hasAchievement("a", 11))},
+                    content: [
+                        ["blank", "15px"],
+                        ["upgrades", [1,2,3,4,5,6,7,8,9]]
+                    ]
+                },
+                        "Milestones": {
+                            content: [
+                                ["blank", "15px"],
+                                "milestones"
+                            ]
+                        },
+                        "Challenges": {
+                            unlocked() {return (hasMilestone("j", 8))},
+                            content: [
+                                ["blank", "15px"],
+                                "challenges"
+                            ]
+            },
+        },
+    },
     upgrades: {
         11: { title: "251",
         description: "Gain e1e12x Points.",
@@ -173,6 +203,41 @@ addLayer("j", {
             return hasUpgrade("j", 54)
         }
         },
+        61: { title: "?",
+        description: "Increase key gain.",
+        cost: new EN("-1"),
+        unlocked() {
+            return inChallenge("o", 11)
+        }
+        },
+        62: { title: "?",
+        description: "Increase key gain again.",
+        cost: new EN("eeeee14"),
+        unlocked() {
+            return inChallenge("o", 11)
+        }
+        },
+        63: { title: "?",
+        description: "Increase key gain yet again.",
+        cost: new EN("eeeee14"),
+        unlocked() {
+            return inChallenge("o", 11)
+        }
+        },
+        64: { title: "?",
+        description: "Increase key gain yet again and again.",
+        cost: new EN("eeeee14"),
+        unlocked() {
+            return inChallenge("o", 11)
+        }
+        },
+        65: { title: "?",
+        description: "Increase key gain yet again and again and again.",
+        cost: new EN("eeeee14"),
+        unlocked() {
+            return inChallenge("o", 11)
+        }
+        },
     },
     milestones: {
          1: {requirementDescription: "1 Jetpack",
@@ -282,8 +347,16 @@ effectDescription(){
         return new EN(1)
     },
     row: 4, // Row the layer is in on the tree (0 is the first row)
+    passiveGeneration() { return (hasMilestone("o", 1)&&player.current!="j")?1:0 },
     hotkeys: [
         {key: "J", description: "J: Reset for Jetpacks", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("o", 3) && resettingLayer=="o", "q", "r") keep.push("milestones")
+        if (hasMilestone("o", 3) && resettingLayer=="o", "q", "r") keep.push("upgrades")
+        if (hasMilestone("o", 3) && resettingLayer=="o", "q", "r") keep.push("challenges")
+        if (layers[resettingLayer].row > this.row) layerDataReset("j", keep)
+    },
     layerShown(){return (hasUpgrade("i", 45) || player[this.layer].unlocked)},
 })

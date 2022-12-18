@@ -1,4 +1,27 @@
 addLayer("n", {
+    tabFormat: [
+        "main-display",
+        "prestige-button",
+        ["microtabs", "stuff"],
+        ["blank", "25px"],
+    ],
+    microtabs: {
+        stuff: {
+                        "Upgrades": {
+                            unlocked() {return (hasAchievement("a", 11))},
+                    content: [
+                        ["blank", "15px"],
+                        ["upgrades", [1,2,3,4,5,6,7,8,9]]
+                    ]
+                },
+                        "Milestones": {
+                            content: [
+                                ["blank", "15px"],
+                                "milestones"
+                            ]
+                        },
+                },
+            },
     upgrades: {
         11: { title: "351",
         description: "Gain x69,420 Lights.",
@@ -167,7 +190,7 @@ addLayer("n", {
         }
         },
         55: { title: "375",
-        description: "Gain ^2 Lights and complete the game for now!",
+        description: "Gain ^2 Lights and unlock a new layer!",
         cost: new EN("23"),
         unlocked() {
             return hasUpgrade("n", 54)
@@ -233,4 +256,15 @@ effectDescription(){
             done() { return player.n.points.gte(8)},},
    },
     layerShown(){return (hasUpgrade("l", 55) || player[this.layer].unlocked)},
+    autoUpgrade() { if (hasUpgrade("o" , 41)) return true},
+    resetsNothing() {return hasUpgrade("o", 41)},
+    autoPrestige() {
+        return hasMilestone("o", 2)
+    },
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("o", 7) && resettingLayer=="o") keep.push("milestones")
+        if (hasMilestone("o", 7) && resettingLayer=="o") keep.push("upgrades")
+        if (layers[resettingLayer].row > this.row) layerDataReset("n", keep)
+    },
 })

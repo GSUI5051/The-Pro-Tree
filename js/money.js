@@ -1,4 +1,27 @@
 addLayer("m", {
+    tabFormat: [
+        "main-display",
+        "prestige-button",
+        ["microtabs", "stuff"],
+        ["blank", "25px"],
+    ],
+    microtabs: {
+        stuff: {
+                        "Upgrades": {
+                            unlocked() {return (hasAchievement("a", 11))},
+                    content: [
+                        ["blank", "15px"],
+                        ["upgrades", [1,2,3,4,5,6,7,8,9]]
+                    ]
+                },
+                        "Milestones": {
+                            content: [
+                                ["blank", "15px"],
+                                "milestones"
+                            ]
+                        },
+                },
+            },
     upgrades: {
         11: { title: "326",
         description: "Gain ^2 Keys.",
@@ -223,6 +246,7 @@ effectDescription(){
         return new EN(1)
     },
     row: 4, // Row the layer is in on the tree (0 is the first row)
+    resetsNothing() {return hasUpgrade("o", 25)},
     hotkeys: [
         {key: "M", description: "M: Reset for Money", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -233,4 +257,14 @@ effectDescription(){
             done() { return player.m.points.gte(8)},},
    },
     layerShown(){return (hasUpgrade("l", 45) || player[this.layer].unlocked)},
+    autoPrestige() {
+        return hasMilestone("o", 2)
+    },
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("o", 6) && resettingLayer=="o") keep.push("milestones")
+        if (hasMilestone("o", 6) && resettingLayer=="o") keep.push("upgrades")
+        if (layers[resettingLayer].row > this.row) layerDataReset("m", keep)
+    },
+    autoUpgrade() { if (hasUpgrade("o" , 25)) return true},
 })

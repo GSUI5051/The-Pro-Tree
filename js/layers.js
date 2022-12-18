@@ -1,3 +1,6 @@
+function makeBlue(c){
+    return "<span style='color:#4444bb'>" + c + "</span>"
+}
 addLayer("p", {
     name: "Prestige", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
@@ -73,7 +76,29 @@ addLayer("p", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new ExpantaNum(1)
     },
+    tabFormat: [
+        "main-display",
+        "prestige-button",
+        ["microtabs", "stuff"],
+        ["blank", "25px"],
+    ],
+    microtabs: {
+        stuff: {
+                        "Upgrades": {
+                            unlocked() {return (hasAchievement("a", 11))},
+                    content: [
+                        ["blank", "15px"],
+                        ["upgrades", [1,2,3,4,5,6,7,8,9]]
+                    ]
+                },
+            },
+        },
     upgrades: {
+        82:{ title: "EVENT",
+        description: "Double your point gain!",
+        cost: new ExpantaNum(1),
+
+        },
         11: { title: "1",
         description: "Double your point gain.",
         cost: new ExpantaNum(1),
@@ -379,7 +404,7 @@ addLayer("p", {
         if(hasUpgrade("e",13)) player.p.upgrades.push("62")
         if(hasUpgrade("e",15)) player.p.upgrades.push("63")
         if(hasUpgrade("j",55)) player.p.upgrades.push("64" , "65" , "71", "72", "73", "74", "75")
-
+        if(hasUpgrade("o",11)) player.p.upgrades.push("64" , "65" , "71", "72", "73", "74", "75")
     }
     },
     passiveGeneration() { return (hasMilestone("asc", 1)&&player.current!="p")?1:0 },

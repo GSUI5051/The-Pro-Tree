@@ -56,6 +56,30 @@ effectDescription(){
             canComplete: function() {return player.points.gte("e87770")},
             unlocked() { return (hasChallenge('c', 21)) },
            }},
+           tabFormat: [
+            "main-display",
+            "prestige-button",
+            ["microtabs", "stuff"],
+            ["blank", "25px"],
+        ],
+        microtabs: {
+            stuff: {
+                            "Upgrades": {
+                                unlocked() {return (hasAchievement("a", 11))},
+                        content: [
+                            ["blank", "15px"],
+                            ["upgrades", [1,2,3,4,5,6,7,8,9]]
+                        ]
+                    },
+                    "Challenges": {
+                        unlocked() {return (hasUpgrade("d", 45))},
+                        content: [
+                            ["blank", "15px"],
+                            "challenges"
+                        ]
+                    },
+                },
+            },
     upgrades: {
         11: { title: "101",
         description: "1e20x Points.",
@@ -307,12 +331,13 @@ effectDescription(){
     ],
     doReset(resettingLayer) {
         let keep = [];
-        if (hasMilestone("f", 6) && resettingLayer=="f" , "e", "h") keep.push("milestones")
-        if (hasMilestone("f", 6) && resettingLayer=="f", "e", "h") keep.push("upgrades")
-        if (hasMilestone("f", 6) && resettingLayer=="f", "e", "h") keep.push("challenges")
+        if (hasMilestone("f", 6) && resettingLayer=="f") keep.push("milestones")
+        if (hasMilestone("f", 6) && resettingLayer=="f", "e") keep.push("upgrades")
+        if (hasMilestone("f", 6) && resettingLayer=="f", "e") keep.push("challenges")
         if (layers[resettingLayer].row > this.row) layerDataReset("c", keep)
     },
     passiveGeneration() { return (hasMilestone("f", 1)&&player.current!="c")?1:0 },
     layerShown(){return (hasUpgrade("asc", 35) || player[this.layer].unlocked)},
+    autoUpgrade() { if (hasUpgrade("f" , 11)) return true},
 }
 )

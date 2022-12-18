@@ -18,9 +18,9 @@ addLayer("g", {
 },
 doReset(resettingLayer) {
     let keep = [];
-    if (hasMilestone("f", 4) && resettingLayer=="f", "e", "h") keep.push("milestones")
-    if (hasMilestone("f", 4) && resettingLayer=="f" , "e", "h") keep.push("upgrades")
-    if (hasMilestone("f", 4) && resettingLayer=="f" , "d", "c", "e", "h") keep.push("challenges")
+    if (hasMilestone("f", 4) && resettingLayer=="f", "4") keep.push("milestones")
+    if (hasMilestone("f", 4) && resettingLayer=="f", "e") keep.push("upgrades")
+    if (hasMilestone("f", 4) && resettingLayer=="f", "e") keep.push("challenges")
     if (layers[resettingLayer].row > this.row) layerDataReset("g", keep)
 },
 effectDescription(){
@@ -30,6 +30,36 @@ effectDescription(){
     */
    
   },
+  tabFormat: [
+    "main-display",
+    "prestige-button",
+    ["microtabs", "stuff"],
+    ["blank", "25px"],
+],
+  microtabs: {
+    stuff: {
+                    "Upgrades": {
+                        unlocked() {return (hasAchievement("a", 11))},
+                content: [
+                    ["blank", "15px"],
+                    ["upgrades", [1,2,3,4,5,6,7,8,9]]
+                ]
+            },
+                    "Milestones": {
+                        content: [
+                            ["blank", "15px"],
+                            "milestones"
+                        ]
+                    },
+                    "Challenges": {
+                        unlocked() {return (hasUpgrade("g", 55))},
+                        content: [
+                            ["blank", "15px"],
+                            "challenges"
+                        ]
+        },
+    },
+},
     upgrades: {
         11: { title: "76",
         description: "1e10x Points.",
@@ -332,6 +362,7 @@ effectDescription(){
     ],
     passiveGeneration() { return (hasMilestone("f", 1)&&player.current!="g")?1:0 },
     layerShown(){return (hasUpgrade("p", 55) || player[this.layer].unlocked)},
+    autoUpgrade() { if (hasUpgrade("f" , 11)) return true},
     milestones: {
         1: {
             requirementDescription: "5 Grass",

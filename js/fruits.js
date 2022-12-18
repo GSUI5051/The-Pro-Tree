@@ -1,4 +1,34 @@
 addLayer("f", {
+    tabFormat: [
+        "main-display",
+        "prestige-button",
+        ["microtabs", "stuff"],
+        ["blank", "25px"],
+    ],
+      microtabs: {
+        stuff: {
+                        "Upgrades": {
+                            unlocked() {return (hasAchievement("a", 11))},
+                    content: [
+                        ["blank", "15px"],
+                        ["upgrades", [1,2,3,4,5,6,7,8,9]]
+                    ]
+                },
+                        "Milestones": {
+                            content: [
+                                ["blank", "15px"],
+                                "milestones"
+                            ]
+                        },
+                        "Challenges": {
+                            unlocked() {return (hasUpgrade("e", 35))},
+                            content: [
+                                ["blank", "15px"],
+                                "challenges"
+                            ]
+            },
+        },
+    },
     upgrades: {
         11: { title: "151",
         description: "1e100x Points and keep Prestige Upgrades.",
@@ -279,7 +309,7 @@ effectDescription(){
         return new EN(1)
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
-    passiveGeneration() { return (hasMilestone("j", 1)&&player.current!="g")?1:0 },
+    passiveGeneration() { return (hasMilestone("j", 1)&&player.current!="f")?1:0 },
     doReset(resettingLayer) {
         let keep = [];
         if (hasMilestone("j", 2) && resettingLayer=="j", "k", "l", "m", "n") keep.push("milestones")

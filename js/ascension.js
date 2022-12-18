@@ -33,7 +33,35 @@ effectDescription(){
 autoPrestige() {
     return hasUpgrade("g", 25)
 },
+tabFormat: [
+    "main-display",
+    "prestige-button",
+    ["microtabs", "stuff"],
+    ["blank", "25px"],
+],
+microtabs: {
+    stuff: {
+                    "Upgrades": {
+                        unlocked() {return (hasAchievement("a", 11))},
+                content: [
+                    ["blank", "15px"],
+                    ["upgrades", [1,2,3,4,5,6]]
+                ]
+            },
+                    "Milestones": {
+                        content: [
+                            ["blank", "15px"],
+                            "milestones"
+                        ]
+                    },
+            },
+        },
     upgrades: {
+        62: { title: "EVENT",
+        description: "16x Point Gain.",
+        cost: new EN(1),
+
+        },
         11: { title: "51",
         description: "1,000x Point gain.",
         cost: new EN(6),
