@@ -5,8 +5,8 @@ var systemComponents = {
 			<div class="upgRow">
 				<div v-for="tab in Object.keys(data)">
 					<button v-if="data[tab].unlocked == undefined || data[tab].unlocked" v-bind:class="{tabButton: true, notify: subtabShouldNotify(layer, name, tab), resetNotify: subtabResetNotify(layer, name, tab)}"
-					v-bind:style="[{'border-color': tmp[layer].color}, (subtabShouldNotify(layer, name, tab) ? {'box-shadow': 'var(--hqProperty2a), 0 0 20px '  + (data[tab].glowColor || defaultGlow)} : {}), tmp[layer].componentStyles['tab-button'], data[tab].buttonStyle]"
-						v-on:click="function(){player.subtabs[layer][name] = tab; updateTabFormats(); needCanvasUpdate = true;}">{{tab}}</button>
+					v-bind:style="[{'border-color': tmp[layer].color}, (data[tab].glowColor && subtabShouldNotify(layer, name, tab) ? {'box-shadow': 'var(--hqProperty2a), 0 0 20px '  + data[tab].glowColor} : {}), tmp[layer].componentStyles['tab-button'], data[tab].buttonStyle]"
+						v-on:click="function(){player.subtabs[layer][name] = tab; updateTabFormats(); needCanvasUpdate = true;}">{{data[tab].title || tab}}</button>
 				</div>
 			</div>
 		`
@@ -18,7 +18,7 @@ var systemComponents = {
 		<button v-if="nodeShown(layer)"
 			v-bind:id="layer"
 			v-on:click="function() {
-				if (shiftDown && options.forceTooltips) player[layer].forceTooltip = !player[layer].forceTooltip
+				if (shiftDown) player[layer].forceTooltip = !player[layer].forceTooltip
 				else if(tmp[layer].isLayer) {
 					if (tmp[layer].leftTab) {
 						showNavTab(layer, prev)
@@ -29,8 +29,6 @@ var systemComponents = {
 				}
 				else {run(layers[layer].onClick, layers[layer])}
 			}"
-
-
 			v-bind:class="{
 				treeNode: tmp[layer].isLayer,
 				treeButton: !tmp[layer].isLayer,
@@ -47,7 +45,7 @@ var systemComponents = {
 				front: !tmp.scrolled,
 			}"
 			v-bind:style="constructNodeStyle(layer)">
-			<span class="nodeLabel" v-html="(abb !== '' && tmp[layer].image === undefined) ? abb : '&nbsp;'"></span>
+			<span v-html="(abb !== '' && tmp[layer].image === undefined) ? abb : '&nbsp;'"></span>
 			<tooltip
       v-if="tmp[layer].tooltip != ''"
 			:text="(tmp[layer].isLayer) ? (
@@ -58,7 +56,7 @@ var systemComponents = {
 				tmp[layer].canClick ? (tmp[layer].tooltip ? tmp[layer].tooltip : 'I am a button!')
 				: (tmp[layer].tooltipLocked ? tmp[layer].tooltipLocked : 'I am a button!')
 			)"></tooltip>
-			<node-mark :layer='layer' :data='tmp[layer].marked'></node-mark></span>
+			<node-mark :layer='layer' :data='layers[layer].marked'></node-mark></span>
 		</button>
 		`
 	},
@@ -138,7 +136,7 @@ var systemComponents = {
         The Prestige Tree made by Jacorb and Aarex
 		<br><br>
 		<div class="link" onclick="showTab('changelog-tab')">Changelog</div><br>
-        <span v-if="modInfo.discordLink"><a class="link" v-bind:href="modInfo.discordLink" target="_blank">{{modInfo.discordName}}</a><br></span>
+        <span v-if="modInfo.discordLink"><a class="link" v-bind:href="modInfo.discordLink" target="_blank">{{modInfo.discordName}}</a><h5>(we have a communitree channel)</h5><br></span>
         <a class="link" href="https://discord.gg/F3xveHV" target="_blank" v-bind:style="modInfo.discordLink ? {'font-size': '16px'} : {}">The Modding Tree Discord</a><br>
         <a class="link" href="http://discord.gg/wwQfgPa" target="_blank" v-bind:style="{'font-size': '16px'}">Main Prestige Tree server</a><br>
 		<br><br>
@@ -150,29 +148,39 @@ var systemComponents = {
 
     'options-tab': {
         template: `
-        <table>
-            <tr>
-                <td><button class="opt" onclick="save()">Save</button></td>
-                <td><button class="opt" onclick="toggleOpt('autosave')">Autosave: {{ options.autosave?"ON":"OFF" }}</button></td>
-                <td><button class="opt" onclick="hardReset()">HARD RESET</button></td>
-            </tr>
-            <tr>
-                <td><button class="opt" onclick="exportSave()">Export to clipboard</button></td>
-                <td><button class="opt" onclick="importSave()">Import</button></td>
-                <td><button class="opt" onclick="toggleOpt('offlineProd')">Offline Prod: {{ options.offlineProd?"ON":"OFF" }}</button></td>
-            </tr>
-            <tr>
-                <td><button class="opt" onclick="switchTheme()">Theme: {{ getThemeName() }}</button></td>
-                <td><button class="opt" onclick="adjustMSDisp()">Show Milestones: {{ MS_DISPLAYS[MS_SETTINGS.indexOf(options.msDisplay)]}}</button></td>
-                <td><button class="opt" onclick="toggleOpt('hqTree')">High-Quality Tree: {{ options.hqTree?"ON":"OFF" }}</button></td>
-            </tr>
-            <tr>
-                <td><button class="opt" onclick="toggleOpt('hideChallenges')">Completed Challenges: {{ options.hideChallenges?"HIDDEN":"SHOWN" }}</button></td>
-                <td><button class="opt" onclick="toggleOpt('forceOneTab'); needsCanvasUpdate = true">Single-Tab Mode: {{ options.forceOneTab?"ALWAYS":"AUTO" }}</button></td>
-				<td><button class="opt" onclick="toggleOpt('forceTooltips'); needsCanvasUpdate = true">Shift-Click to Toggle Tooltips: {{ options.forceTooltips?"ON":"OFF" }}</button></td>
-				
+		<div>
+			<div class="upgRow">
+				<button class="tabButton" style="border-color:var(--color)" onclick="options.optionTab='saving';">Saving</button>
+				<button class="tabButton" style="border-color:var(--color)" onclick="options.optionTab='display';">Display</button>
+			</div>
+			<table v-if="options.optionTab == 'saving'">
+				<tr>
+					<td><button class="opt" onclick="save()">Save</button></td>
+					<td><button class="opt" onclick="toggleOpt('autosave')">Autosave: {{ options.autosave?"ON":"OFF" }}</button></td>
+					<td><button class="opt" onclick="toggleOpt('offlineProd')">Offline Prod: {{ options.offlineProd?"ON":"OFF" }}</button></td>
 				</tr>
-        </table>`
+				<tr>
+					<td><button class="opt" onclick="exportSave()">Export to clipboard</button></td>
+					<td><button class="opt" onclick="importSave()">Import</button></td>
+					<td><button class="opt" onclick="hardReset()">HARD RESET</button></td>
+				</tr>
+			</table>
+			<table v-if="options.optionTab == 'display'">
+				<tr>
+					<td><button class="opt" onclick="switchTheme()">Theme: {{ getThemeName() }}</button></td>
+					<td><button class="opt" onclick="adjustMSDisp()">Show Milestones: {{ MS_DISPLAYS[MS_SETTINGS.indexOf(options.msDisplay)]}}</button></td>
+					<td><button class="opt" onclick="toggleOpt('hqTree')">High-Quality Tree: {{ options.hqTree?"ON":"OFF" }}</button></td>
+				</tr>
+				<tr>
+					<td><button class="opt" onclick="toggleOpt('hideChallenges')">Completed Challenges: {{ options.hideChallenges?"HIDDEN":"SHOWN" }}</button></td>
+					<td><button class="opt" onclick="toggleOpt('forceOneTab'); needsCanvasUpdate = true">Single-Tab Mode: {{ options.forceOneTab?"ALWAYS":"AUTO" }}</button></td>
+					<td><button class="opt" onclick="toggleOpt('antiEpilepsy')">Anti-Epilepsy Mode: {{ options.antiEpilepsy?"ON":"OFF" }}</button></td>
+				</tr>
+				<tr>
+					<td><button class="opt" onclick="adjustNotation()">Large Number Format: {{ NT_DISPLAYS[NT_SETTINGS.indexOf(options.notation)]}}</button></td>
+				</tr> 
+			</table>
+		</div>`
     },
 
     'back-button': {
@@ -218,4 +226,3 @@ var systemComponents = {
 	}
 
 }
-
