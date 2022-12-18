@@ -12,16 +12,17 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.6a",
-	name: "Added more settings."
+	num: "0.6b",
+	name: "Small Update"
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+<h3>v0.6b</h3><br>
+		- Changed some stuff.<br>
 <h3>v0.6a</h3><br>
 		- Added more settings!<br>
 		- Added more notations!<br><br>
 <h3>v0.6</h3><br>
-		- Endgame: F1,000,000 Points.<br>		
 		- Added 6 new layers!<br>
 		- Added buyables.<br>
 		- Added auto-buyables.<br>
@@ -39,7 +40,6 @@ let changelog = `<h1>Changelog:</h1><br>
 		<h3>v0.5a</h3><br>
 		- Bug Fixes.<br><br>
 		<h3>v0.5</h3><br>
-		- Endgame: 1F6 Points.<br>
 		- Added 5 new layers.<br>
 		- Added new milestones.<br>
 		- Added new upgrades.<br>
@@ -83,7 +83,8 @@ let changelog = `<h1>Changelog:</h1><br>
 			- Added 1 layer.<br>
 			- Added Upgrades.<br><br>
 			<h3>v0.0</h3><br>
-			- Endgame: 1,000 Points.<br>`
+			- Endgame: 1,000 Points.<br>
+			`
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
@@ -365,7 +366,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function(){
-		let a = "Current endgame: F1,000,000 Points & 100 Achievements."
+		let a = `Current endgame: ${format([10, 999998])} Points & 100 Achievements.`
 		let d = isEndgame()?makeBlue("<br>You are past endgame,<br>and the game might not be balanced here."):""
 		return a+d
 	},
