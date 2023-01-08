@@ -94,11 +94,6 @@ addLayer("p", {
             },
         },
     upgrades: {
-        82:{ title: "EVENT",
-        description: "Double your point gain!",
-        cost: new ExpantaNum(1),
-
-        },
         11: { title: "1",
         description: "Double your point gain.",
         cost: new ExpantaNum(1),

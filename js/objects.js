@@ -292,6 +292,7 @@ addLayer("o", {
     exponent: "1e-19", // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
+        if (hasMilestone('o', 3)) mult = mult.times(1.1)
         if (hasUpgrade('o', 15)) mult = mult.times(2)
         if (hasUpgrade('o', 21)) mult = mult.times(2)
         if (hasUpgrade('o', 22)) mult = mult.times(2)
@@ -316,7 +317,7 @@ addLayer("o", {
             done() { return player.o.total.gte(2)},},
     
     3: {requirementDescription: "4 Total Objects",
-         effectDescription: "Keep Jetpack stuff on reset.",
+         effectDescription: "x1.1 Objects.",
             done() { return player.o.total.gte(4)},},
     4: {requirementDescription: "16 Total Objects",
          effectDescription: "Keep Keys upgrades on reset.",

@@ -57,11 +57,6 @@ microtabs: {
             },
         },
     upgrades: {
-        62: { title: "EVENT",
-        description: "16x Point Gain.",
-        cost: new EN(1),
-
-        },
         11: { title: "51",
         description: "1,000x Point gain.",
         cost: new EN(6),
