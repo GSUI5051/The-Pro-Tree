@@ -26,7 +26,6 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added more challenges.<br>
 		- Added more achievements.<br>
 		- Added more auto upgrades.<br>
-		- Revamped the game a bit.<br>
 		- Added more sub-currencies.<br>
 		- Added emojis.<br>
 		- Changed the code a little bit.<br>
