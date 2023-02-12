@@ -32,25 +32,25 @@ unlocked() {return (hasUpgrade("u", 11))},
 },
                 },
     upgrades: {
-        11: { title: "476",
+        11: { title: "501",
         description: "Unlock a buyable.",
         cost: new EN("100"),
         },
-        12: { title: "477",
+        12: { title: "502",
         description: "Unlock another buyable.",
         cost: new EN("100000"),
         unlocked() {
             return hasUpgrade("u", 11)
         }
         },
-        13: { title: "478",
+        13: { title: "503",
         description: "Gain 1e64x stars.",
         cost: new EN("10000000"),
         unlocked() {
             return hasUpgrade("u", 12)
         }
         },
-        14: { title: "479",
+        14: { title: "504",
         description: "Gain more stars based on universal.",
         cost: new EN("1e88"),
         unlocked() {
@@ -59,35 +59,35 @@ unlocked() {return (hasUpgrade("u", 11))},
         effect(){return player.u.points.root(1).add(1).gte("ee200") ? new EN("ee200") : player.u.points.root(1).add(1)},
         effectDisplay(){return `${format(this.effect())}x`}
     },
-    15: { title: "480",
+    15: { title: "505",
     description: "Unlock the eighth buyable.",
     cost: new EN("1e465"),
     unlocked() {
         return hasUpgrade("u", 14)
     }
     },
-    21: { title: "481",
+    21: { title: "506",
     description: "Gain 1e3,200x stars.",
     cost: new EN("1e10000"),
     unlocked() {
         return hasUpgrade("u", 15)
     }
     },
-    22: { title: "482",
+    22: { title: "507",
     description: "Gain ^1.44 stars.",
     cost: new EN("1e42000"),
     unlocked() {
         return hasUpgrade("u", 21)
     }
     },
-    23: { title: "483",
+    23: { title: "508",
     description: "Gain x1e100,000 stars.",
     cost: new EN("1e70000000"),
     unlocked() {
         return hasUpgrade("u", 22)
     }
     },
-    24: { title: "484",
+    24: { title: "509",
         description: "Stars boosts itself.",
         cost: new EN("1e70000001"),
         unlocked() {
@@ -96,116 +96,123 @@ unlocked() {return (hasUpgrade("u", 11))},
         effect(){return player.u.stars.root(2).add(1).gte("ee200") ? new EN("ee200") : player.u.stars.root(2).add(1)},
         effectDisplay(){return `${format(this.effect())}x`}
     },
-    25: { title: "485",
+    25: { title: "510",
     description: "Gain xe1.000e100 stars.",
     cost: new EN("ee50"),
     unlocked() {
         return hasUpgrade("u", 24)
     }
     },
-    31: { title: "486",
+    31: { title: "511",
     description: "Unlock the ninth buyable.",
     cost: new EN("ee150"),
     unlocked() {
         return hasUpgrade("u", 25)
     }
     },
-    32: { title: "487",
+    32: { title: "512",
     description: "Gain e1e1,000,000x Stars.",
     cost: new EN("ee69420"),
     unlocked() {
         return hasUpgrade("u", 31)
     }
     },
-    33: { title: "488",
+    33: { title: "513",
     description: "Gain a lot of stars.",
     cost: new EN("eee6"),
     unlocked() {
         return hasUpgrade("u", 32)
     }
     },
-    34: { title: "489",
+    34: { title: "514",
     description: "Gain even more stars.",
     cost: new EN("eee9"),
     unlocked() {
         return hasUpgrade("u", 33)
     }
     },
-    35: { title: "490",
+    35: { title: "515",
     description: "Gain a lot more stars.",
     cost: new EN("eeee9"),
     unlocked() {
         return hasUpgrade("u", 34)
     }
     },
-    41: { title: "491",
+    41: { title: "516",
     description: "Gain so much stars.",
     cost: new EN("10^^7"),
     unlocked() {
         return hasUpgrade("u", 35)
     }
     },
-    42: { title: "492",
+    42: { title: "517",
     description: "Gain a insane amount of stars.",
     cost: new EN("10^^10"),
     unlocked() {
         return hasUpgrade("u", 41)
     }
     },
-    43: { title: "493",
+    43: { title: "518",
     description: "Gain a extreme amount of stars.",
     cost: new EN("10^^15"),
     unlocked() {
         return hasUpgrade("u", 42)
     }
     },
-    44: { title: "494",
+    44: { title: "519",
     description: "Gain a intense amount of stars.",
     cost: new EN("10^^25"),
     unlocked() {
         return hasUpgrade("u", 43)
     }
     },
-    45: { title: "495",
+    45: { title: "520",
     description: "Gain a intense amount of stars.",
     cost: new EN("10^^30"),
     unlocked() {
         return hasUpgrade("u", 44)
     }
     },
-    51: { title: "496",
+    51: { title: "521",
     description: "Gain a GOD amount of stars.",
     cost: new EN("10^^50"),
     unlocked() {
         return hasUpgrade("u", 45)
     }
     },
-    52: { title: "497",
+    52: { title: "522",
     description: "Gain a BEST amount of stars.",
     cost: new EN("10^^69"),
     unlocked() {
         return hasUpgrade("u", 51)
     }
     },
-    53: { title: "498",
+    53: { title: "523",
     description: "Gain a TRUE BEST amount of stars.",
     cost: new EN("10^^100"),
     unlocked() {
         return hasUpgrade("u", 52)
     }
     },
-    54: { title: "499",
+    54: { title: "524",
     description: "Increase Row 5 - Row 6 Currencies.",
     cost: new EN("10^^200"),
     unlocked() {
         return hasUpgrade("u", 53)
     }
     },
-    55: { title: "500!",
-    description: "The Object Upgrade 71 is x4.294e9 more powerful, you now wait for you to reach the endgame!",
+    55: { title: "525",
+    description: "The Object Upgrade 71 is x4.294e9 more powerful and unlock a new layer!",
     cost: new EN("10^^300"),
     unlocked() {
         return player.o.points.gte("10^^500")
+    }
+    },
+    61: { title: "You are stuck?",
+    description: "Press this then.",
+    cost: new EN("e45000"),
+    unlocked() {
+        return player.u.points.gte("e45000")
     }
     },
 },
@@ -341,9 +348,9 @@ unlocked() {return (hasUpgrade("u", 11))},
             ]
         },
         5: {
-            requirementDescription: "???",
+            requirementDescription: "100,000,000 Medals",
             effectDescription: "Buy max of the fourth buyable.",
-            done() { return player.u.points.gte("10^^^^23") },
+            done() { return player.re.points.gte("1e8") },
         },
     },
     update(diff) {
@@ -369,14 +376,35 @@ unlocked() {return (hasUpgrade("u", 11))},
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
         if (player.u.stars.gte(1)) mult = mult.times(player.u.stars.max(1).pow(0.69420))
+        if (hasMilestone('re', 2)) mult = mult.times(2)
+        if (hasUpgrade('re', 15)) mult = mult.times(16)
+        if (hasUpgrade('re', 22)) mult = mult.times(2)
+        if (hasUpgrade('u', 61)) mult = mult.times("ee8")
+        if (hasUpgrade('v', 54)) mult = mult.times("10^^1000")
+        if (hasUpgrade('re', 43)) mult = mult.times(upgradeEffect('re', 43))
+        if (hasUpgrade('w', 54)) mult = mult.times("10^^25000")
+        if (hasUpgrade('x', 54)) mult = mult.times("10^^1e12")
+        if (hasUpgrade('y', 54)) mult = mult.pow("10^^1e50")
+        if (hasUpgrade('z', 54)) mult = mult.times("10^^1e700")
+        if (hasUpgrade('ar', 54)) mult = mult.pow("10^^^3")
+        if (hasUpgrade('ba', 54)) mult = mult.pow("10^^^4")
+
         return mult
     },
+    autoUpgrade() { if (hasMilestone("re" , 9)) return true},
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new EN(1)
     },
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("re", 11) && resettingLayer=="re") keep.push("upgrades")
+        if (hasMilestone("re", 11) && resettingLayer=="re") keep.push("milestones")
+        if (layers[resettingLayer].row > this.row) layerDataReset("u", keep)
+    },
     row: 5, // Row the layer is in on the tree (0 is the first row)
+    passiveGeneration() { return (hasMilestone("re", 1)&&player.current!="u")?1:0 },
     hotkeys: [
-        {key: "U", description: "U: Reset for Universal", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "u", description: "U: Reset for Universal", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return (hasChallenge("o", 23) || player[this.layer].unlocked)},
 })

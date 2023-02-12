@@ -330,8 +330,26 @@ effect() {
         if (hasUpgrade('s', 54)) mult = mult.times("10^^12")
         if (hasUpgrade('t', 54)) mult = mult.times("10^^25")
         if (hasUpgrade('u', 54)) mult = mult.times("10^^400")
+        if (hasMilestone('re', 2)) mult = mult.times(8)
+        if (hasUpgrade('re', 15)) mult = mult.times(256)
+        if (hasUpgrade('v', 54)) mult = mult.times("10^^2500")
+        if (hasUpgrade('w', 54)) mult = mult.times("10^^50000")
+        if (hasUpgrade('x', 54)) mult = mult.times("10^^1e14")
+        if (hasUpgrade('y', 54)) mult = mult.pow("10^^1e100")
+        if (hasUpgrade('z', 54)) mult = mult.times("10^^1e1250")
+        if (hasUpgrade('ar', 54)) mult = mult.pow("10^^^3")
+        if (hasUpgrade('ba', 54)) mult = mult.pow("10^^^4")
+
         return mult
     },
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("re", 8) && resettingLayer=="re") keep.push("upgrades")
+        if (hasMilestone("re", 8) && resettingLayer=="re") keep.push("milestones")
+        if (layers[resettingLayer].row > this.row) layerDataReset("s", keep)
+    },
+    autoUpgrade() { if (hasMilestone("re" , 7)) return true},
+
     milestones: {
         1: {
             requirementDescription: "1e1,777 Sand",
@@ -371,10 +389,18 @@ effect() {
             ]
         },
         6: {
-            requirementDescription: "???",
+            requirementDescription: "10,000 Medals",
             effectDescription: "Buy max of the fourth buyable.",
-            done() { return player.s.points.gte("10^^^321231231")
+            done() { return player.re.points.gte("10000")
             },
+        },
+        7: {
+            requirementDescription: "1,000,000 Medals",
+            effectDescription: "Autobuy the fifth buyable & buy max.",
+            done() { return player.re.points.gte("1e6") },
+            toggles: [
+              ["s","auto5"]
+            ]
         },
     },
      automate(){
@@ -391,6 +417,9 @@ effect() {
       if (player.s.auto4) {
         hasMilestone("s",6) ? setBuyableAmount("s",14,tmp.s.buyables[14].canAfford?player.s.points.div(2).log(1e308).floor().add(1):getBuyableAmount("s",14)) : buyBuyable("s",14)
       }
+      if (player.s.auto5) {
+        hasMilestone("s",7) ? setBuyableAmount("s",15,tmp.s.buyables[15].canAfford?player.s.points.div(2).log(1e308).floor().add(1):getBuyableAmount("s",15)) : buyBuyable("s",15)
+      }
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new EN(1)
@@ -399,8 +428,9 @@ effect() {
 		if (hasUpgrade("s", 11)) return player.s.sanddunes = player.s.sanddunes.add(tmp.s.effect.times(diff))
 	},
     row: 5, // Row the layer is in on the tree (0 is the first row)
+    passiveGeneration() { return (hasMilestone("re", 1)&&player.current!="s")?1:0 },
     hotkeys: [
-        {key: "S", description: "S: Reset for Sand", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "s", description: "S: Reset for Sand", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     
     layerShown(){return (hasChallenge("o", 22) || player[this.layer].unlocked)},

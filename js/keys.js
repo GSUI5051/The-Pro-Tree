@@ -225,6 +225,13 @@ addLayer("k", {
             return inChallenge("o", 11)
         }
         },
+        66: { title: "?",
+        description: "Gain even more keys and lights.",
+        cost: new EN("100"),
+        unlocked() {
+            return inChallenge("z", 11)
+        }
+        },
     },
     effect(){
 
@@ -238,13 +245,12 @@ addLayer("k", {
         */
       },
       effect(){
-        return player[this.layer].points.max(1).pow("eee10").log10().max(1)
       },
       effectDescription(){
 
 },
 effectDescription(){
-    return "You can only gain 1 key at a time, can be increased by upgrades.<br> Point gain is increased by  x" + format(tmp[this.layer].effect)
+    return "You can only gain 1 key at a time, can be increased by upgrades."
     
     /*
       use format(num) whenever displaying a number
@@ -372,6 +378,11 @@ effectDescription(){
         if (hasUpgrade('s', 54)) mult = mult.times("10^^20")
         if (hasUpgrade('t', 54)) mult = mult.times("10^^40")
         if (hasUpgrade('u', 54)) mult = mult.times("10^^500")
+        if (hasUpgrade('w', 54)) mult = mult.tetrate(1e7)
+        if (hasUpgrade('x', 54)) mult = mult.times("10^^1e20")
+        if (hasUpgrade('y', 54)) mult = mult.pow("10^^1e308")
+        if (inChallenge("z", 11)) mult = mult.pow("0.001")
+        if (hasChallenge("k", 66)) mult = mult.times("ee100")
         return mult
     },
     autoUpgrade() { if (hasUpgrade("o" , 13)) return true},
@@ -379,12 +390,15 @@ effectDescription(){
         return new EN(1)
     },
     row: 4, // Row the layer is in on the tree (0 is the first row)
-    passiveGeneration() { return (hasMilestone("o", 1)&&player.current!="k")?1:0 },
-
+    passiveGeneration() { 
+        if (hasUpgrade("z", 45)) return (hasUpgrade("z", 45)?0:0)
+        if (hasMilestone("o", 1)) return (hasMilestone("o", 1)?1:0)
+        }, 
     hotkeys: [
-        {key: "K", description: "K: Reset for Keys", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "k", description: "K: Reset for Keys", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasUpgrade("p", 75) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("z", 45)) return false
+    else return (hasUpgrade("p", 75) || player[this.layer].unlocked)},
     doReset(resettingLayer) {
         let keep = [];
         if (hasMilestone("o", 4) && resettingLayer=="o") keep.push("upgrades")

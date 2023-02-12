@@ -269,9 +269,13 @@ effectDescription(){
         if (hasMilestone("j", 4) && resettingLayer=="j", "k", "l", "m", "n") keep.push("upgrades")
         if (layers[resettingLayer].row > this.row) layerDataReset("h", keep)
     },
-    passiveGeneration() { return (hasMilestone("j", 1)&&player.current!="h")?1:0 },
+    passiveGeneration() { 
+        if (hasUpgrade("z", 33)) return (hasUpgrade("z", 33)?0:0)
+        if (hasMilestone("j", 1)) return (hasMilestone("j", 1)?1:0)
+        },    
     hotkeys: [
-        {key: "H", description: "H: Reset for House", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "h", description: "H: Reset for House", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasChallenge("f", 12) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("z", 33)) return false
+    else return (hasChallenge("f", 12) || player[this.layer].unlocked)},
 })

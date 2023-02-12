@@ -259,13 +259,12 @@ addLayer("l", {
         */
       },
       effect(){
-        return player[this.layer].points.max(1).pow("eee1000").log10().max(1)
       },
       effectDescription(){
 
 },
 effectDescription(){
-    return "You can only gain 1 light at a time, can be increased by upgrades.<br> Point gain is increased by  x" + format(tmp[this.layer].effect)
+    return "You can only gain 1 light at a time, can be increased by upgrades."
     
     /*
       use format(num) whenever displaying a number
@@ -409,17 +408,28 @@ effectDescription(){
         if (hasUpgrade('s', 54)) mult = mult.times("10^^20")
         if (hasUpgrade('t', 54)) mult = mult.times("10^^40")
         if (hasUpgrade('u', 54)) mult = mult.times("10^^500")
+        if (hasUpgrade('re', 12)) mult = mult.times("ee9")
+        if (hasUpgrade('w', 54)) mult = mult.tetrate(1e6)
+        if (hasUpgrade('x', 54)) mult = mult.times("10^^1e16")
+        if (hasUpgrade('y', 54)) mult = mult.pow("10^^1e300")
+        if (inChallenge("z", 11)) mult = mult.pow("1")
+        if (hasChallenge("k", 66)) mult = mult.times("ee9")
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new EN(1)
+        
     },
     row: 4, // Row the layer is in on the tree (0 is the first row)
-    passiveGeneration() { return (hasMilestone("o", 1)&&player.current!="l")?1:0 },
-    hotkeys: [
-        {key: "L", description: "L: Reset for Lights", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    passiveGeneration() { 
+        if (hasUpgrade("z", 52)) return (hasUpgrade("z", 52)?0:0)
+        if (hasMilestone("o", 1)) return (hasMilestone("o", 1)?1:0)
+        },     
+        hotkeys: [
+        {key: "l", description: "L: Reset for Lights", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasUpgrade("j", 55) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("z", 52)) return false
+    else return (hasUpgrade("j", 55) || player[this.layer].unlocked)},
     autoUpgrade() { if (hasUpgrade("o" , 14)) return true},
     doReset(resettingLayer) {
         let keep = [];

@@ -347,9 +347,12 @@ effectDescription(){
         return new EN(1)
     },
     row: 4, // Row the layer is in on the tree (0 is the first row)
-    passiveGeneration() { return (hasMilestone("o", 1)&&player.current!="j")?1:0 },
-    hotkeys: [
-        {key: "J", description: "J: Reset for Jetpacks", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    passiveGeneration() { 
+        if (hasUpgrade("z", 44)) return (hasUpgrade("z", 44)?0:0)
+        if (hasMilestone("o", 1)) return (hasMilestone("o", 1)?1:0)
+        },        
+        hotkeys: [
+        {key: "j", description: "J: Reset for Jetpacks", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     doReset(resettingLayer) {
         let keep = [];
@@ -358,5 +361,6 @@ effectDescription(){
         if (hasMilestone("o", 3) && resettingLayer=="o", "q", "r") keep.push("challenges")
         if (layers[resettingLayer].row > this.row) layerDataReset("j", keep)
     },
-    layerShown(){return (hasUpgrade("i", 45) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("z", 44)) return false
+    else return (hasUpgrade("i", 45) || player[this.layer].unlocked)},
 })

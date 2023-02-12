@@ -327,7 +327,7 @@ effectDescription(){
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "C", description: "C: Reset for Cups", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "c", description: "C: Reset for Cups", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     doReset(resettingLayer) {
         let keep = [];
@@ -336,8 +336,12 @@ effectDescription(){
         if (hasMilestone("f", 6) && resettingLayer=="f", "e") keep.push("challenges")
         if (layers[resettingLayer].row > this.row) layerDataReset("c", keep)
     },
-    passiveGeneration() { return (hasMilestone("f", 1)&&player.current!="c")?1:0 },
-    layerShown(){return (hasUpgrade("asc", 35) || player[this.layer].unlocked)},
+    passiveGeneration() { 
+        if (hasUpgrade("z", 22)) return (hasUpgrade("z", 22)?0:0)
+        if (hasMilestone("f", 1)) return (hasMilestone("f", 1)?1:0)
+        },    
+    layerShown(){if (hasUpgrade("z", 22)) return false
+    return (hasUpgrade("asc", 35) || player[this.layer].unlocked)},
     autoUpgrade() { if (hasUpgrade("f" , 11)) return true},
 }
 )

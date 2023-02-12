@@ -233,14 +233,34 @@ addLayer("t", {
         if (hasUpgrade('t', 53)) mult = mult.pow("10^^15")
         if (hasUpgrade('t', 54)) mult = mult.pow("10^^19")
         if (hasUpgrade('u', 54)) mult = mult.pow("10^^308")
+        if (hasMilestone('re', 2)) mult = mult.times(4)
+        if (hasUpgrade('v', 54)) mult = mult.tetrate(2000)
+        if (hasUpgrade('re', 23)) mult = mult.times("3")
+        if (hasUpgrade('re', 25)) mult = mult.times("2")
+        if (hasUpgrade('re', 42)) mult = mult.times(69)
+        if (hasUpgrade('re', 51)) mult = mult.times(16)
+        if (hasUpgrade('w', 54)) mult = mult.tetrate(40000)
+        if (hasUpgrade('x', 54)) mult = mult.times("10^^1e13")
+        if (hasUpgrade('y', 54)) mult = mult.pow("10^^1e70")
+        if (hasUpgrade('z', 54)) mult = mult.times("10^^1e1000")
+        if (hasUpgrade('ar', 54)) mult = mult.pow("10^^^3")
+        if (hasUpgrade('ba', 54)) mult = mult.pow("10^^^4")
+
         return mult
+    },
+    autoUpgrade() { if (hasMilestone("re" , 8)) return true},
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("re", 9) && resettingLayer=="re") keep.push("upgrades")
+        if (layers[resettingLayer].row > this.row) layerDataReset("t", keep)
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new EN(1)
     },
     row: 5, // Row the layer is in on the tree (0 is the first row)
+    passiveGeneration() { return (hasMilestone("re", 1)&&player.current!="t")?1:0 },
     hotkeys: [
-        {key: "T", description: "T: Reset for Transcension", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "t", description: "T: Reset for Transcension", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return (hasUpgrade("s", 55) || player[this.layer].unlocked)},
 })

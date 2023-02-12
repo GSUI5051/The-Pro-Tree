@@ -196,26 +196,6 @@ addLayer("n", {
             return hasUpgrade("n", 54)
         }
         },
-    },
-    effect(){
-
-    },
-    effect(){
-        return ExpantaNum.pow(2, player[this.layer].points)
-        /*
-          you should use this.layer instead of <layerID>
-          Decimal.pow(num1, num2) is an easier way to do
-          num1.pow(num2)
-        */
-      },
-      effect(){
-        return player[this.layer].points.max(1).pow("eee33").log10().max(1)
-      },
-      effectDescription(){
-
-},
-effectDescription(){
-    return "Point gain is increased by ^" + format(tmp[this.layer].effect)
     
     /*
       use format(num) whenever displaying a number
@@ -237,7 +217,8 @@ effectDescription(){
     baseAmount() {return player.l.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     branches: ["m", "i"],
-    exponent: "7", // Prestige currency exponent
+    exponent() {if (hasUpgrade("z", 55)) return new EN(Infinity)
+    else return new EN(7)},     
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
         return mult
@@ -248,14 +229,15 @@ effectDescription(){
     canBuyMax() { return hasMilestone("n", 1) },
     row: 4, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "N", description: "N: Reset for Notes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "n", description: "N: Reset for Notes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     milestones: {
         1: {requirementDescription: "8 Notes",
          effectDescription: "You can buy max Notes.",
             done() { return player.n.points.gte(8)},},
    },
-    layerShown(){return (hasUpgrade("l", 55) || player[this.layer].unlocked)},
+   layerShown(){if (hasUpgrade("z", 55)) return false
+    else return (hasUpgrade("l", 55) || player[this.layer].unlocked)},
     autoUpgrade() { if (hasUpgrade("o" , 41)) return true},
     resetsNothing() {return hasUpgrade("o", 41)},
     autoPrestige() {

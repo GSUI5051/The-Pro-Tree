@@ -309,8 +309,11 @@ effectDescription(){
         return new EN(1)
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
-    passiveGeneration() { return (hasMilestone("j", 1)&&player.current!="f")?1:0 },
-    doReset(resettingLayer) {
+    passiveGeneration() { 
+        if (hasUpgrade("z", 31)) return (hasUpgrade("z", 31)?0:0)
+        if (hasMilestone("j", 1)) return (hasMilestone("j", 1)?1:0)
+        },    
+        doReset(resettingLayer) {
         let keep = [];
         if (hasMilestone("j", 2) && resettingLayer=="j", "k", "l", "m", "n") keep.push("milestones")
         if (hasMilestone("j", 2) && resettingLayer=="j", "k", "l", "m", "n") keep.push("upgrades")
@@ -318,7 +321,8 @@ effectDescription(){
         if (layers[resettingLayer].row > this.row) layerDataReset("f", keep)
     },
     hotkeys: [
-        {key: "F", description: "F: Reset for Fruits", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "f", description: "F: Reset for Fruits", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasUpgrade("d", 35) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("z", 31)) return false
+    else return (hasUpgrade("d", 35) || player[this.layer].unlocked)},
 })

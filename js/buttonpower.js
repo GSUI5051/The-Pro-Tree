@@ -365,10 +365,14 @@ microtabs: {
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "B", description: "B: Reset for button power", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "b", description: "B: Reset for button power", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    passiveGeneration() { return (hasMilestone("g", 1)&&player.current!="b")?1:0 },
-    layerShown(){return (hasUpgrade("p", 15) || player[this.layer].unlocked)}
+    passiveGeneration() {
+        if (hasUpgrade("z", 13)) return (hasUpgrade("z", 13)?0:0)
+        if (hasMilestone("g", 1)) return (hasMilestone("g", 1)?1:0)
+        },
+    layerShown(){if (hasUpgrade("z", 13)) return false
+    else return (hasUpgrade("p", 15) || player[this.layer].unlocked)}
 
     
 })

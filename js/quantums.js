@@ -238,14 +238,32 @@ addLayer("q", {
         if (hasUpgrade('s', 54)) mult = mult.times("10^^16")
         if (hasUpgrade('t', 54)) mult = mult.times("10^^33")
         if (hasUpgrade('u', 54)) mult = mult.times("10^^444")
+        if (hasMilestone('re', 2)) mult = mult.times(32)
+        if (hasUpgrade('v', 54)) mult = mult.tetrate(5000)
+        if (hasUpgrade('w', 54)) mult = mult.tetrate(90000)
+        if (hasUpgrade('x', 54)) mult = mult.times("10^^9e15")
+        if (hasUpgrade('y', 54)) mult = mult.pow("10^^1e200")
+        if (hasUpgrade('z', 54)) mult = mult.times("10^^1e2000")
+        if (hasUpgrade('ar', 54)) mult = mult.pow("10^^^3")
+        if (hasUpgrade('ba', 54)) mult = mult.pow("10^^^4")
+
         return mult
+    },
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("re", 6) && resettingLayer=="re") keep.push("upgrades")
+        if (layers[resettingLayer].row > this.row) layerDataReset("q", keep)
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new EN(1)
     },
+    passiveGeneration() { return (hasMilestone("re", 1)&&player.current!="q")?1:0 },
+
     row: 5, // Row the layer is in on the tree (0 is the first row)
+    autoUpgrade() { if (hasMilestone("re" , 4)) return true},
     hotkeys: [
-        {key: "Q", description: "Q: Reset for Quantums", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        
+        {key: "q", description: "Q: Reset for Quantums", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return (hasUpgrade("o", 66) || player[this.layer].unlocked)},
 })

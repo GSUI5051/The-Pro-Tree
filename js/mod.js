@@ -3,7 +3,7 @@ let modInfo = {
 	id: "1",
 	author: "ProGamesGrinder",
 	pointsName: "points",
-	modFiles: ["layers.js", "tree.js", "buttonpower.js", "ascension.js", "grass.js", "cups.js", "dices.js", "fruits.js", "electricity.js", "houses.js", "ice.js", "achievements.js", "jetpacks.js", "keys.js", "lights.js", "money.js", "notes.js", "objects.js", "quantums.js", "rings.js", "sand.js", "trans.js", "universal.js"],
+	modFiles: ["layers.js", "tree.js", "buttonpower.js", "ascension.js", "grass.js", "cups.js", "dices.js", "fruits.js", "electricity.js", "houses.js", "ice.js", "achievements.js", "jetpacks.js", "keys.js", "lights.js", "money.js", "notes.js", "objects.js", "quantums.js", "rings.js", "sand.js", "trans.js", "universal.js", "void.js", "reincarnation.js", "wood.js", "xray.js", "yard.js", "zones.js", "arrows.js", "ball.js"],
 	discordName: "The ProGames YT Fan Group",
 	discordLink: "https://discord.gg/8pwhpb8rtM",
 	initialStartPoints: new ExpantaNum (0), // Used for hard resets and new players
@@ -12,13 +12,30 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.6c",
-	name: "Another Small Update"
+	num: "0.7",
+	name: "A new reset layer."
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+<h3>v0.7</h3><br>
+		- Added 8 new layers! (7 of them is normal.)<br>
+		- Added more buyables!.<br>
+		- Added more auto-buyables.<br>
+		- Added more milestones.<br>
+		- Added more upgrades.<br>
+		- Added more challenges.<br>
+		- Added more achievements.<br>
+		- Added more auto upgrades.<br>
+		- Revamped the game a bit.<br>
+		- Added more sub-currencies.<br>
+		- Added emojis.<br>
+		- Changed the code a little bit.<br>
+		- Changed the endgame.<br>
+		- Changed the hotkeys.<br>
+		- Changed some achievements requirements.<br>
+		- 1 Milestone will be out in the next upd.<br><br>
 <h3>v0.6c</h3><br>
-		- Changed some stuff.<br>
+		- Removed Christmas Event.<br>
 		- Changed the milestone for row 6.<br><br>
 <h3>v0.6b</h3><br>
 		- Changed some stuff.<br><br>
@@ -38,8 +55,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Revamped the game a bit.<br>
 		- Added sub-currencies.<br>
 		- Removed some stuff.<br>
-		- Added a warning once you reach endgame.<br>
-		- The 2 other milestones will be out next upd.<br><br>
+		- Added a warning once you reach endgame.<br><br>
 		<h3>v0.5a</h3><br>
 		- Bug Fixes.<br><br>
 		<h3>v0.5</h3><br>
@@ -49,7 +65,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added new Challenges.<br>
 		- Added Achievements.<br>
 		- Rebalances + Bug fixes.<br><br>
-<h3>v0.4</h3><br>
+<h3>v0.4 (Release)</h3><br>
 		- Endgame: e1.000e17 Points.<br>
 		- Added 4 new layers.<br>
 		- Added new milestones.<br>
@@ -109,12 +125,12 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new ExpantaNum(1)
 
-	let gain = new ExpantaNum(1).mul(tmp["b"].effect).mul(tmp["asc"].effect).mul(tmp["g"].effect).mul(tmp["c"].effect).mul(tmp["d"].effect).mul(tmp["f"].effect).mul(tmp["e"].effect).mul(tmp["h"].effect).mul(tmp["i"].effect).mul(tmp["j"].effect).mul(tmp["k"].effect).mul(tmp["l"].effect).pow(tmp["m"].effect).pow(tmp["n"].effect)
+	let gain = new ExpantaNum(1).mul(tmp["b"].effect).mul(tmp["asc"].effect).mul(tmp["g"].effect).mul(tmp["c"].effect).mul(tmp["d"].effect).mul(tmp["f"].effect).mul(tmp["e"].effect).mul(tmp["h"].effect).mul(tmp["i"].effect).mul(tmp["j"].effect)
 	
 	if (hasUpgrade('p', 82)) gain = gain.times("2")
 	if (hasUpgrade('b', 62)) gain = gain.times("4")
 	if (hasUpgrade('a', 62)) gain = gain.times("16")
-	if (hasAchievement("a", 11) && (!inChallenge("b", 11) && (!inChallenge("b",13)))) gain = gain.times(player.a.points.add(1).pow(0.56).pow(player.a.points.sub(1.2e60).max(1)))
+	if (hasAchievement("a", 11) && (!inChallenge("b", 11) && (!hasAchievement("a", 152)) && (!inChallenge("b",13)))) gain = gain.times(player.a.points.add(1).pow(0.56).pow(player.a.points.sub(1.2e60).max(1)))
 	if (hasUpgrade('p', 12)) gain = gain.times(upgradeEffect('p', 12))
 	if (hasUpgrade('p', 14)) gain = gain.times("3")
 	if (hasUpgrade('p', 15)) gain = gain.times(2)
@@ -359,6 +375,8 @@ function getPointGen() {
 	if (hasUpgrade("n", 53)) gain = gain.times("eeee1000000000")
 	if (hasUpgrade("n", 55)) gain = gain.times("eeee10000000000")
 	if (hasUpgrade('o', 66)) gain = gain.times(upgradeEffect('o', 66))
+	if (hasUpgrade('re', 11)) gain = gain.times(upgradeEffect('re', 11))
+	if (hasUpgrade('re', 105)) gain = gain.times(upgradeEffect('re', 105))
 	return gain
 }
 
@@ -369,7 +387,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function(){
-		let a = `Current endgame: ${format([10, 999998])} Points & 100 Achievements.`
+		let a = `Current endgame: ${format([10,0,4])} Points.`
 		let d = isEndgame()?makeBlue("<br>You are past endgame,<br>and the game might not be balanced here."):""
 		return a+d
 	},
@@ -377,7 +395,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-return player.points.gte("10^^1000000")}
+return player.points.gte("10^^^5.000")}
 
 
 // Less important things beyond this point!

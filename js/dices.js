@@ -269,9 +269,10 @@ microtabs: {
     canBuyMax() { return hasMilestone("d", 1) },
     resetsNothing() {return hasMilestone("f", 2)},
     hotkeys: [
-        {key: "D", description: "D: Reset for Dices", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "d", description: "D: Reset for Dices", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasUpgrade("g", 35) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("z", 24)) return false
+    else return (hasUpgrade("g", 35) || player[this.layer].unlocked)},
     milestones: {
                 1: {requirementDescription: "16 Dices",
              effectDescription: "You can buy max dices.",

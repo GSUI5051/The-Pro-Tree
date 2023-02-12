@@ -281,7 +281,8 @@ microtabs: {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     branches: ["p"],
-    exponent: 2, // Prestige currency exponent
+    exponent() {if (hasUpgrade("z", 14)) return new EN(Infinity)
+    else return new EN(2)},    
     resetsNothing() { return player.asc.auto },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
@@ -293,10 +294,11 @@ microtabs: {
     canBuyMax() { return hasMilestone("asc", 2) },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "A", description: "A: Reset for ascension", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "a", description: "A: Reset for ascension", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     resetsNothing() {return hasMilestone("asc", 3)},
-    layerShown(){return (hasUpgrade("p", 35) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("z", 14)) return false
+    else return (hasUpgrade("p", 35) || player[this.layer].unlocked)},
     automate() {},
     milestones: {
         1: {

@@ -384,7 +384,7 @@ addLayer("p", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "P", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     
     ],
     doReset(resettingLayer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
@@ -402,6 +402,10 @@ addLayer("p", {
         if(hasUpgrade("o",11)) player.p.upgrades.push("64" , "65" , "71", "72", "73", "74", "75")
     }
     },
-    passiveGeneration() { return (hasMilestone("asc", 1)&&player.current!="p")?1:0 },
-    layerShown(){return true}
+    passiveGeneration() {
+        if (hasUpgrade("z", 12)) return (hasUpgrade("z", 12)?0:0)
+        if (hasMilestone("asc", 1)) return (hasMilestone("asc", 1)?1:0)
+        },
+    layerShown(){if (hasUpgrade("z", 12)) return false
+    else return (hasAchievement("a", 11) || player[this.layer].unlocked)}
 })

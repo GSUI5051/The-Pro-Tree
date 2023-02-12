@@ -356,12 +356,16 @@ effectDescription(){
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new EN(1)
     },
+    passiveGeneration() { 
+        if (hasUpgrade("z", 21)) return (hasUpgrade("z", 21)?0:0)
+        if (hasMilestone("f", 1)) return (hasMilestone("f", 1)?1:0)
+        },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "G", description: "G: Reset for Grass", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "g", description: "G: Reset for Grass", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    passiveGeneration() { return (hasMilestone("f", 1)&&player.current!="g")?1:0 },
-    layerShown(){return (hasUpgrade("p", 55) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("z", 21)) return false
+    else return (hasUpgrade("p", 55) || player[this.layer].unlocked)},
     autoUpgrade() { if (hasUpgrade("f" , 11)) return true},
     milestones: {
         1: {

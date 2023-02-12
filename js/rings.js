@@ -235,14 +235,35 @@ addLayer("r", {
         if (hasUpgrade('s', 54)) mult = mult.times("10^^14")
         if (hasUpgrade('t', 54)) mult = mult.times("10^^30")
         if (hasUpgrade('u', 54)) mult = mult.times("10^^420")
+        if (hasMilestone('re', 2)) mult = mult.times(16)
+        if (hasUpgrade('v', 54)) mult = mult.tetrate(4000)
+        if (hasUpgrade('re', 23)) mult = mult.times("9")
+        if (hasUpgrade('re', 42)) mult = mult.times(69)
+        if (hasUpgrade('re', 51)) mult = mult.times(256)
+        if (hasUpgrade('w', 54)) mult = mult.tetrate(75000)
+        if (hasUpgrade('x', 54)) mult = mult.times("10^^1e15")
+        if (hasUpgrade('y', 54)) mult = mult.pow("10^^1e150")
+        if (hasUpgrade('z', 54)) mult = mult.times("10^^1e1500")
+        if (hasUpgrade('ar', 54)) mult = mult.pow("10^^^3")
+        if (hasUpgrade('ba', 54)) mult = mult.pow("10^^^4")
+
         return mult
+    },
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("re", 8) && resettingLayer=="re") keep.push("upgrades")
+        if (layers[resettingLayer].row > this.row) layerDataReset("r", keep)
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new EN(1)
     },
+    autoUpgrade() { if (hasMilestone("re" , 6)) return true},
+
     row: 5, // Row the layer is in on the tree (0 is the first row)
+    passiveGeneration() { return (hasMilestone("re", 1)&&player.current!="r")?1:0 },
+
     hotkeys: [
-        {key: "R", description: "R: Reset for Rings", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "r", description: "R: Reset for Rings", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return (hasChallenge("o", 21) || player[this.layer].unlocked)},
 })

@@ -18,9 +18,9 @@ addLayer("a", {
         11: {
             name: "Starting",
             done() {
-                return player.p.points.gte(1)
+                return player.points.gte(1)
             },
-            tooltip: "Get 1 Prestige Point. <br>Reward: 1 AP",
+            tooltip: "Get 1 Point. <br>Reward: 1 AP",
 			onComplete() {
 				return player.a.points = player.a.points.add(1)
 			},
@@ -299,9 +299,9 @@ addLayer("a", {
         51: {
             name: "Year",
             done() {
-                return player.asc.points.gte("2022")
+                return player.asc.points.gte("2023")
             },
-            tooltip: "Get 2,022 Ascension. <br>Reward: 268,435,456 AP",
+            tooltip: "Get 2,023 Ascension. <br>Reward: 268,435,456 AP",
 			onComplete() {
 				return player.a.points = player.a.points.add(268435456)
 			},
@@ -419,9 +419,9 @@ addLayer("a", {
             66: {
                 name: "Year^2",
                 done() {
-                    return player.d.points.gte("2023")
+                    return player.d.points.gte("2024")
                 },
-                tooltip: "Get 2,023 Dices. <br>Reward: 1e19 AP",
+                tooltip: "Get 2,024 Dices. <br>Reward: 1e19 AP",
                 onComplete() {
                     return player.a.points = player.a.points.add(1e19)
                 },
@@ -449,9 +449,9 @@ addLayer("a", {
             72: {
                 name: "Year^3",
                 done() {
-                    return player.e.points.gte("2024")
+                    return player.e.points.gte("2025")
                 },
-                tooltip: "Get 2,024 Electricity. <br>Reward: 1e26 AP",
+                tooltip: "Get 2,025 Electricity. <br>Reward: 1e26 AP",
                 onComplete() {
                     return player.a.points = player.a.points.add(1e26)
                 },
@@ -489,9 +489,9 @@ addLayer("a", {
             76: {
                 name: "Year^4",
                 done() {
-                    return player.i.points.gte("2025")
+                    return player.i.points.gte("2026")
                 },
-                tooltip: "Get 2,025 Ice. <br>Reward: 1e38 AP",
+                tooltip: "Get 2,026 Ice. <br>Reward: 1e38 AP",
                 onComplete() {
                     return player.a.points = player.a.points.add(1e38)
                 },
@@ -539,9 +539,9 @@ addLayer("a", {
             84: {
                 name: "Light-Year?",
                 done() {
-                    return player.asc.points.gte("1e2022")
+                    return player.asc.points.gte("1e2023")
                 },
-                tooltip: "Get 1e2,022 Ascension. <br>Reward: 1e200 AP",
+                tooltip: "Get 1e2,023 Ascension. <br>Reward: 1e200 AP",
                 onComplete() {
                     return player.a.points = player.a.points.add(1e200)
                 },
@@ -759,9 +759,9 @@ addLayer("a", {
             115: {
             name: "Year^5",
                 done() {
-                    return player.n.points.gte("2026")
+                    return player.n.points.gte("2027")
                 },
-                tooltip: "Get 2,026 Notes. <br>Reward: eee1e26 AP",
+                tooltip: "Get 2,027 Notes. <br>Reward: eee1e26 AP",
                 onComplete() {
                     return player.a.points = player.a.points.add("eeee26")
                 },
@@ -901,7 +901,7 @@ addLayer("a", {
                                                                 done() {
                                                                     return player.points.gte("10^^69")
                                                                 },
-                                                                tooltip: "Get the 1F69 Points. <br>Reward: 1F30 AP",
+                                                                tooltip: "Get 1F69 Points. <br>Reward: 1F30 AP",
                                                                 onComplete() {
                                                                     return player.a.points = player.a.points.add("10^^30")
                                                                 },
@@ -989,9 +989,9 @@ addLayer("a", {
                                                                                             147: {
                                                                                                 name: "500 Upgrades",
                                                                                                 done() {
-                                                                                                    if (hasUpgrade("u", 55)) return true
+                                                                                                    if (hasUpgrade("t", 55)) return true
                                                                                                 },
-                                                                                                tooltip: "Get last upgrade for universal. <br>Reward: 1F499 AP",
+                                                                                                tooltip: "Get last upgrade for trans. <br>Reward: 1F499 AP",
                                                                                                 onComplete() {
                                                                                                     return player.a.points = player.a.points.add("10^^499")
                                                                                                 },
@@ -1016,6 +1016,309 @@ addLayer("a", {
                                                                                                         return player.a.points = player.a.points.add("10^^1000")
                                                                                                     },
                                                                                                 },
+                                                                                                153: {
+                                                                                                    name: "Dark",
+                                                                                                        done() {
+                                                                                                            return player.v.points.gte("1")
+                                                                                                        },
+                                                                                                        tooltip: "Get 1 void. <br>Reward: 1F2,000 AP.",
+                                                                                                        onComplete() {
+                                                                                                            return player.a.points = player.a.points.add("10^^2000")
+                                                                                                        },
+                                                                                                    },
+                                                                                                154: {
+                                                                                                    name: "A whole new world + Bronze",
+                                                                                                        done() {
+                                                                                                            return player.re.points.gte("1")
+                                                                                                        },
+                                                                                                        tooltip: "Do a new reset layer. <br>Points are no longer boosted by achievements points.",
+                                                                                                        onComplete() {
+                                                                                                            return player.a.points = player.a.points.add("0")
+                                                                                                        },
+                                                                                                    },
+                                                                                                    155: {
+                                                                                                        name: "Double FF",
+                                                                                                            done() {
+                                                                                                                return player.points.gte("10^^9e15")
+                                                                                                            },
+                                                                                                            tooltip: "Get FF2.080 Points.",
+                                                                                                            onComplete() {
+                                                                                                                return player.a.points = player.a.points.add("0")
+                                                                                                            },
+                                                                                                        },
+                                                                                                        156: {
+                                                                                                    name: "Cut trees",
+                                                                                                        done() {
+                                                                                                            return player.w.total.gte("1")
+                                                                                                        },
+                                                                                                        tooltip: "Get 1 wood.",
+                                                                                                        onComplete() {
+                                                                                                            return player.a.points = player.a.points.add("0")
+                                                                                                        },
+                                                                                                    },
+                                                                                                    157: {
+                                                                                                        name: "There is more upgrades!",
+                                                                                                            done() {
+                                                                                                                if (hasUpgrade("re", 55)) return true
+                                                                                                            },
+                                                                                                            tooltip: "Get the reincarnation upgrade 55.",
+                                                                                                            onComplete() {
+                                                                                                                return player.a.points = player.a.points.add("0")
+                                                                                                            },
+                                                                                                        },
+                                                                                                        161: {
+                                                                                                            name: "Yellow",
+                                                                                                                done() {
+                                                                                                                    if (hasUpgrade("re", 55)) return true
+                                                                                                                },
+                                                                                                                tooltip: "Get 1 badge.",
+                                                                                                                onComplete() {
+                                                                                                                    return player.a.points = player.a.points.add("0")
+                                                                                                                },
+                                                                                                            },
+                                                                                                        162: {
+                                                                                                            name: "Arrow",
+                                                                                                                done() {
+                                                                                                                    return player.points.gte("10^^1e99")
+                                                                                                                },
+                                                                                                                tooltip: "Get FF2.300 Points.",
+                                                                                                                onComplete() {
+                                                                                                                    return player.a.points = player.a.points.add("0")
+                                                                                                                },
+                                                                                                            },
+                                                                                                        163: {
+                                                                                                            name: "Body",
+                                                                                                                done() {
+                                                                                                                    return player.x.total.gte("1")
+                                                                                                                },
+                                                                                                                tooltip: "Get 1 X-Ray.",
+                                                                                                                onComplete() {
+                                                                                                                    return player.a.points = player.a.points.add("0")
+                                                                                                                },
+                                                                                                            },
+                                                                                                            164: {
+                                                                                                                name: "EternityNum",
+                                                                                                                    done() {
+                                                                                                                        return player.points.gte("10^^1.79e308")
+                                                                                                                    },
+                                                                                                                    tooltip: "Get FF2.396 Points.",
+                                                                                                                    onComplete() {
+                                                                                                                        return player.a.points = player.a.points.add("0")
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                165: {
+                                                                                                                    name: "Backyard",
+                                                                                                                        done() {
+                                                                                                                            return player.y.total.gte("1")
+                                                                                                                        },
+                                                                                                                        tooltip: "Get 1 Yard.",
+                                                                                                                        onComplete() {
+                                                                                                                            return player.a.points = player.a.points.add("0")
+                                                                                                                        },
+                                                                                                                    },
+                                                                                                                    166: {
+                                                                                                                        name: "Pretty well",
+                                                                                                                            done() {
+                                                                                                                                return player.points.gte("10^^1e1450")
+                                                                                                                            },
+                                                                                                                            tooltip: "Get FF2.500 Points.",
+                                                                                                                            onComplete() {
+                                                                                                                                return player.a.points = player.a.points.add("0")
+                                                                                                                            },
+                                                                                                                        },
+                                                                                                                        167: {
+                                                                                                                            name: "Silver",
+                                                                                                                                done() {
+                                                                                                                                    return player.re.points.gte("1e9")
+                                                                                                                                },
+                                                                                                                                tooltip: "Get 1.000e9 Medals.",
+                                                                                                                                onComplete() {
+                                                                                                                                    return player.a.points = player.a.points.add("0")
+                                                                                                                                },
+                                                                                                                            },
+                                                                                                                            171: {
+                                                                                                                                name: "Envirement",
+                                                                                                                                    done() {
+                                                                                                                                        return player.z.total.gte("1")
+                                                                                                                                    },
+                                                                                                                                    tooltip: "Get 1 Zone.",
+                                                                                                                                    onComplete() {
+                                                                                                                                        return player.a.points = player.a.points.add("0")
+                                                                                                                                    },
+                                                                                                                                },
+                                                                                                                                172: {
+                                                                                                                                    name: "Dissapearing currencies",
+                                                                                                                                        done() {
+                                                                                                                                            if (hasUpgrade("z", 12)) return true
+                                                                                                                                        },
+                                                                                                                                        tooltip: "Remove Prestige layer.",
+                                                                                                                                        onComplete() {
+                                                                                                                                            return player.a.points = player.a.points.add("0")
+                                                                                                                                        },
+                                                                                                                                    },
+                                                                                                                                    173: {
+                                                                                                                                        name: "Dissapearing more currencies",
+                                                                                                                                            done() {
+                                                                                                                                                if (hasUpgrade("z", 41)) return true
+                                                                                                                                            },
+                                                                                                                                            tooltip: "Remove Row 2 - Row 4 layer.",
+                                                                                                                                            onComplete() {
+                                                                                                                                                return player.a.points = player.a.points.add("0")
+                                                                                                                                            },
+                                                                                                                                        },
+                                                                                                                                        174: {
+                                                                                                                                            name: "Catastrophic",
+                                                                                                                                            done() {
+                                                                                                                                                if (hasChallenge("z", 51)) return true
+                                                                                                                                            },
+                                                                                                                                            tooltip: "Complete 9th zone challenge.",
+                                                                                                                                            onComplete() {
+                                                                                                                                                return player.a.points = player.a.points.add("0")
+                                                                                                                                            },
+                                                                                                                                        },
+                                                                                                                                        175: {
+                                                                                                                                            name: "Back to small numbers?",
+                                                                                                                                                done() {
+                                                                                                                                                    if (hasUpgrade("z", 55)) return true
+                                                                                                                                                },
+                                                                                                                                                tooltip: "Remove Row 5 layer.",
+                                                                                                                                                onComplete() {
+                                                                                                                                                    return player.a.points = player.a.points.add("0")
+                                                                                                                                                },
+                                                                                                                                            },
+                                                                                                                                            176: {
+                                                                                                                                                name: "Pentate",
+                                                                                                                                                    done() {
+                                                                                                                                                        if (hasUpgrade("re", 105)) return true
+                                                                                                                                                    },
+                                                                                                                                                    tooltip: "Get the last reincarnation upgrade.",
+                                                                                                                                                    onComplete() {
+                                                                                                                                                        return player.a.points = player.a.points.add("0")
+                                                                                                                                                    },
+                                                                                                                                                },
+                                                                                                                                                177: {
+                                                                                                                                                    name: "F Oom^OOm",
+                                                                                                                                                        done() {
+                                                                                                                                                            return player.points.gte("10^^e1eeee10")
+                                                                                                                                                        },
+                                                                                                                                                        tooltip: "Get FF6.000 Points.",
+                                                                                                                                                        onComplete() {
+                                                                                                                                                            return player.a.points = player.a.points.add("0")
+                                                                                                                                                        },
+                                                                                                                                                    },
+                                                                                                                                                    181: {
+                                                                                                                                                        name: "Triple F!",
+                                                                                                                                                            done() {
+                                                                                                                                                                return player.points.gte("10^^^3")
+                                                                                                                                                            },
+                                                                                                                                                            tooltip: "Get FFF1.000 Points.",
+                                                                                                                                                            onComplete() {
+                                                                                                                                                                return player.a.points = player.a.points.add("0")
+                                                                                                                                                            },
+                                                                                                                                                        },
+                                                                        
+                                                                                                                                182: {
+                                                                                                                                name: "Path",
+                                                                                                                                    done() {
+                                                                                                                                        return player.ar.total.gte("1")
+                                                                                                                                    },
+                                                                                                                                    tooltip: "Get 1 Arrow.",
+                                                                                                                                    onComplete() {
+                                                                                                                                        return player.a.points = player.a.points.add("0")
+                                                                                                                                    },
+                                                                                                                                },
+
+                                                                                                                                    183: {
+                                                                                                                                                    name: "FF Oom^OOm",
+                                                                                                                                                        done() {
+                                                                                                                                                            return player.points.gte("10^^10^^9e15")
+                                                                                                                                                        },
+                                                                                                                                                        tooltip: "Get FFF2.080 Points.",
+                                                                                                                                                        onComplete() {
+                                                                                                                                                            return player.a.points = player.a.points.add("0")
+                                                                                                                                                        },
+                                                                                                                                                    },
+                                                                                                                                                    184: {
+                                                                                                                                                    name: "EternityNum Oom^OOm",
+                                                                                                                                                        done() {
+                                                                                                                                                            return player.points.gte("10^^10^^1.79e308")
+                                                                                                                                                        },
+                                                                                                                                                        tooltip: "Get FFF2.396 Points.",
+                                                                                                                                                        onComplete() {
+                                                                                                                                                            return player.a.points = player.a.points.add("0")
+                                                                                                                                                        },
+                                                                                                                                                    },
+                                                                                                                                                    185: {
+                                                                                                                                    name: "Quadruple F!",
+                                                                                                                                        done() {
+                                                                                                                                            return player.points.gte("10^^^4")
+                                                                                                                                        },
+                                                                                                                                        tooltip: "Get FFFF1.000 Points.",
+                                                                                                                                        onComplete() {
+                                                                                                                                            return player.a.points = player.a.points.add("0")
+                                                                                                                                        },
+                                                                                                                                    },
+                                                                                                                                    186: {
+                                                                                                                                        name: "Soccer",
+                                                                                                                                            done() {
+                                                                                                                                                return player.ba.total.gte("1")
+                                                                                                                                            },
+                                                                                                                                            tooltip: "Get 1 Ball.",
+                                                                                                                                            onComplete() {
+                                                                                                                                                return player.a.points = player.a.points.add("0")
+                                                                                                                                            },
+                                                                                                                                        },
+                                                                                                                                        187: {
+                                                                                                                                            name: "750 Upgrades",
+                                                                                                                                            done() {
+                                                                                                                                                if (hasUpgrade("ba", 55)) return true
+                                                                                                                                            },
+                                                                                                                                            tooltip: "Get last upgrade for balls.",
+                                                                                                                                            onComplete() {
+                                                                                                                                                return player.a.points = player.a.points.add("0")
+                                                                                                                                            },
+                                                                                                                                        },
+                                                                                                                                        191: {
+                                                                                                                                            name: "ULTIMATE INFLATION",
+                                                                                                                                                done() {
+                                                                                                                                                    if (hasUpgrade("re", 112)) return true
+                                                                                                                                                },
+                                                                                                                                                tooltip: "Increase the reincarnation upgrade 105 effect.",
+                                                                                                                                                onComplete() {
+                                                                                                                                                    return player.a.points = player.a.points.add("0")
+                                                                                                                                                },
+                                                                                                                                            },
+                                                                                                                                            192: {
+                                                                                                                                                name: "Free achievement",
+                                                                                                                                                    done() {
+                                                                                                                                                        if (hasAchievement("a",191)) return true
+                                                                                                                                                    },
+                                                                                                                                                    tooltip: "Free achievement.",
+                                                                                                                                                    onComplete() {
+                                                                                                                                                        return player.a.points = player.a.points.add("0")
+                                                                                                                                                    },
+                                                                                                                                                },
+                                                                                                                                                193: {
+                                                                                                                                                    name: "Another Free achievement",
+                                                                                                                                                        done() {
+                                                                                                                                                            if (hasAchievement("a",192)) return true
+                                                                                                                                                        },
+                                                                                                                                                        tooltip: "Free achievement.",
+                                                                                                                                                        onComplete() {
+                                                                                                                                                            return player.a.points = player.a.points.add("0")
+                                                                                                                                                        },
+                                                                                                                                                    },
+                                                                                                                                            194: {
+                                                                                                                                                name: "G Notation!",
+                                                                                                                                                    done() {
+                                                                                                                                                        return player.points.gte("10^^^5")
+                                                                                                                                                    },
+                                                                                                                                                    tooltip: "Get 1G5 Points!<br>Reward: Endgame.",
+                                                                                                                                                    onComplete() {
+                                                                                                                                                        return player.a.points = player.a.points.add("0")
+                                                                                                                                                    },
+                                                                                                                                                },
+
     },
     tabFormat: ["blank", ["display-text", function() {
         return "<h3 style='color: yellow;'>Achievements: " + player.a.achievements.length + "/" + (Object.keys(tmp.a.achievements).length - 2) + "</h4><br>You have <h2 style='color: yellow; text-shadow: 0 0 10px yellow'>" + format(player.a.points) + "</h3> Achievement Points. <br><h4 style='color: #ffffff;'>Giving x" + format(player.a.points.add(1).pow(0.56).pow(player.a.points.sub(1.2e60).max(1))) + " to point gain.</h3><br>" + "<h4 style='color: grey;'>The effect is massive increased at 1.2e60 AP." + "</h4>"

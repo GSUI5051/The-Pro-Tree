@@ -250,6 +250,33 @@ addLayer("o", {
             if (hasChallenge("o", 23)) time = time.mul(4)
             if (hasUpgrade("u", 55)) time = time.mul(4294967296)
             if (hasAchievement("a", 151)) time = time.mul(4096)
+            if (hasUpgrade("v", 55)) time = time.pow(3)
+            if (hasMilestone("re", 4)) time = time.mul(2)
+            if (hasMilestone("re", 5)) time = time.mul(4)
+            if (hasUpgrade("re", 44)) time = time.mul(4)
+            if (hasUpgrade("re", 45)) time = time.mul(2)
+            if (hasUpgrade("re", 51)) time = time.mul(4)
+            if (hasUpgrade("w", 55)) time = time.pow(4)
+            if (hasUpgrade("re", 52)) time = time.mul(4)
+            if (hasUpgrade("re", 55)) time = time.pow(2)
+            if (hasUpgrade("x", 55)) time = time.pow(6)
+            if (hasMilestone("re", 10)) time = time.mul(1048576)
+            if (hasUpgrade("re", 75)) time = time.mul(1e21)
+            if (hasUpgrade("re", 82)) time = time.mul(1e21)
+            if (hasUpgrade("y", 55)) time = time.pow(8)
+            if (hasUpgrade("re", 95)) time = time.mul(1e63)
+            if (hasUpgrade("re", 101)) time = time.mul(1e308)
+            if (inChallenge("z", 11)) time = time.pow(0.0023)
+            if (inChallenge("z", 12)) time = time.pow(0.00143)
+            if (inChallenge("z", 21)) time = time.pow(0.0013)
+            if (inChallenge("z", 22)) time = time.pow(0.00113)
+            if (inChallenge("z", 31)) time = time.pow(0)
+            if (inChallenge("z", 32)) time = time.pow(0.002)
+            if (inChallenge("z", 42)) time = time.pow(0.33333333333333)
+            if (inChallenge("z", 51)) time = time.pow(0.0145)
+            if (inChallenge("z", 52)) time = time.pow(0.00238095238)
+            if (hasUpgrade("re", 103)) time = time.mul(1e308)
+            if (hasUpgrade("re", 105)) time = time.pow(0)
             return EN.tetr(10, time.add(1).pow(0.22316), time)
         },
         effectDisplay() { return "^" + format(this.effect()) },
@@ -258,6 +285,8 @@ addLayer("o", {
         }
         },
     },
+    autoUpgrade() { if (hasMilestone("re" , 3)) return true},
+
     effect(){
 
     },
@@ -298,6 +327,10 @@ addLayer("o", {
         if (hasUpgrade('o', 22)) mult = mult.times(2)
         if (hasUpgrade('o', 32)) mult = mult.times(4)
         if (hasUpgrade('o', 45)) mult = mult.times(4)
+        if (hasMilestone('re', 2)) mult = mult.times(64)
+        if (hasUpgrade('v', 54)) mult = mult.tetrate(10000)
+        if (hasUpgrade('w', 54)) mult = mult.tetrate(1e5)
+        if (hasUpgrade('z', 54)) mult = mult.times("10^^1e3003")
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -306,7 +339,7 @@ addLayer("o", {
     canBuyMax() { return hasMilestone("n", 1) },
     row: 5, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "O", description: "O: Reset for Objects", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "o", description: "O: Reset for Objects", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     milestones: {
         1: {requirementDescription: "1 Object",
@@ -337,7 +370,12 @@ addLayer("o", {
          effectDescription: "Unlock 1 new challenge.",
             done() { return player.o.points.gte(1e44)},},
     },
-    layerShown(){return (hasUpgrade("n", 55) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("ar", 55)) return false
+    else return (hasUpgrade("n", 55) || player[this.layer].unlocked)},
+    passiveGeneration() { 
+        if (hasUpgrade("ar", 55)) return (hasUpgrade("ar", 55)?0:0)
+        if (hasMilestone("re", 1)) return (hasMilestone("re", 1)?1:0)
+        },   
     challenges: {
         11: {
             name: "Oe",
@@ -395,5 +433,13 @@ addLayer("o", {
     canComplete: function() {return player.points.gte("10^^666")},
     unlocked() { return (hasUpgrade('t', 55)) }
 },
-    }
+},
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("re", 4) && resettingLayer=="re") keep.push("milestones")
+        if (hasMilestone("re", 4) && resettingLayer=="re") keep.push("challenges")
+        if (hasMilestone("re", 4) && resettingLayer=="re") keep.push("upgrades")
+        if (layers[resettingLayer].row > this.row) layerDataReset("o", keep)
+    },
+
 })

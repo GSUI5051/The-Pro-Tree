@@ -248,7 +248,8 @@ effectDescription(){
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     branches: ["c"],
-    exponent: "12", // Prestige currency exponent
+    exponent() {if (hasUpgrade("z", 41)) return new EN(Infinity)
+    else return new EN(12)},       
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
         return mult
@@ -266,10 +267,11 @@ effectDescription(){
     row: 3, // Row the layer is in on the tree (0 is the first row)
     resetsNothing() {return hasMilestone("j", 7)},
     hotkeys: [
-        {key: "I", description: "I: Reset for Ice", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "i", description: "I: Reset for Ice", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     autoPrestige() {
         return hasMilestone("j", 7)
     },
-    layerShown(){return (hasUpgrade("f", 45) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("z", 41)) return false
+    else return (hasUpgrade("f", 45) || player[this.layer].unlocked)},
 })
