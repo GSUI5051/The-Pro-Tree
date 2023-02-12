@@ -373,6 +373,4 @@ microtabs: {
         },
     layerShown(){if (hasUpgrade("z", 13)) return false
     else return (hasUpgrade("p", 15) || player[this.layer].unlocked)}
-
-    
 })

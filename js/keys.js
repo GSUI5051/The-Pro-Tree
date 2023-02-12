@@ -397,6 +397,7 @@ effectDescription(){
     hotkeys: [
         {key: "k", description: "K: Reset for Keys", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    
     layerShown(){if (hasUpgrade("z", 45)) return false
     else return (hasUpgrade("p", 75) || player[this.layer].unlocked)},
     doReset(resettingLayer) {
