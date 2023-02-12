@@ -59,7 +59,7 @@ microtabs: {
     upgrades: {
         11: { title: "26",
         description: "10x point gain.",
-        cost: EN(1),
+        cost: new EN(1),
 
         },
         12: { title: "27",

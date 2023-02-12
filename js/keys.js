@@ -18,7 +18,7 @@ addLayer("k", {
         },
     upgrades: {
         11: { title: "276",
-        description: "Point gain is increased by a UNOBTANIUM AMOUNT! Gain x2 Keys.",
+        description: "Point gain is increased by a lot and gain x2 Keys.",
         cost: new EN("69"),
 
         },
