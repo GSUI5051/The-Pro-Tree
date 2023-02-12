@@ -66,7 +66,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added new Challenges.<br>
 		- Added Achievements.<br>
 		- Rebalances + Bug fixes.<br><br>
-<h3>v0.4 (Release)</h3><br>
+<h3>v0.4 (Released)</h3><br>
 		- Endgame: e1.000e17 Points.<br>
 		- Added 4 new layers.<br>
 		- Added new milestones.<br>
