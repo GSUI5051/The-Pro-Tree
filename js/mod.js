@@ -12,11 +12,13 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.7a",
-	name: "Bug fix."
+	num: "0.7b",
+	name: "Another Bug fix."
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+	<h3>v0.7b</h3><br>
+		- Fixed Prestige Upgrade 11 doesnt boost points.<br><br>
 		<h3>v0.7a</h3><br>
 		- Bug Fixes.<br><br>
 <h3>v0.7</h3><br>
@@ -127,7 +129,7 @@ function getPointGen() {
 		return new ExpantaNum(1)
 
 	let gain = new ExpantaNum(1).mul(tmp["b"].effect).mul(tmp["asc"].effect).mul(tmp["g"].effect).mul(tmp["c"].effect).mul(tmp["d"].effect).mul(tmp["f"].effect).mul(tmp["e"].effect).mul(tmp["h"].effect).mul(tmp["i"].effect).mul(tmp["j"].effect)
-	
+	if (hasUpgrade('p', 11)) gain = gain.times("2")
 	if (hasUpgrade('p', 82)) gain = gain.times("2")
 	if (hasUpgrade('b', 62)) gain = gain.times("4")
 	if (hasUpgrade('a', 62)) gain = gain.times("16")
