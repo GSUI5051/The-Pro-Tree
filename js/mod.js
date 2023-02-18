@@ -12,21 +12,23 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.7d",
-	name: "Another Small changes."
+	num: "0.7e",
+	name: "Dates."
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+<h3>v0.7e</h3><br>
+		- Added dates for each version (The ones it doesnt have the date, it is the same date i did on the earlier version.)<br><br>
 <h3>v0.7d</h3><br>
 		- Added more endgames for earlier versions.<br><br>
-<h3>v0.7c</h3><br>
+<h3>v0.7c (18/02/2023)</h3><br>
 		- Changed the requirement for massive increased points.<br>
 		- The requirement is now 1.2e60 -> 1e61.<br><br>
-	<h3>v0.7b</h3><br>
+	<h3>v0.7b (17/02/2023)</h3><br>
 		- Fixed Prestige Upgrade 11 doesnt boost points.<br><br>
 		<h3>v0.7a</h3><br>
 		- Bug Fixes.<br><br>
-<h3>v0.7</h3><br>
+<h3>v0.7 (12/02/2023)</h3><br>
 		- Endgame: 1G5 Points.<br>
 		- Added 8 new layers! (7 of them is normal.)<br>
 		- Added more buyables!.<br>
@@ -43,7 +45,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Changed the hotkeys.<br>
 		- Changed some achievements requirements.<br>
 		- 1 Milestone will be out in the next upd.<br><br>
-<h3>v0.6c</h3><br>
+<h3>v0.6c (08/01/2023)</h3><br>
 		- Removed Christmas Event.<br>
 		- Changed the milestone for row 6.<br><br>
 <h3>v0.6b</h3><br>
@@ -51,7 +53,7 @@ let changelog = `<h1>Changelog:</h1><br>
 <h3>v0.6a</h3><br>
 		- Added more settings!<br>
 		- Added more notations!<br><br>
-<h3>v0.6</h3><br>
+<h3>v0.6 (18/12/2022)</h3><br>
 		- Endgame: F1,000,000 Points.<br>
 		- Added 6 new layers!<br>
 		- Added buyables.<br>
@@ -66,9 +68,9 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added sub-currencies.<br>
 		- Removed some stuff.<br>
 		- Added a warning once you reach endgame.<br><br>
-		<h3>v0.5a</h3><br>
+		<h3>v0.5a (21/11/2022)</h3><br>
 		- Bug Fixes.<br><br>
-		<h3>v0.5</h3><br>
+		<h3>v0.5 (15/11/2022)</h3><br>
 		- Endgame: eeee1.000e10 Points.<br>
 		- Added 5 new layers.<br>
 		- Added new milestones.<br>
@@ -76,21 +78,21 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added new Challenges.<br>
 		- Added Achievements.<br>
 		- Rebalances + Bug fixes.<br><br>
-<h3>v0.4 (Released)</h3><br>
+<h3>v0.4 (Released) (27/10/2022)</h3><br>
 		- Endgame: e1.000e17 Points.<br>
 		- Added 4 new layers.<br>
 		- Added new milestones.<br>
 		- Added new upgrades.<br>
 		- Added Challenges.
 		<h3></h3><br><br>	
-		<h3>v0.3</h3><br>
+		<h3>v0.3 (19/10/2022)</h3><br>
 		- Endgame: 1e75,000 Points.<br>
 		- Added 3 new layers.<br>
 		- Added new milestones.<br>
 		- Added new upgrades.<br>
 		- Added Ascension resets nothing.
 		<h3></h3><br><br>	
-		<h3>v0.2</h3><br>
+		<h3>v0.2 (10/10/2022)</h3><br>
 		- Endgame: 1e1,130 Points.<br>
 		- Added 1 new layer.<br>
 		- Added Milestones.<br>
@@ -101,18 +103,18 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added max ascensions.<br>
 		- Added current endgame at top.
 			<h3></h3><br><br>
-			<h3>v0.1</h3><br>
+			<h3>v0.1 (08/10/2022)</h3><br>
 			- Endgame: 1.000e100 Points.<br>
 			- Added 1 new layer.<br>
 			- Added New Upgrades.
 			<h3></h3><br><br>
-			<h3>v0.0b</h3><br>
+			<h3>v0.0b (02/10/2022)</h3><br>
 			- Endgame: 10,000,000 Points.<br><br>
-			<h3>v0.0a</h3><br>
+			<h3>v0.0a (01/10/2022)</h3><br>
 			- Endgame: 1,000,000 Points.<br>
 			- Added 1 layer.<br>
 			- Added Upgrades.<br><br>
-			<h3>v0.0</h3><br>
+			<h3>v0.0 (25/09/2022)</h3><br>
 			- Endgame: 1,000 Points.<br>
 			`
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
