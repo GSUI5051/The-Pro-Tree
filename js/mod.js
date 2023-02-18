@@ -12,11 +12,14 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.7b",
-	name: "Another Bug fix."
+	num: "0.7c",
+	name: "Small changes."
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+<h3>v0.7c</h3><br>
+		- Changed the requirement for massive increased points.<br>
+		- The requirement is now 1.2e60 -> 1e61.<br><br>
 	<h3>v0.7b</h3><br>
 		- Fixed Prestige Upgrade 11 doesnt boost points.<br><br>
 		<h3>v0.7a</h3><br>

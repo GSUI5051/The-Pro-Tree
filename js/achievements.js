@@ -1321,7 +1321,7 @@ addLayer("a", {
 
     },
     tabFormat: ["blank", ["display-text", function() {
-        return "<h3 style='color: yellow;'>Achievements: " + player.a.achievements.length + "/" + (Object.keys(tmp.a.achievements).length - 2) + "</h4><br>You have <h2 style='color: yellow; text-shadow: 0 0 10px yellow'>" + format(player.a.points) + "</h3> Achievement Points. <br><h4 style='color: #ffffff;'>Giving x" + format(player.a.points.add(1).pow(0.56).pow(player.a.points.sub(1.2e60).max(1))) + " to point gain.</h3><br>" + "<h4 style='color: grey;'>The effect is massive increased at 1.2e60 AP." + "</h4>"
+        return "<h3 style='color: yellow;'>Achievements: " + player.a.achievements.length + "/" + (Object.keys(tmp.a.achievements).length - 2) + "</h4><br>You have <h2 style='color: yellow; text-shadow: 0 0 10px yellow'>" + format(player.a.points) + "</h3> Achievement Points. <br><h4 style='color: #ffffff;'>Giving x" + format(player.a.points.add(1).pow(0.56).pow(player.a.points.sub(1e61).max(1))) + " to point gain.</h3><br>" + "<h4 style='color: grey;'>The effect is massive increased at 1e61 AP." + "</h4>"
     }
     ], "blank", "blank", "achievements", ],
 }, )
