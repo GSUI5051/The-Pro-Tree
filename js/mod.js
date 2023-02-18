@@ -12,11 +12,13 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.7c",
-	name: "Small changes."
+	num: "0.7d",
+	name: "Another Small changes."
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+<h3>v0.7d</h3><br>
+		- Added more endgames for earlier versions.<br><br>
 <h3>v0.7c</h3><br>
 		- Changed the requirement for massive increased points.<br>
 		- The requirement is now 1.2e60 -> 1e61.<br><br>
@@ -25,6 +27,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		<h3>v0.7a</h3><br>
 		- Bug Fixes.<br><br>
 <h3>v0.7</h3><br>
+		- Endgame: 1G5 Points.<br>
 		- Added 8 new layers! (7 of them is normal.)<br>
 		- Added more buyables!.<br>
 		- Added more auto-buyables.<br>
@@ -49,6 +52,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added more settings!<br>
 		- Added more notations!<br><br>
 <h3>v0.6</h3><br>
+		- Endgame: F1,000,000 Points.<br>
 		- Added 6 new layers!<br>
 		- Added buyables.<br>
 		- Added auto-buyables.<br>
@@ -65,6 +69,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		<h3>v0.5a</h3><br>
 		- Bug Fixes.<br><br>
 		<h3>v0.5</h3><br>
+		- Endgame: eeee1.000e10 Points.<br>
 		- Added 5 new layers.<br>
 		- Added new milestones.<br>
 		- Added new upgrades.<br>
