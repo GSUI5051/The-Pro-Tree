@@ -35,168 +35,168 @@ addLayer("j", {
         cost: new EN("1"),
 
         },
-        12: { title: "227",
+        12: { title: "252",
         description: "Gain e1e14x Points.",
         cost: new EN("1"),
         unlocked() {
             return hasUpgrade("j", 11)
         }
         },
-        13: { title: "228",
+        13: { title: "253",
         description: "Gain e1e15x Points.",
         cost: new EN("1"),
         unlocked() {
             return hasUpgrade("j", 12)
         }
         },
-        14: { title: "229",
+        14: { title: "254",
         description: "Gain e1e17x Points and Double Jetpack gain.",
         cost: new EN("69"),
         unlocked() {
             return hasUpgrade("j", 13)
         }
         },
-        15: { title: "230",
+        15: { title: "255",
         description: "Triple Jetpack gain.",
         cost: new EN("420"),
         unlocked() {
             return hasUpgrade("j", 14)
         }
         },
-        21: { title: "231",
+        21: { title: "256",
         description: "Quadruple Jetpack gain and e1e18x Points.",
         cost: new EN("1337"),
         unlocked() {
             return hasUpgrade("j", 15)
         }
         },
-        22: { title: "232",
+        22: { title: "257",
         description: "Quintuple Jetpack Gain.",
         cost: new EN("6969"),
         unlocked() {
             return hasUpgrade("j", 21)
         }
         },
-        23: { title: "233",
+        23: { title: "258",
         description: "6x Jetpack Gain and e1e19x Points.",
         cost: new EN("69420"),
         unlocked() {
             return hasUpgrade("j", 22)
         }
         },
-        24: { title: "234",
+        24: { title: "259",
         description: "7x Jetpack Gain.",
         cost: new EN("1e5"),
         unlocked() {
             return hasUpgrade("j", 23)
         }
         },
-        25: { title: "235",
+        25: { title: "260",
         description: "8x Jetpack Gain.",
         cost: new EN("2e6"),
         unlocked() {
             return hasUpgrade("j", 24)
         }
         },
-        31: { title: "236",
+        31: { title: "261",
         description: "9x Jetpack Gain and e1e20x Points.",
         cost: new EN("1e7"),
         unlocked() {
             return hasUpgrade("j", 25)
         }
         },
-        32: { title: "237",
+        32: { title: "262",
         description: "10x Jetpack Gain.",
         cost: new EN("5e7"),
         unlocked() {
             return hasUpgrade("j", 31)
         }
         },
-        33: { title: "238",
+        33: { title: "263",
         description: "20x Jetpack Gain.",
         cost: new EN("1e9"),
         unlocked() {
             return hasUpgrade("j", 32)
         }
         },
-        34: { title: "239",
+        34: { title: "264",
         description: "30x Jetpack Gain.",
         cost: new EN("1e10"),
         unlocked() {
             return hasUpgrade("j", 33)
         }
         },
-        35: { title: "240",
+        35: { title: "265",
         description: "40x Jetpack Gain.",
         cost: new EN("1e12"),
         unlocked() {
             return hasUpgrade("j", 34)
         }
         },
-        41: { title: "241",
+        41: { title: "266",
         description: "50x Jetpack Gain and e1e21x Points.",
         cost: new EN("2.5e13"),
         unlocked() {
             return hasUpgrade("j", 35)
         }
         },
-        42: { title: "242",
+        42: { title: "267",
         description: "60x Jetpack Gain.",
         cost: new EN("1e15"),
         unlocked() {
             return hasUpgrade("j", 41)
         }
         },
-        43: { title: "243",
+        43: { title: "268",
         description: "70x Jetpack Gain and e1e22x Points.",
         cost: new EN("2e16"),
         unlocked() {
             return hasUpgrade("j", 42)
         }
         },
-        44: { title: "244",
+        44: { title: "269",
         description: "80x Jetpack Gain.",
         cost: new EN("1e18"),
         unlocked() {
             return hasUpgrade("j", 43)
         }
         },
-        45: { title: "245",
+        45: { title: "270",
         description: "90x Jetpack Gain and e1e23x Points.",
         cost: new EN("1e20"),
         unlocked() {
             return hasUpgrade("j", 44)
         }
         },
-        51: { title: "246",
+        51: { title: "271",
         description: "More Points!",
         cost: new EN("eee47"),
         unlocked() {
             return hasUpgrade("k", 45)
         }
         },
-        52: { title: "247",
+        52: { title: "272",
         description: "More Points again!",
         cost: new EN("eee63"),
         unlocked() {
             return hasUpgrade("j", 51)
         }
         },
-        53: { title: "248",
+        53: { title: "273",
         description: "More Points yet again!",
         cost: new EN("eee79"),
         unlocked() {
             return hasUpgrade("j", 52)
         }
         },
-        54: { title: "249",
+        54: { title: "24974",
         description: "More Points yet again and again!",
         cost: new EN("eee111"),
         unlocked() {
             return hasUpgrade("j", 53)
         }
         },
-        55: { title: "250",
+        55: { title: "275",
         description: "More Points yet again and again and unlocks a new layer!",
         cost: new EN("eee200"),
         unlocked() {
