@@ -140,7 +140,7 @@ addLayer("f", {
         }
         },
         35: { title: "165",
-        description: "Double Fruits gain, 1e100x Points and unlock another challenge.",
+        description: "Double Fruits gain, 1e100x Points and unlock another challenge in button power layer.",
         cost: new EN("15000"),
         unlocked() {
             return hasUpgrade("f", 34)
@@ -234,7 +234,7 @@ addLayer("f", {
              effectDescription: "Dices reset nothing.",
                 done() { return player.f.total.gte(8)},},
                 3: {requirementDescription: "15 Total Fruits",
-             effectDescription: "Unlock a challenge.",
+             effectDescription: "Unlock a challenge in button power layer.",
                 done() { return player.f.total.gte(15)},},
     },
     challenges: {

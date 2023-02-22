@@ -1299,21 +1299,21 @@ addLayer("a", {
                                                                                                                                                     },
                                                                                                                                                 },
                                                                                                                                                 193: {
-                                                                                                                                                    name: "Another Free achievement",
+                                                                                                                                                    name: "G Notation!",
                                                                                                                                                         done() {
-                                                                                                                                                            if (hasAchievement("a",192)) return true
+                                                                                                                                                            return player.points.gte("10^^^5")
                                                                                                                                                         },
-                                                                                                                                                        tooltip: "Free achievement.",
+                                                                                                                                                        tooltip: "Get 1G5 Points.",
                                                                                                                                                         onComplete() {
                                                                                                                                                             return player.a.points = player.a.points.add("0")
                                                                                                                                                         },
                                                                                                                                                     },
                                                                                                                                             194: {
-                                                                                                                                                name: "G Notation!",
+                                                                                                                                                name: "G Oom^oom",
                                                                                                                                                     done() {
-                                                                                                                                                        return player.points.gte("10^^^5")
+                                                                                                                                                        return player.points.gte("10^^^6")
                                                                                                                                                     },
-                                                                                                                                                    tooltip: "Get 1G5 Points!<br>Reward: Endgame.",
+                                                                                                                                                    tooltip: "Get 1G6 Points!<br>Reward: Endgame.",
                                                                                                                                                     onComplete() {
                                                                                                                                                         return player.a.points = player.a.points.add("0")
                                                                                                                                                     },
@@ -1321,7 +1321,7 @@ addLayer("a", {
 
     },
     tabFormat: ["blank", ["display-text", function() {
-        return "<h3 style='color: yellow;'>Achievements: " + player.a.achievements.length + "/" + (Object.keys(tmp.a.achievements).length - 2) + "</h4><br>You have <h2 style='color: yellow; text-shadow: 0 0 10px yellow'>" + format(player.a.points) + "</h3> Achievement Points. <br><h4 style='color: #ffffff;'>Giving x" + format(player.a.points.add(1).pow(0.56).pow(player.a.points.sub(1e61).max(1))) + " to point gain.</h3><br>" + "<h4 style='color: grey;'>The effect is massive increased at 1e61 AP." + "</h4>"
+        return "<h3 style='color: yellow;'>Achievements: " + player.a.achievements.length + "/" + (Object.keys(tmp.a.achievements).length - 2) + "</h4><br>You have <h2 style='color: yellow; text-shadow: 0 0 10px yellow'>" + format(player.a.points) + "</h3> Achievement Points. <br><h4 style='color: #ffffff;'>Giving x" + format(player.a.points.add(1).pow(0.56).pow(player.a.points.sub(1e61).max(1))) + " to point gain.</h3><br>" + "<h4 style='color: grey;'>The effect is massively increased at 1e61 AP." + "</h4>"
     }
     ], "blank", "blank", "achievements", ],
 }, )

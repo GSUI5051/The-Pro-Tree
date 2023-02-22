@@ -12,11 +12,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.7e",
-	name: "Dates."
+	num: "0.7f",
+	name: "Bug fixes."
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+<h3>v0.7f (22/02/2023)</h3><br>
+	- Bug Fixes.<br>
+	- Changed some achievements.<br>
+	- Endgame: 1G6 Points.<br><br>
 <h3>v0.7e</h3><br>
 		- Added dates for each version (The ones it doesnt have the date, it is the same date i did on the earlier version.)<br><br>
 <h3>v0.7d</h3><br>
@@ -400,7 +404,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function(){
-		let a = `Current endgame: ${format([10,0,4])} Points.`
+		let a = `Current endgame: ${format([10,0,5])} Points.`
 		let d = isEndgame()?makeBlue("<br>You are past endgame,<br>and the game might not be balanced here."):""
 		return a+d
 	},
@@ -408,7 +412,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-return player.points.gte("10^^^5.000")}
+return player.points.gte("10^^^6")}
 
 
 // Less important things beyond this point!

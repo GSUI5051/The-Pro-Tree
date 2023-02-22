@@ -448,7 +448,7 @@ microtabs: {
             effect() {
                 let time = EN(player.re.resetTime)
                 if (hasUpgrade("re", 111)) time = time.mul(16)
-                if (hasUpgrade("re", 112)) time = time.mul(16.9)
+                if (hasUpgrade("re", 112)) time = time.mul(69.420)
                 return EN.pent(10, time.add(1).pow(0.11829), time)
             },
             effectDisplay() { return "^^" + format(this.effect()) },
