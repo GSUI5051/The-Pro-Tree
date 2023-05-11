@@ -1,5 +1,27 @@
 // ************ Big Feature related ************
+function addTime(diff, layer) {
+	let data = player
+	let time = data.timePlayed
+	if (layer) {
+		data = data[layer]
+		time = data.time
+	}
 
+	//I am not that good to perfectly fix that leak. ~ DB Aarex
+	if (time + 0 !== time) {
+		console.log("Memory leak detected. Trying to fix...")
+		time = toNumber(time)
+		if (isNaN(time) || time == 0) {
+			console.log("Couldn't fix! Resetting...")
+			time = layer ? player.timePlayed : 0
+			if (!layer) player.timePlayedReset = true
+		}
+	}
+	time += toNumber(diff)
+
+	if (layer) data.time = time
+	else data.timePlayed = time
+}
 function respecBuyables(layer) {
 	if (!layers[layer].buyables) return
 	if (!layers[layer].buyables.respec) return

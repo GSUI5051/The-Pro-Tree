@@ -50,119 +50,119 @@ addLayer("j", {
         }
         },
         14: { title: "254",
-        description: "Gain e1e17x Points and Double Jetpack gain.",
+        description: "Gain e1e17x Points and Double Jingle gain.",
         cost: new EN("69"),
         unlocked() {
             return hasUpgrade("j", 13)
         }
         },
         15: { title: "255",
-        description: "Triple Jetpack gain.",
+        description: "Triple Jingle gain.",
         cost: new EN("420"),
         unlocked() {
             return hasUpgrade("j", 14)
         }
         },
         21: { title: "256",
-        description: "Quadruple Jetpack gain and e1e18x Points.",
+        description: "Quadruple Jingle gain and e1e18x Points.",
         cost: new EN("1337"),
         unlocked() {
             return hasUpgrade("j", 15)
         }
         },
         22: { title: "257",
-        description: "Quintuple Jetpack Gain.",
+        description: "Quintuple Jingle Gain.",
         cost: new EN("6969"),
         unlocked() {
             return hasUpgrade("j", 21)
         }
         },
         23: { title: "258",
-        description: "6x Jetpack Gain and e1e19x Points.",
+        description: "6x Jingle Gain and e1e19x Points.",
         cost: new EN("69420"),
         unlocked() {
             return hasUpgrade("j", 22)
         }
         },
         24: { title: "259",
-        description: "7x Jetpack Gain.",
+        description: "7x Jingle Gain.",
         cost: new EN("1e5"),
         unlocked() {
             return hasUpgrade("j", 23)
         }
         },
         25: { title: "260",
-        description: "8x Jetpack Gain.",
+        description: "8x Jingle Gain.",
         cost: new EN("2e6"),
         unlocked() {
             return hasUpgrade("j", 24)
         }
         },
         31: { title: "261",
-        description: "9x Jetpack Gain and e1e20x Points.",
+        description: "9x Jingle Gain and e1e20x Points.",
         cost: new EN("1e7"),
         unlocked() {
             return hasUpgrade("j", 25)
         }
         },
         32: { title: "262",
-        description: "10x Jetpack Gain.",
+        description: "10x Jingle Gain.",
         cost: new EN("5e7"),
         unlocked() {
             return hasUpgrade("j", 31)
         }
         },
         33: { title: "263",
-        description: "20x Jetpack Gain.",
+        description: "20x Jingle Gain.",
         cost: new EN("1e9"),
         unlocked() {
             return hasUpgrade("j", 32)
         }
         },
         34: { title: "264",
-        description: "30x Jetpack Gain.",
+        description: "30x Jingle Gain.",
         cost: new EN("1e10"),
         unlocked() {
             return hasUpgrade("j", 33)
         }
         },
         35: { title: "265",
-        description: "40x Jetpack Gain.",
+        description: "40x Jingle Gain.",
         cost: new EN("1e12"),
         unlocked() {
             return hasUpgrade("j", 34)
         }
         },
         41: { title: "266",
-        description: "50x Jetpack Gain and e1e21x Points.",
+        description: "50x Jingle Gain and e1e21x Points.",
         cost: new EN("2.5e13"),
         unlocked() {
             return hasUpgrade("j", 35)
         }
         },
         42: { title: "267",
-        description: "60x Jetpack Gain.",
+        description: "60x Jingle Gain.",
         cost: new EN("1e15"),
         unlocked() {
             return hasUpgrade("j", 41)
         }
         },
         43: { title: "268",
-        description: "70x Jetpack Gain and e1e22x Points.",
+        description: "70x Jingle Gain and e1e22x Points.",
         cost: new EN("2e16"),
         unlocked() {
             return hasUpgrade("j", 42)
         }
         },
         44: { title: "269",
-        description: "80x Jetpack Gain.",
+        description: "80x Jingle Gain.",
         cost: new EN("1e18"),
         unlocked() {
             return hasUpgrade("j", 43)
         }
         },
         45: { title: "270",
-        description: "90x Jetpack Gain and e1e23x Points.",
+        description: "90x Jingle Gain and e1e23x Points.",
         cost: new EN("1e20"),
         unlocked() {
             return hasUpgrade("j", 44)
@@ -240,28 +240,28 @@ addLayer("j", {
         },
     },
     milestones: {
-         1: {requirementDescription: "1 Jetpack",
+         1: {requirementDescription: "1 Jingle",
           effectDescription: "Gain 100% of Fruits and Houses every second.",
              done() { return player.j.points.gte(1)},},
-         2: {requirementDescription: "2 Total Jetpacks",
+         2: {requirementDescription: "2 Total Jingles",
              effectDescription: "Keep Fruits stuff on reset.",
                 done() { return player.j.total.gte(2)},},
-        3: {requirementDescription: "4 Total Jetpacks",
+        3: {requirementDescription: "4 Total Jingles",
              effectDescription: "Keep Electricity stuff on reset.",
             done() { return player.j.total.gte(4)},},
-         4: {requirementDescription: "16 Total Jetpacks",
+         4: {requirementDescription: "16 Total Jingles",
              effectDescription: "Keep House stuff on reset.",
                 done() { return player.j.total.gte(16)},},
-         5: {requirementDescription: "256 Total Jetpacks",
+         5: {requirementDescription: "256 Total Jingles",
              effectDescription: "Keep Ice stuff on reset.",
               done() { return player.j.total.gte(256)},},
-         6: {requirementDescription: "65,536 Total Jetpacks",
+         6: {requirementDescription: "65,536 Total Jingles",
              effectDescription: "Autobuy Electricity and resets nothing.",
                 done() { return player.j.total.gte(65536)},},
-        7: {requirementDescription: "4.294e9 Total Jetpacks",
+        7: {requirementDescription: "4.294e9 Total Jingles",
              effectDescription: "Autobuy Ice and resets nothing.",
                 done() { return player.j.total.gte(4.294e9)},},
-                8: {requirementDescription: "2.222e22 Total Jetpacks",
+                8: {requirementDescription: "2.222e22 Total Jingles",
                 effectDescription: "Unlock a challenge.",
                    done() { return player.j.total.gte(2.222e22)},},
     },
@@ -306,8 +306,8 @@ effectDescription(){
     */
    
   },
-    name: "Jetpacks", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "J", // This appears on the layer's node. Default is the id with the first letter capitalized
+    name: "Jingles", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "🔔", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -316,7 +316,7 @@ effectDescription(){
     }},
     color: "#ffa500",
     requires: new EN("e2e12"), // Can be a function that takes requirement increases into account
-    resource: "Jetpacks", // Name of prestige currency
+    resource: "Jingles", // Name of prestige currency
     baseResource: "Fruits", // Name of resource prestige is based on
     baseAmount() {return player.f.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -352,7 +352,7 @@ effectDescription(){
         if (hasMilestone("o", 1)) return (hasMilestone("o", 1)?1:0)
         },        
         hotkeys: [
-        {key: "j", description: "J: Reset for Jetpacks", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "j", description: "J: Reset for Jingles", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     doReset(resettingLayer) {
         let keep = [];

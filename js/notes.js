@@ -202,8 +202,8 @@ addLayer("n", {
     */
    
   },
-    name: "Notes", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "N", // This appears on the layer's node. Default is the id with the first letter capitalized
+    name: "Notebooks", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "📓", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -212,7 +212,7 @@ addLayer("n", {
     }},
     color: "#ff7eb9",
     requires: new EN("1e3392"), // Can be a function that takes requirement increases into account
-    resource: "Notes", // Name of prestige currency
+    resource: "Notebooks", // Name of prestige currency
     baseResource: "Lights", // Name of resource prestige is based on
     baseAmount() {return player.l.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -229,11 +229,11 @@ addLayer("n", {
     canBuyMax() { return hasMilestone("n", 1) },
     row: 4, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "n", description: "N: Reset for Notes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "n", description: "N: Reset for Notebook", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     milestones: {
-        1: {requirementDescription: "8 Notes",
-         effectDescription: "You can buy max Notes.",
+        1: {requirementDescription: "8 Notesbooks",
+         effectDescription: "You can buy max Notesbooks.",
             done() { return player.n.points.gte(8)},},
    },
    layerShown(){if (hasUpgrade("z", 55)) return false

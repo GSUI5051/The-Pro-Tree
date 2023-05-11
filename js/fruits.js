@@ -11,6 +11,7 @@ addLayer("f", {
                             unlocked() {return (hasAchievement("a", 11))},
                     content: [
                         ["blank", "15px"],
+                        ["raw-html", () => `<h4 style="opacity:.5">You will see challenges, which basically decreases the production.<br> But you will get an reward for completing it!</h4>`],
                         ["upgrades", [1,2,3,4,5,6,7,8,9]]
                     ]
                 },
@@ -31,7 +32,7 @@ addLayer("f", {
     },
     upgrades: {
         11: { title: "151",
-        description: "1e100x Points and keep Prestige Upgrades.",
+        description: "1e100x Points and keep People Upgrades.",
         cost: new EN("1"),
 
         },
@@ -54,7 +55,7 @@ addLayer("f", {
         }
         },
         14: { title: "154",
-        description: "1e123x BP, PP.",
+        description: "1e123x BP, People.",
         cost: new EN("10"),
         unlocked() {
             return hasUpgrade("f", 13)
@@ -75,7 +76,7 @@ addLayer("f", {
         }
         },
         22: { title: "157",
-        description: "^1.024 PP.",
+        description: "^1.024 People.",
         cost: new EN("69"),
         unlocked() {
             return hasUpgrade("f", 21)
@@ -240,7 +241,7 @@ addLayer("f", {
     challenges: {
         11: {
             name: "Resolve",
-            challengeDescription: "Raise PP, BP, Grass and Cups to ^0.001.",
+            challengeDescription: "Raise People, BP, Grass and Cups to ^0.001.",
             goalDescription: "1e26,159,020 Points.",
             rewardDescription: "Gain ^1.01 Points.",
             canComplete: function() {return player.points.gte("e26159020")},
@@ -248,7 +249,7 @@ addLayer("f", {
         },
         12: {
             name: "Divided",
-            challengeDescription: "Raise PP, BP, Grass, Cups and Points to ^0.1.",
+            challengeDescription: "Raise People, BP, Grass, Cups and Points to ^0.1.",
             goalDescription: "1e28,825 Points.",
             rewardDescription: "Unlock a new layer and ^1.02 Points.",
             canComplete: function() {return player.points.gte("e28825")},
@@ -279,7 +280,7 @@ effectDescription(){
    
   },
     name: "Fruits", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "F", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "🍇", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,

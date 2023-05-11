@@ -1,4 +1,4 @@
-addLayer("asc", {
+addLayer("ant", {
     effect(){
 
     },
@@ -28,7 +28,7 @@ effectDescription(){
     if (hasMilestone("f", 3) && resettingLayer=="f", "e", "h") keep.push("milestones")
     if (hasMilestone("g", 3) && resettingLayer=="g", "c", "d") keep.push("upgrades")
     if (hasMilestone("f", 3) && resettingLayer=="f", "d", "e", "h") keep.push("upgrades")
-    if (layers[resettingLayer].row > this.row) layerDataReset("asc", keep)
+    if (layers[resettingLayer].row > this.row) layerDataReset("ant", keep)
 },
 autoPrestige() {
     return hasUpgrade("g", 25)
@@ -45,6 +45,7 @@ microtabs: {
                         unlocked() {return (hasAchievement("a", 11))},
                 content: [
                     ["blank", "15px"],
+                    ["raw-html", () => `<h4 style="opacity:.5">You are getting better.<br> You will see milestones which helps a lot on your progression.<br> Good luck to reach the 3rd row!</h4>`],
                     ["upgrades", [1,2,3,4,5,6]]
                 ]
             },
@@ -63,37 +64,37 @@ microtabs: {
 
         },
         12: { title: "52",
-        description: "Point gain is boosted by Ascension.",
+        description: "Point gain is boosted by Ants.",
         cost: new EN(9),
         effect() {
             return player[this.layer].points.add(5).pow(2.5)
         },
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         unlocked() {
-            return hasUpgrade("asc", 11)
+            return hasUpgrade("ant", 11)
         }
         },
         13: { title: "53",
         description: "69,420x Point Gain.",
         cost: new EN(12),
         unlocked() {
-            return hasUpgrade("asc", 12)
+            return hasUpgrade("ant", 12)
         
         }
         },
         14: { title: "54",
-        description: "Gain 1,000x More Prestige Points.",
+        description: "Gain 1,000x More People.",
         cost: new EN(15),
         unlocked() {
-            return hasUpgrade("asc", 13)
+            return hasUpgrade("ant", 13)
         
         }
         },
         15: { title: "55",
-        description: "Keep Row 3 Prestige Point Upgrades.",
+        description: "Keep Row 3 People Upgrades.",
         cost: new EN(16),
         unlocked() {
-            return hasUpgrade("asc", 14)
+            return hasUpgrade("ant", 14)
         
         }
         },
@@ -101,15 +102,15 @@ microtabs: {
         description: "69x Button Power.",
         cost: new EN(17),
         unlocked() {
-            return hasUpgrade("asc", 15)
+            return hasUpgrade("ant", 15)
         
         }
         },
         22: { title: "57",
-        description: "10,000x Prestige Point Gain.",
+        description: "10,000x People Gain.",
         cost: new EN(17),
         unlocked() {
-            return hasUpgrade("asc", 21)
+            return hasUpgrade("ant", 21)
         
         }
         },
@@ -117,15 +118,15 @@ microtabs: {
         description: "1,000,000x Points Gain.",
         cost: new EN(18),
         unlocked() {
-            return hasUpgrade("asc", 22)
+            return hasUpgrade("ant", 22)
         
         }
         },
         24: { title: "59",
-        description: "100,000x Prestige Point Gain.",
+        description: "100,000x People Gain.",
         cost: new EN(21),
         unlocked() {
-            return hasUpgrade("asc", 23)
+            return hasUpgrade("ant", 23)
         
         }
         },
@@ -133,7 +134,7 @@ microtabs: {
         description: "More Button Power Upgrades.",
         cost: new EN(22),
         unlocked() {
-            return hasUpgrade("asc", 24)
+            return hasUpgrade("ant", 24)
         
         }
         },
@@ -149,15 +150,15 @@ microtabs: {
         description: "Gain 6.969e69x Points.",
         cost: new EN(112),
         unlocked() {
-            return hasUpgrade("asc", 31)
+            return hasUpgrade("ant", 31)
         
         }
         },
         33: { title: "63",
-        description: "Gain 1e33x Prestige Points.",
+        description: "Gain 1e33x People.",
         cost: new EN(125),
         unlocked() {
-            return hasUpgrade("asc", 32)
+            return hasUpgrade("ant", 32)
         
         }
         },
@@ -165,7 +166,7 @@ microtabs: {
         description: "Gain 1e25x Button Power.",
         cost: new EN(129),
         unlocked() {
-            return hasUpgrade("asc", 33)
+            return hasUpgrade("ant", 33)
         
         }
         },
@@ -173,7 +174,7 @@ microtabs: {
         description: "Unlock a new layer.",
         cost: new EN(131),
         unlocked() {
-            return hasUpgrade("asc", 34)
+            return hasUpgrade("ant", 34)
         
         }
         },
@@ -189,7 +190,7 @@ microtabs: {
         description: "1e20x Points.",
         cost: new EN(168),
         unlocked() {
-            return hasUpgrade("asc", 41)
+            return hasUpgrade("ant", 41)
         
         }
         },
@@ -197,7 +198,7 @@ microtabs: {
         description: "1e40x Points.",
         cost: new EN(170),
         unlocked() {
-            return hasUpgrade("asc", 42)
+            return hasUpgrade("ant", 42)
         
         }
         },
@@ -205,7 +206,7 @@ microtabs: {
         description: "1e69x Points.",
         cost: new EN(170),
         unlocked() {
-            return hasUpgrade("asc", 43)
+            return hasUpgrade("ant", 43)
         
         }
         },
@@ -213,12 +214,12 @@ microtabs: {
         description: "Unlock more grass upgrades.",
         cost: new EN(183),
         unlocked() {
-            return hasUpgrade("asc", 44)
+            return hasUpgrade("ant", 44)
         
         }
         },
         51: { title: "71",
-        description: "1e150x PP.",
+        description: "1e150x People.",
         cost: new EN(318),
         unlocked() {
             return hasUpgrade("c", 35)
@@ -229,7 +230,7 @@ microtabs: {
         description: "1e100x BP.",
         cost: new EN(327),
         unlocked() {
-            return hasUpgrade("asc", 51)
+            return hasUpgrade("ant", 51)
         
         }
         },
@@ -237,7 +238,7 @@ microtabs: {
         description: "1e10x Grass.",
         cost: new EN(333),
         unlocked() {
-            return hasUpgrade("asc", 52)
+            return hasUpgrade("ant", 52)
         
         }
         },
@@ -245,7 +246,7 @@ microtabs: {
         description: "100,000x Cups.",
         cost: new EN(333),
         unlocked() {
-            return hasUpgrade("asc", 53)
+            return hasUpgrade("ant", 53)
         
         }
         },
@@ -253,7 +254,7 @@ microtabs: {
         description: "1e100x Points.",
         cost: new EN(333),
         unlocked() {
-            return hasUpgrade("asc", 54)
+            return hasUpgrade("ant", 54)
         
         }
         },
@@ -266,24 +267,24 @@ microtabs: {
         }
         },
     },
-    name: "Ascension", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "Asc", // This appears on the layer's node. Default is the id with the first letter capitalized
+    name: "Ants", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "🐜", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
 		points: new EN(0),
         auto: false,
     }},
-    color: "#AA4A44",
+    color: "#1890ff",
     requires: new EN(1e116), // Can be a function that takes requirement increases into account
-    resource: "Ascension", // Name of prestige currency
+    resource: "Ants", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     branches: ["p"],
     exponent() {if (hasUpgrade("z", 14)) return new EN(Infinity)
     else return new EN(2)},    
-    resetsNothing() { return player.asc.auto },
+    resetsNothing() { return player.ant.auto },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
         return mult
@@ -291,28 +292,28 @@ microtabs: {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new EN(1)
     },
-    canBuyMax() { return hasMilestone("asc", 2) },
+    canBuyMax() { return hasMilestone("ant", 2) },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "a", description: "A: Reset for ascension", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "a", description: "A: Reset for ants", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    resetsNothing() {return hasMilestone("asc", 3)},
+    resetsNothing() {return hasMilestone("ant", 3)},
     layerShown(){if (hasUpgrade("z", 14)) return false
     else return (hasUpgrade("p", 35) || player[this.layer].unlocked)},
     automate() {},
     milestones: {
         1: {
-            requirementDescription: "16 Ascension",
-            effectDescription: "Gain 100% Prestige Points every second.",
-            done() { return player.asc.points.gte(16) }
-        }, 2: {requirementDescription: "25 Ascension",
-          effectDescription: "You can buy max ascensions.",
+            requirementDescription: "16 Ants",
+            effectDescription: "Gain 100% People every second.",
+            done() { return player.ant.points.gte(16) }
+        }, 2: {requirementDescription: "25 Ants",
+          effectDescription: "You can buy max Ants.",
           
-             done() { return player.asc.points.gte(25)},},
-             3: {requirementDescription: "107 Ascension",
-             effectDescription: "Ascension resets nothing.",
+             done() { return player.ant.points.gte(25)},},
+             3: {requirementDescription: "107 Ants",
+             effectDescription: "Ants resets nothing.",
              
-                done() { return player.asc.points.gte(107)},},
+                done() { return player.ant.points.gte(107)},},
         
     },
 })

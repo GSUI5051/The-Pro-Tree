@@ -3,20 +3,56 @@ let modInfo = {
 	id: "1",
 	author: "ProGamesGrinder",
 	pointsName: "points",
-	modFiles: ["layers.js", "tree.js", "buttonpower.js", "ascension.js", "grass.js", "cups.js", "dices.js", "fruits.js", "electricity.js", "houses.js", "ice.js", "achievements.js", "jetpacks.js", "keys.js", "lights.js", "money.js", "notes.js", "objects.js", "quantums.js", "rings.js", "sand.js", "trans.js", "universal.js", "void.js", "reincarnation.js", "wood.js", "xray.js", "yard.js", "zones.js", "arrows.js", "ball.js"],
+	modFiles: ["layers.js", "tree.js", "buttonpower.js", "ant.js", "grass.js", "cups.js", "dices.js", "fruits.js", "electricity.js", "houses.js", "ice.js", "achievements.js", "jetpacks.js", "keys.js", "lights.js", "money.js", "notes.js", "onions.js", "quadrilaterals.js", "rings.js", "sand.js", "trees.js", "universal.js", "void.js", "reincarnation.js", "wood.js", "xray.js", "yard.js", "zebras.js", "arrows.js", "ball.js", "circles.js", "duck.js", "eggs.js", "fire.js", "games.js", "hammers.js" , "islands.js", "juice.js","supernova.js"],
 	discordName: "The ProGames YT Fan Group",
 	discordLink: "https://discord.gg/8pwhpb8rtM",
 	initialStartPoints: new ExpantaNum (0), // Used for hard resets and new players
-	offlineLimit: 1,  // In hours
+	offlineLimit: 24,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.7f",
-	name: "Bug fixes."
+	num: "0.8",
+	name: "Stats + Revamp!"
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+<h3>v0.8 (12/05/2023)</h3><br>
+		- Endgame: GGG1.000 Points = 10^^^^3.<br>
+		- Added 10 new layers!! (8 of them are normal.)<br>
+		- Added more buyables!<br>
+		- Added more milestones.<br>
+		- Added more upgrades.<br>
+		- Added more challenges.<br>
+		- Added more achievements.<br>
+		- Added more auto upgrades.<br>
+		- Added more emojis.<br>
+        - Added more hotkeys.<br>
+		- Added a few tutorials to not get you stuck.<br>
+		- Changed the key requirement.<br>
+		- eee10 --> eee9.<br>
+		- Changed a few key upgrades.<br>
+		- Changed the warning color to red.<br>
+		- Changed the endgame.<br>
+		- Added more achievement rewards.<br>
+		- Added best points.<br>
+		- Changed some achievements names.<br>
+		- Added more hardcaps.<br>
+		- Added more softcaps.<br>
+		- Added a sub-prestige layer.<br>
+		- Added statistics.<br>
+		- Added Tree Upgrades.<br>
+		- Added Respec.<br>
+		- Added Buyable Level Cap.<br>
+		- Bug Fixes.<br>
+		- Revamped the game even more.<br>
+		- Changed so many layer names.<br>
+		- Changed Color for some layers.<br>
+		- Added Multi-Completion Challenge.<br>
+		- Changed the Challenge decoration back to original.<br>
+		- Added Milestone Effect.<br>
+		- Added Star.<br>
+		- 3 Milestones will be out in the next update.<br><br>
 <h3>v0.7f (22/02/2023)</h3><br>
 	- Bug Fixes.<br>
 	- Changed some achievements.<br>
@@ -29,13 +65,13 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Changed the requirement for massive increased points.<br>
 		- The requirement is now 1.2e60 -> 1e61.<br><br>
 	<h3>v0.7b (17/02/2023)</h3><br>
-		- Fixed Prestige Upgrade 11 doesnt boost points.<br><br>
+		- Fixed Prestige Upgrade 11 does not boost points.<br><br>
 		<h3>v0.7a</h3><br>
 		- Bug Fixes.<br><br>
 <h3>v0.7 (12/02/2023)</h3><br>
-		- Endgame: 1G5 Points.<br>
+		- Endgame: 1G5 Points = 10^^^5.<br>
 		- Added 8 new layers! (7 of them is normal.)<br>
-		- Added more buyables!.<br>
+		- Added more buyables!<br>
 		- Added more auto-buyables.<br>
 		- Added more milestones.<br>
 		- Added more upgrades.<br>
@@ -47,8 +83,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Changed the code a little bit.<br>
 		- Changed the endgame.<br>
 		- Changed the hotkeys.<br>
-		- Changed some achievements requirements.<br>
-		- 1 Milestone will be out in the next upd.<br><br>
+		- Changed some achievements requirements.<br><br>
 <h3>v0.6c (08/01/2023)</h3><br>
 		- Removed Christmas Event.<br>
 		- Changed the milestone for row 6.<br><br>
@@ -58,7 +93,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added more settings!<br>
 		- Added more notations!<br><br>
 <h3>v0.6 (18/12/2022)</h3><br>
-		- Endgame: F1,000,000 Points.<br>
+		- Endgame: F1,000,000 Points = 10^^1,000,000.<br>
 		- Added 6 new layers!<br>
 		- Added buyables.<br>
 		- Added auto-buyables.<br>
@@ -75,7 +110,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		<h3>v0.5a (21/11/2022)</h3><br>
 		- Bug Fixes.<br><br>
 		<h3>v0.5 (15/11/2022)</h3><br>
-		- Endgame: eeee1.000e10 Points.<br>
+		- Endgame: eeee1.000e10 Points = 10^^6.<br>
 		- Added 5 new layers.<br>
 		- Added new milestones.<br>
 		- Added new upgrades.<br>
@@ -94,7 +129,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added 3 new layers.<br>
 		- Added new milestones.<br>
 		- Added new upgrades.<br>
-		- Added Ascension resets nothing.
+		- Added Ants resets nothing.
 		<h3></h3><br><br>	
 		<h3>v0.2 (10/10/2022)</h3><br>
 		- Endgame: 1e1,130 Points.<br>
@@ -104,7 +139,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added New upgrades.<br>
 		- Added Passive Gain.<br>
 		- Added Keep stuff.<br>
-		- Added max ascensions.<br>
+		- Added max ants.<br>
 		- Added current endgame at top.
 			<h3></h3><br><br>
 			<h3>v0.1 (08/10/2022)</h3><br>
@@ -142,7 +177,7 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new ExpantaNum(1)
 
-	let gain = new ExpantaNum(1).mul(tmp["b"].effect).mul(tmp["asc"].effect).mul(tmp["g"].effect).mul(tmp["c"].effect).mul(tmp["d"].effect).mul(tmp["f"].effect).mul(tmp["e"].effect).mul(tmp["h"].effect).mul(tmp["i"].effect).mul(tmp["j"].effect)
+	let gain = new ExpantaNum(1).mul(tmp["b"].effect).mul(tmp["ant"].effect).mul(tmp["g"].effect).mul(tmp["c"].effect).mul(tmp["d"].effect).mul(tmp["f"].effect).mul(tmp["e"].effect).mul(tmp["h"].effect).mul(tmp["i"].effect).mul(tmp["j"].effect)
 	if (hasUpgrade('p', 11)) gain = gain.times("2")
 	if (hasUpgrade('p', 82)) gain = gain.times("2")
 	if (hasUpgrade('b', 62)) gain = gain.times("4")
@@ -164,10 +199,10 @@ function getPointGen() {
 	if (hasUpgrade('p', 34)) gain = gain.pow(1.11)
 	if (hasUpgrade('p', 42)) gain = gain.pow(1.111)
 	if (hasUpgrade('p', 35)) gain = gain.times(69420)
-	if (hasUpgrade('asc', 11)) gain = gain.times(1000)
-	if (hasUpgrade('asc', 12)) gain = gain.times(upgradeEffect('asc', 12))
-	if (hasUpgrade('asc', 13)) gain = gain.times(69420)
-	if (hasUpgrade('asc', 23)) gain = gain.times(1e6)
+	if (hasUpgrade('ant', 11)) gain = gain.times(1000)
+	if (hasUpgrade('ant', 12)) gain = gain.times(upgradeEffect('ant', 12))
+	if (hasUpgrade('ant', 13)) gain = gain.times(69420)
+	if (hasUpgrade('ant', 23)) gain = gain.times(1e6)
 	if (hasUpgrade('p', 43)) gain = gain.times(1e9)
 	if (hasUpgrade('p', 52)) gain = gain.times(1e12)
 	if (hasUpgrade('p', 55)) gain = gain.pow(1.01)
@@ -180,7 +215,7 @@ function getPointGen() {
 	if (hasUpgrade('b', 53)) gain = gain.times(1e10)
 	if (hasUpgrade('b', 54)) gain = gain.times(1e5)
 	if (hasUpgrade('b', 55)) gain = gain.pow(1.0015)
-	if (hasUpgrade('asc', 32)) gain = gain.times(6.969e69)
+	if (hasUpgrade('ant', 32)) gain = gain.times(6.969e69)
 	if (hasUpgrade('c', 11)) gain = gain.times(1e20)
 	if (hasUpgrade('c', 12)) gain = gain.times(upgradeEffect('c', 12))
 	if (hasUpgrade('c', 13)) gain = gain.times(1e25)
@@ -188,10 +223,10 @@ function getPointGen() {
 	if (hasUpgrade('c', 22)) gain = gain.times(1e50)
 	if (hasUpgrade('c', 24)) gain = gain.times(1e69)
 	if (hasUpgrade('c', 25)) gain = gain.times(1e30)
-	if (hasUpgrade('asc', 41)) gain = gain.times(1e10)
-	if (hasUpgrade('asc', 42)) gain = gain.times(1e20)
-	if (hasUpgrade('asc', 43)) gain = gain.times(1e40)
-	if (hasUpgrade('asc', 44)) gain = gain.times(1e69)
+	if (hasUpgrade('ant', 41)) gain = gain.times(1e10)
+	if (hasUpgrade('ant', 42)) gain = gain.times(1e20)
+	if (hasUpgrade('ant', 43)) gain = gain.times(1e40)
+	if (hasUpgrade('ant', 44)) gain = gain.times(1e69)
 	if (hasUpgrade('d', 11)) gain = gain.times(1e30)
 	if (hasUpgrade('d', 12)) gain = gain.times(upgradeEffect('d', 12))
 	if (hasUpgrade('d', 13)) gain = gain.times(1e42)
@@ -199,7 +234,7 @@ function getPointGen() {
 	if (hasUpgrade('d', 24)) gain = gain.times(1e125)
 	if (hasUpgrade('c', 33)) gain = gain.times(1e200)
 	if (hasUpgrade('c', 35)) gain = gain.times(1.111e111)
-	if (hasUpgrade('asc', 55)) gain = gain.times(1e100)
+	if (hasUpgrade('ant', 55)) gain = gain.times(1e100)
 	if (hasUpgrade('d', 31)) gain = gain.times(1e50)
 	if (hasUpgrade('d', 32)) gain = gain.times(1e100)
 	if (hasUpgrade('d', 33)) gain = gain.times(1e150)
@@ -361,7 +396,7 @@ function getPointGen() {
 	if (inChallenge("j", 12)) gain = gain.pow("1e-1024")
 	if (hasUpgrade("p", 81)) gain = gain.times("69420")
 	if (hasUpgrade("b", 61)) gain = gain.times("1e109")
-	if (hasUpgrade("asc", 61)) gain = gain.times("1e1014")
+	if (hasUpgrade("ant", 61)) gain = gain.times("1e1014")
 	if (hasUpgrade("g", 61)) gain = gain.times("1e6969")
 	if (hasUpgrade("c", 61)) gain = gain.times("1e69420")
 	if (hasUpgrade("d", 61)) gain = gain.times("6.666e666666")
@@ -394,25 +429,31 @@ function getPointGen() {
 	if (hasUpgrade('o', 66)) gain = gain.times(upgradeEffect('o', 66))
 	if (hasUpgrade('re', 11)) gain = gain.times(upgradeEffect('re', 11))
 	if (hasUpgrade('re', 105)) gain = gain.times(upgradeEffect('re', 105))
+	if (hasUpgrade('re', 155)) gain = gain.times(upgradeEffect('re', 155))
+	if (hasUpgrade('su', 55)) gain = gain.times(upgradeEffect('su', 55))
+	if (hasUpgrade('su', 431)) gain = gain.times(upgradeEffect('su', 431))
 	return gain
 }
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
+	bestPoints: new EN(0),
+	bestNS: new EN(0),
 }}
 
 // Display extra things at the top of the page
 var displayThings = [
 	function(){
-		let a = `Current endgame: ${format([10,0,5])} Points.`
-		let d = isEndgame()?makeBlue("<br>You are past endgame,<br>and the game might not be balanced here."):""
-		return a+d
+		let a = `Current endgame: ${format([1,1,0,2])} Points.`
+		let d = isEndgame()?makeRed("<br>You are past endgame,<br>and the game might not be balanced here."):""
+		let e = `<br>────────────────────────────────────`
+		return a+d+e
 	},
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-return player.points.gte("10^^^6")}
+return player.points.gte("10^^^10^^^10")}
 
 
 // Less important things beyond this point!

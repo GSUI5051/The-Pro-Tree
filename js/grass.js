@@ -85,7 +85,7 @@ effectDescription(){
         }
         },
         14: { title: "79",
-        description: "Keep 4 Rows Prestige Upgrades on reset and gain 1e10x Button Power.",
+        description: "Keep 4 Rows People Upgrades on reset and gain 1e10x Button Power.",
         cost: new EN("50"),
         unlocked() {
             return hasUpgrade("g", 13)
@@ -126,24 +126,24 @@ effectDescription(){
         }
         },
         24: { title: "84",
-        description: "Gain 1e30x Points and Keep Row 5 Prestige Upgrades.",
+        description: "Gain 1e30x Points and Keep Row 5 People Upgrades.",
         cost: new EN("5e6"),
         unlocked() {
             return hasUpgrade("g", 23)
         }
         },
         25: { title: "85",
-        description: "Unlock more button power and ascension upgrades, and autobuy ascension.",
+        description: "Unlock more button power and ants upgrades, and autobuy ants.",
         cost: new EN("1e9"),
         unlocked() {
             return hasUpgrade("g", 24)
         }
         },
         31: { title: "86",
-        description: "^1.01 BP, ^1.04 PP",
+        description: "^1.01 BP, ^1.04 People",
         cost: new EN("1e52"),
         unlocked() {
-            return hasUpgrade("asc", 45)
+            return hasUpgrade("ant", 45)
         }
         },
         32: { title: "87",
@@ -161,7 +161,7 @@ effectDescription(){
         }
         },
         34: { title: "89",
-        description: "1e69x Prestige Point.",
+        description: "1e69x People.",
         cost: new EN("2e61"),
         unlocked() {
             return hasUpgrade("g", 33)
@@ -182,7 +182,7 @@ effectDescription(){
         }
         },
         42: { title: "92",
-        description: "^1.01 BP, ^1.02 PP.",
+        description: "^1.01 BP, ^1.02 People.",
         cost: new EN("4e1502"),
         unlocked() {
             return hasUpgrade("g", 41)
@@ -248,7 +248,7 @@ effectDescription(){
         description: "1e6,969x Points!",
         cost: new EN("1e3364"),
         unlocked() {
-            return hasUpgrade("asc", 61)
+            return hasUpgrade("ant", 61)
         }
         },
     },
@@ -262,8 +262,8 @@ effectDescription(){
             unlocked() { return (hasUpgrade('g', 55)) },
         },
         12: {
-            name: "Prestigeless^2",
-            challengeDescription: "Raise Prestige Point gain and Button Power gain to ^0.0001.",
+            name: "Nuclear x2",
+            challengeDescription: "Raise People and Button Power gain to ^0.0001.",
             goalDescription: "1e32,700 Points.",
             rewardDescription: "Gain ^1.05 Button Power.",
             canComplete: function() {return player.points.gte("e32700")},
@@ -271,7 +271,7 @@ effectDescription(){
         },
         13: {
             name: "Pointless^2",
-            challengeDescription: "Raise Button Power, Prestige Point, Point gain to ^0.1.",
+            challengeDescription: "Raise Button Power, People, Point gain to ^0.1.",
             goalDescription: "1.00e944 Points.",
             rewardDescription: "Gain 1e777x Points and unlock 1 new row cup upgrades.",
             canComplete: function() {return player.points.gte("e944")},
@@ -287,9 +287,9 @@ effectDescription(){
                 },
                 22: {
                     name: "Reverse",
-                    challengeDescription: "Raise Prestige Point gain and Button Power gain to ^0.000001.",
+                    challengeDescription: "Raise People gain and Button Power gain to ^0.000001.",
                     goalDescription: "1e45,550 Points.",
-                    rewardDescription: "Gain ^1.02 Prestige Points.",
+                    rewardDescription: "Gain ^1.02 People.",
                     canComplete: function() {return player.points.gte("e45550")},
                     unlocked() { return (hasChallenge('g', 21)) },
                     },
@@ -303,7 +303,7 @@ effectDescription(){
                         },
         },
     name: "Grass", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "G", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "🌿", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -314,9 +314,11 @@ effectDescription(){
     resource: "Grass", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type() {if (hasUpgrade("z", 21)) return "static"
+    else return "normal"},    
+    exponent() {if (hasUpgrade("z", 21)) return new EN(Infinity)
+    else return new EN(0.005)},          
     branches: ["b"],
-    exponent: 0.005, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
         return mult
@@ -335,7 +337,7 @@ effectDescription(){
         if (hasUpgrade('c', 31)) mult = mult.times(69420)
         if (hasUpgrade('c', 32)) mult = mult.pow(1.02)
         if (hasUpgrade('c', 34)) mult = mult.times(69420)
-        if (hasUpgrade('asc', 53)) mult = mult.times(1e10)
+        if (hasUpgrade('ant', 53)) mult = mult.times(1e10)
         if (hasUpgrade('d', 35)) mult = mult.pow(1.02)
         if (hasUpgrade('d', 35)) mult = mult.times(1e69)
         if (hasUpgrade('f', 15)) mult = mult.times(1e25)

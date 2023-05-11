@@ -199,7 +199,7 @@ addLayer("w", {
         },
     },
     55: { title: "625",
-        description: "The object upgrade 71 is ^4 more and gain x10 medals.",
+        description: "The Onion upgrade 71 is ^4 more and gain x10 medals.",
         cost: new EN("10^^10000"),
         unlocked() {
             return hasUpgrade("w",54)
@@ -272,7 +272,7 @@ automate(){
     }
 },
     name: "Wood", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "W", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "🟫", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -321,6 +321,14 @@ automate(){
         if (hasUpgrade('z', 54)) mult = mult.times("10^^1e400")
         if (hasUpgrade('ar', 54)) mult = mult.pow("10^^^3")
         if (hasUpgrade('ba', 54)) mult = mult.pow("10^^^4")
+        if (hasUpgrade('ci', 54)) mult = mult.times("10^^^6")
+        if (hasUpgrade('du', 54)) mult = mult.times("10^^^10")
+        if (hasUpgrade('eg', 54)) mult = mult.times("10^^^25")
+        if (hasUpgrade('fi', 54)) mult = mult.times("10^^^50")
+        if (hasUpgrade('ga', 54)) mult = mult.times("10^^^100")
+        if (hasUpgrade('ha', 54)) mult = mult.times("10^^^1000")
+        if (hasUpgrade('is', 54)) mult = mult.times("10^^^9e15")
+        if (hasUpgrade('ju', 54)) mult = mult.times("10^^^1e16")
 
         return mult
     },

@@ -34,9 +34,9 @@ effectDescription(){
     },
     12: {
         name: "Rooted",
-        challengeDescription: "Raise Point Gain to ^0.5, Prestige Point Gain to ^0.25 and Button Power to ^0.125.",
+        challengeDescription: "Raise Point Gain to ^0.5, People Gain to ^0.25 and Button Power to ^0.125.",
         goalDescription: "1e15,848 Points.",
-        rewardDescription: "Gain 1e1,503x Prestige Points.",
+        rewardDescription: "Gain 1e1,503x People.",
         canComplete: function() {return player.points.gte("e15848")},
         unlocked() { return (hasChallenge('c', 11)) },
     },
@@ -50,7 +50,7 @@ effectDescription(){
         },
         22: {
             name: "Timewall",
-            challengeDescription: "Raise Prestige Point gain and Button Power to ^0.0145.",
+            challengeDescription: "Raise People gain and Button Power to ^0.0145.",
             goalDescription: "1e87,770 Points.",
             rewardDescription: "Gain 1e2,000x Points.",
             canComplete: function() {return player.points.gte("e87770")},
@@ -105,7 +105,7 @@ effectDescription(){
         }
         },
         14: { title: "104",
-        description: "Gain 1e20x Prestige Points and 1e15x Button Power.",
+        description: "Gain 1e20x People and 1e15x Button Power.",
         cost: new EN("20"),
         unlocked() {
             return hasUpgrade("c", 13)
@@ -153,7 +153,7 @@ effectDescription(){
         }
         },
         25: { title: "110",
-        description: "1e30x Points and 1 new row of ascension upgrades.",
+        description: "1e30x Points and 1 new row of ants upgrades.",
         cost: new EN("10000"),
         unlocked() {
             return hasUpgrade("c", 24)
@@ -167,7 +167,7 @@ effectDescription(){
         }
         },
         32: { title: "112",
-        description: "^1.01 Cups, ^1.02 Grass, ^1.04 Button Power, ^1.08 Prestige Points.",
+        description: "^1.01 Cups, ^1.02 Grass, ^1.04 Button Power, ^1.08 People.",
         cost: new EN("4e28"),
         unlocked() {
             return hasUpgrade("c", 31)
@@ -209,7 +209,7 @@ effectDescription(){
         }
         },
         43: { title: "118",
-        description: "1.79e308x PP.",
+        description: "1.79e308x People.",
         cost: new EN("1e189"),
         unlocked() {
             return hasUpgrade("c", 42)
@@ -273,7 +273,7 @@ effectDescription(){
         },
     },
     name: "Cups", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "C", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "🥤", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -304,7 +304,7 @@ effectDescription(){
         if (hasUpgrade('c', 31)) mult = mult.times(69420)
         if (hasUpgrade('c', 32)) mult = mult.pow(1.01)
         if (hasUpgrade('c', 34)) mult = mult.times(69420)
-        if (hasUpgrade('asc', 54)) mult = mult.times(100000)
+        if (hasUpgrade('ant', 54)) mult = mult.times(100000)
         if (hasUpgrade('d', 35)) mult = mult.pow(1.01)
         if (hasUpgrade('d', 35)) mult = mult.times(1e10)
         if (hasUpgrade('f', 15)) mult = mult.times(1e10)
@@ -341,7 +341,7 @@ effectDescription(){
         if (hasMilestone("f", 1)) return (hasMilestone("f", 1)?1:0)
         },    
     layerShown(){if (hasUpgrade("z", 22)) return false
-    return (hasUpgrade("asc", 35) || player[this.layer].unlocked)},
+    return (hasUpgrade("ant", 35) || player[this.layer].unlocked)},
     autoUpgrade() { if (hasUpgrade("f" , 11)) return true},
 }
 )

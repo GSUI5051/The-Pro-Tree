@@ -35,56 +35,49 @@ addLayer("z", {
         },
         },
         12: { title: "677",
-        description: "Unlock a challenge but remove prestige layer.",
+        description: "Unlock a challenge but remove people layer.",
         cost: new EN("1e6"),
         unlocked() {
             return hasUpgrade("z",11)
         },
         },
         13: { title: "678",
-        description: "Gain x10 zones but remove button power layer.",
+        description: "Gain x10 zebra but remove button power layer.",
         cost: new EN("3e6"),
         unlocked() {
             return hasUpgrade("z",12)
         },
         },
         14: { title: "679",
-        description: "Unlock 2 new challenges but remove ascension layer.",
+        description: "Unlock 2 new challenges but remove ants layer.",
         cost: new EN("4e7"),
         unlocked() {
             return hasUpgrade("z",13)
         },
         },
         15: { title: "680",
-        description: "Gain x3 zones.",
+        description: "Gain x3 zebras.",
         cost: new EN("1e8"),
         unlocked() {
             return hasUpgrade("z",14)
         },
         },
         21: { title: "681",
-        description: "Gain x9 zones but remove grass layer.",
-        cost: new EN("1e9"),
-        unlocked() {
-            return hasUpgrade("z",15)
-        },
-        },
-        21: { title: "681",
-        description: "Gain x9 zones but remove grass layer.",
+        description: "Gain x9 zebras but remove grass layer.",
         cost: new EN("1e9"),
         unlocked() {
             return hasUpgrade("z",15)
         },
         },
         22: { title: "682",
-        description: "Gain x81 zones but remove cups layer.",
+        description: "Gain x81 zebras but remove cups layer.",
         cost: new EN("8e9"),
         unlocked() {
             return hasUpgrade("z",21)
         },
         },
         23: { title: "683",
-        description: "Gain x3 zones.",
+        description: "Gain x3 zebras.",
         cost: new EN("1e11"),
         unlocked() {
             return hasUpgrade("z",22)
@@ -98,42 +91,42 @@ addLayer("z", {
         },
         },
         25: { title: "685",
-        description: "Gain x3 zones.",
+        description: "Gain x3 zebras.",
         cost: new EN("1e14"),
         unlocked() {
             return hasUpgrade("z",24)
         },
         },
         31: { title: "686",
-        description: "Gain x9 zones but remove fruits layer.",
+        description: "Gain x9 zebras but remove fruits layer.",
         cost: new EN("1e15"),
         unlocked() {
             return hasUpgrade("z",25)
         },
         },
         32: { title: "687",
-        description: "Gain x81 zones but remove electricity layer.",
+        description: "Gain x81 zebras but remove electricity layer.",
         cost: new EN("1e16"),
         unlocked() {
             return hasUpgrade("z",31)
         },
         },
         33: { title: "688",
-        description: "Gain x6,561 zones but remove houses layer.",
+        description: "Gain x6,561 zebras but remove houses layer.",
         cost: new EN("1e18"),
         unlocked() {
             return hasUpgrade("z",32)
         },
         },
         34: { title: "689",
-        description: "Gain x3 zones.",
+        description: "Gain x3 zebras.",
         cost: new EN("1e21"),
         unlocked() {
             return hasUpgrade("z",33)
         },
         },
         35: { title: "690",
-        description: "Gain x3 zones.",
+        description: "Gain x3 zebras.",
         cost: new EN("1e22"),
         unlocked() {
             return hasUpgrade("z",34)
@@ -147,49 +140,49 @@ addLayer("z", {
         },
         },
         42: { title: "692",
-        description: "Gain x4 zones.",
+        description: "Gain x4 zebras.",
         cost: new EN("1e26"),
         unlocked() {
             return hasUpgrade("z",41)
         },
         },
         43: { title: "693",
-        description: "Gain x4 zones.",
+        description: "Gain x4 zebras.",
         cost: new EN("1e27"),
         unlocked() {
             return hasUpgrade("z",42)
         },
         },
         44: { title: "694",
-        description: "Gain x16 zones but remove jetpacks layer.",
+        description: "Gain x16 zebras but remove jingles layer.",
         cost: new EN("2.5e27"),
         unlocked() {
             return hasUpgrade("z",43)
         },
         },
         45: { title: "695",
-        description: "Gain x256 zones but remove keys layer.",
+        description: "Gain x256 zebras but remove keys layer.",
         cost: new EN("2e28"),
         unlocked() {
             return hasUpgrade("z",44)
         },
         },
         51: { title: "696",
-        description: "Gain x4 zones.",
+        description: "Gain x4 zebras.",
         cost: new EN("1e31"),
         unlocked() {
             return hasUpgrade("z",45)
         },
         },
         52: { title: "697",
-        description: "Gain x16 zones but remove lights layer, (do not reset anything, otherwise you have to restart the reincarnation run.)",
+        description: "Gain x16 zebras but remove lights layer, (do not reset anything, otherwise you have to restart the reincarnation run.)",
         cost: new EN("1e32"),
         unlocked() {
             return hasUpgrade("z",51)
         },
         },
         53: { title: "698",
-        description: "Gain x256 zones but remove money layer.",
+        description: "Gain x256 zebras but remove money layer.",
         cost: new EN("4e32"),
         unlocked() {
             return hasUpgrade("z",52)
@@ -203,7 +196,7 @@ addLayer("z", {
         },
         },
         55: { title: "700",
-        description: "Unlock the 5 final zone challenges but remove notes layer, (If you dont complete any challenges, you will be stuck.)",
+        description: "Unlock the 5 final zebras challenges but remove notebook layer, (If you dont complete any challenges, you will be stuck.)",
         cost: new EN("10^^1e100"),
         unlocked() {
             return hasUpgrade("z",54)
@@ -213,7 +206,7 @@ addLayer("z", {
     challenges: {
         11: {
                 name: "Slog",
-                challengeDescription: "Object upgrade 61 is worse.",
+                challengeDescription: "Onion upgrade 61 is worse.",
                 goalDescription: "F9e15 Points.",
                 rewardDescription: "Gain x1.1 medals.",
                 canComplete: function() {return player.points.gte("10^^9e15")},
@@ -221,41 +214,41 @@ addLayer("z", {
         },
                 12: {
                 name: "Slog^2",
-                challengeDescription: "Object upgrade 61 is more worse.",
+                challengeDescription: "Onion upgrade 61 is more worse.",
                 goalDescription: "F1e10 Points.",
-                rewardDescription: "Gain x1.2 medals and x4 zones.",
+                rewardDescription: "Gain x1.2 medals and x4 zebras.",
                 canComplete: function() {return player.points.gte("10^^1e10")},
                 unlocked() { return (hasUpgrade('z', 14)) },
         },
         21: {
             name: "Slog^3",
-            challengeDescription: "Object upgrade 61 is even worse.",
+            challengeDescription: "Onion upgrade 61 is even worse.",
             goalDescription: "F999,999,999 Points.",
-            rewardDescription: "Gain x1.3 medals and x3 zones.",
+            rewardDescription: "Gain x1.3 medals and x3 zebras.",
             canComplete: function() {return player.points.gte("10^^999999999")},
             unlocked() { return (hasChallenge('z', 12)) },
     },
     22: {
         name: "Slog^4",
-        challengeDescription: "Object upgrade 61 is a lot worse.",
+        challengeDescription: "Onion upgrade 61 is a lot worse.",
         goalDescription: "F77,777,777 Points.",
-        rewardDescription: "Gain x1.5 medals and x16 zones.",
+        rewardDescription: "Gain x1.5 medals and x16 zebras.",
         canComplete: function() {return player.points.gte("10^^77777777")},
         unlocked() { return (hasUpgrade('z', 24)) },
 },
 31: {
     name: "Slog^inf",
-    challengeDescription: "Object upgrade 61 does nothing.",
+    challengeDescription: "Onion upgrade 61 does nothing.",
     goalDescription: "1 Point.",
-    rewardDescription: "Gain x1.6 medals and x4 zones.",
+    rewardDescription: "Gain x1.6 medals and x4 zebras.",
     canComplete: function() {return player.points.gte("1")},
     unlocked() { return (hasChallenge('z', 22)) },
 },
 32: {
     name: "Slog^0.5",
-    challengeDescription: "Object upgrade 61 is so much worse.",
+    challengeDescription: "Onion upgrade 61 is so much worse.",
     goalDescription: "F1e14 Points.",
-    rewardDescription: "Gain x1.8 medals and x4 zones.",
+    rewardDescription: "Gain x1.8 medals and x4 zebras.",
     canComplete: function() {return player.points.gte("10^^1e14")},
     unlocked() { return (hasChallenge('z', 31)) },
 },
@@ -263,31 +256,31 @@ addLayer("z", {
     name: "Normal Run",
     challengeDescription: "Just a normal run.",
     goalDescription: "FF2.585 Points.",
-    rewardDescription: "Gain x1.9 medals and x4 zones.",
+    rewardDescription: "Gain x1.9 medals and x4 zebras.",
     canComplete: function() {return player.points.gte("10^^1e7000")},
     unlocked() { return (hasUpgrade('z', 41)) },
 },
 42: {
     name: "Root",
-    challengeDescription: "Object upgrade 61 is ^3 less.",
+    challengeDescription: "Onion upgrade 61 is ^3 less.",
     goalDescription: "FF2.527 Points.",
-    rewardDescription: "Gain x2.1 medals and x4 zones.",
+    rewardDescription: "Gain x2.1 medals and x4 zebras.",
     canComplete: function() {return player.points.gte("10^^1e2333")},
     unlocked() { return (hasChallenge('z', 41)) },
 },
 51: {
     name: "Sqrtroot",
-    challengeDescription: "Object upgrade 61 is ^69 less.",
+    challengeDescription: "Onion upgrade 61 is ^69 less.",
     goalDescription: "FF2.301 Points.",
-    rewardDescription: "Gain x2.4 medals and x81 zones.",
+    rewardDescription: "Gain x2.4 medals and x81 zebras.",
     canComplete: function() {return player.points.gte("10^^1e100")},
     unlocked() { return (hasChallenge('z', 42)) },
 },
 52: {
     name: "Cuberoot",
-    challengeDescription: "Object upgrade 61 is ^420 less.",
+    challengeDescription: "Onion upgrade 61 is ^420 less.",
     goalDescription: "F9e15 Points.",
-    rewardDescription: "Gain x2.6 medals and x4 zones.",
+    rewardDescription: "Gain x2.6 medals and x4 zebras.",
     canComplete: function() {return player.points.gte("10^^9e15")},
     unlocked() { return (hasChallenge('z', 51)) },
 },
@@ -332,17 +325,17 @@ addLayer("z", {
     unlocked() { return (hasChallenge('z', 72)) },
 },
     },
-    name: "Zones", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "Z", // This appears on the layer's node. Default is the id with the first letter capitalized
+    name: "Zebras", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "🦓", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
 		points: new EN(0),
         auto: false
     }},
-    color: "#4d4de6",
+    color: "#4b6753",
     requires: new EN("10^^1e7000"), // Can be a function that takes requirement increases into account
-    resource: "Zones", // Name of prestige currency
+    resource: "Zebras", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -382,8 +375,22 @@ addLayer("z", {
         if (hasUpgrade('re', 103)) mult = mult.times(1e9)
         if (hasUpgrade('ar', 54)) mult = mult.pow("10^^^3")
         if (hasUpgrade('ba', 54)) mult = mult.pow("10^^^4")
+        if (hasUpgrade('ci', 54)) mult = mult.times("10^^^6")
+        if (hasUpgrade('du', 54)) mult = mult.times("10^^^10")
+        if (hasUpgrade('eg', 54)) mult = mult.times("10^^^25")
+        if (hasUpgrade('fi', 54)) mult = mult.times("10^^^50")
+        if (hasUpgrade('ga', 54)) mult = mult.times("10^^^100")
+        if (hasUpgrade('ha', 54)) mult = mult.times("10^^^1000")
+        if (hasUpgrade('is', 54)) mult = mult.times("10^^^9e15")
+        if (hasUpgrade('ju', 54)) mult = mult.times("10^^^1e16")
 
         return mult
+    },
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("re", 16) && resettingLayer=="re") keep.push("upgrades")
+        if (hasMilestone("re", 17) && resettingLayer=="re") keep.push("challenges")
+        if (layers[resettingLayer].row > this.row) layerDataReset("z", keep)
     },
     autoUpgrade() { if (hasMilestone("re" , 15)) return true},
     passiveGeneration() { return (hasMilestone("re", 13)&&player.current!="z")?1:0 },
@@ -392,7 +399,7 @@ addLayer("z", {
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "z", description: "Z: Reset for Zones", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "z", description: "Z: Reset for Zebra", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return (hasUpgrade("re",91) || player[this.layer].unlocked)},
 })

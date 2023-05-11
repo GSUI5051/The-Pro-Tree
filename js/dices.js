@@ -74,7 +74,7 @@ microtabs: {
         }
         },
         14: { title: "129",
-        description: "1e32x BP, PP and 100x Grass, Cups.",
+        description: "1e32x BP, People and 100x Grass, Cups.",
         cost: new EN("8"),
         unlocked() {
             return hasUpgrade("d", 13)
@@ -95,7 +95,7 @@ microtabs: {
         }
         },
         22: { title: "132",
-        description: "^1.01 Grass, ^1.02 BP, ^1.05 PP.",
+        description: "^1.01 Grass, ^1.02 BP, ^1.05 People.",
         cost: new EN("10"),
         unlocked() {
             return hasUpgrade("d", 21)
@@ -116,7 +116,7 @@ microtabs: {
         }
         },
         25: { title: "135",
-        description: "1e100x PP, BP and 1,000x Cups.",
+        description: "1e100x People, BP and 1,000x Cups.",
         cost: new EN("12"),
         unlocked() {
             return hasUpgrade("d", 24)
@@ -126,7 +126,7 @@ microtabs: {
         description: "1e50x Points.",
         cost: new EN("16"),
         unlocked() {
-            return hasUpgrade("asc", 55)
+            return hasUpgrade("ant", 55)
         }
         },
         32: { title: "137",
@@ -151,7 +151,7 @@ microtabs: {
         }
         },
         35: { title: "140",
-        description: "1.79e308x Points, PP, BP. ^1.01 C, ^1.02 G, ^1.05 BP, ^1.1 PP, 1e10x Cups, 1e69x Grass and unlocks a new layer.",
+        description: "1.79e308x Points, People, BP. ^1.01 C, ^1.02 G, ^1.05 BP, ^1.1 People, 1e10x Cups, 1e69x Grass and unlocks a new layer.",
         cost: new EN("17"),
         unlocked() {
             return hasUpgrade("d", 34)
@@ -236,7 +236,7 @@ microtabs: {
         },
     },
     name: "Dices", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "D", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "🎲", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -245,10 +245,10 @@ microtabs: {
     color: "#4D4B4B",
     requires: new EN("1e8300"), // Can be a function that takes requirement increases into account
     resource: "Dices", // Name of prestige currency
-    baseResource: "Prestige Points", // Name of resource prestige is based on
+    baseResource: "People", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    branches: ["asc" , "c"],
+    branches: ["ant" , "c"],
     exponent: 4, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)

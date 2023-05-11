@@ -186,7 +186,7 @@ addLayer("x", {
         },
         },
         55: { title: "650",
-        description: "Object Upgrade 61 ^6 and gain x30 medals.",
+        description: "Onion Upgrade 61 ^6 and gain x30 medals.",
         cost: new EN("10^^1000000000"),
         unlocked() {
             return hasUpgrade("x", 54)
@@ -194,7 +194,7 @@ addLayer("x", {
         },
     },
     name: "X-Rays", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "X", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "🦴", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -243,6 +243,14 @@ addLayer("x", {
         if (hasUpgrade('z', 54)) mult = mult.times("10^^1e300")
         if (hasUpgrade('ar', 54)) mult = mult.pow("10^^^3")
         if (hasUpgrade('ba', 54)) mult = mult.pow("10^^^4")
+        if (hasUpgrade('ci', 54)) mult = mult.times("10^^^6")
+        if (hasUpgrade('du', 54)) mult = mult.times("10^^^10")
+        if (hasUpgrade('eg', 54)) mult = mult.times("10^^^25")
+        if (hasUpgrade('fi', 54)) mult = mult.times("10^^^50")
+        if (hasUpgrade('ga', 54)) mult = mult.times("10^^^100")
+        if (hasUpgrade('ha', 54)) mult = mult.times("10^^^1000")
+        if (hasUpgrade('is', 54)) mult = mult.times("10^^^9e15")
+        if (hasUpgrade('ju', 54)) mult = mult.times("10^^^1e16")
 
         return mult
     },
@@ -251,6 +259,7 @@ addLayer("x", {
         if (hasMilestone("re", 14) && resettingLayer=="re") keep.push("upgrades")
         if (layers[resettingLayer].row > this.row) layerDataReset("x", keep)
     },
+    autoUpgrade() { if (hasMilestone("re" , 13)) return true},
     passiveGeneration() { return (hasMilestone("re", 9)&&player.current!="x")?1:0 },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new EN(1)

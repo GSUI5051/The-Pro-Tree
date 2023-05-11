@@ -56,21 +56,21 @@ addLayer("o", {
         }
         },
         15: { title: "380",
-        description: "Gain x2 Objects, ^1.5 Lights and ^4 Keys.",
+        description: "Gain x2 Onions, ^1.5 Lights and ^4 Keys.",
         cost: new EN("8"),
         unlocked() {
             return hasUpgrade("o", 14)
         }
         },
         21: { title: "381",
-        description: "Gain x2 Objects again, ^2 Lights and ^6 Keys.",
+        description: "Gain x2 Onions again, ^2 Lights and ^6 Keys.",
         cost: new EN("8"),
         unlocked() {
             return hasUpgrade("o", 15)
         }
         },
         22: { title: "382",
-        description: "Gain x2 Objects yet again, ^3 Lights and ^36 Keys.",
+        description: "Gain x2 Onions yet again, ^3 Lights and ^36 Keys.",
         cost: new EN("16"),
         unlocked() {
             return hasUpgrade("o", 21)
@@ -105,7 +105,7 @@ addLayer("o", {
         }
         },
         32: { title: "387",
-        description: "Gain x4 Objects, ^10 Lights and ^1e10 Keys.",
+        description: "Gain x4 Onions, ^10 Lights and ^1e10 Keys.",
         cost: new EN("128"),
         unlocked() {
             return hasUpgrade("o", 31)
@@ -161,7 +161,7 @@ addLayer("o", {
         }
         },
         45: { title: "395",
-        description: "Gain x4 Objects, ^1.1 Lights and ^1e153 Keys.",
+        description: "Gain x4 Onions, ^1.1 Lights and ^1e153 Keys.",
         cost: new EN("268435456"),
         unlocked() {
             return hasUpgrade("o", 44)
@@ -242,6 +242,7 @@ addLayer("o", {
         cost: new EN("1"),
         effect() {
             let time = EN(player.o.resetTime)
+            if (hasUpgrade("su", 12)) time = time.mul(1000000)
             if (hasUpgrade("q", 55)) time = time.mul(4)
             if (hasChallenge("o", 21)) time = time.mul(2)
             if (hasUpgrade("r", 55)) time = time.mul(16)
@@ -303,17 +304,17 @@ addLayer("o", {
     */
    
   },
-    name: "Objects", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "O", // This appears on the layer's node. Default is the id with the first letter capitalized
+    name: "Onions", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "🧅", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
 		points: new EN(0),
         auto: false
     }},
-    color: "#FF00FF",
+    color: "#48412B",
     requires: new EN("e1.7e9"), // Can be a function that takes requirement increases into account
-    resource: "Objects", // Name of prestige currency
+    resource: "Onions", // Name of prestige currency
     baseResource: "Lights", // Name of resource prestige is based on
     baseAmount() {return player.l.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -339,34 +340,34 @@ addLayer("o", {
     canBuyMax() { return hasMilestone("n", 1) },
     row: 5, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "o", description: "O: Reset for Objects", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "o", description: "O: Reset for Onions", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     milestones: {
-        1: {requirementDescription: "1 Object",
+        1: {requirementDescription: "1 Onion",
          effectDescription: "Gain 100% of Jetpacks, Keys and Lights every second.",
             done() { return player.o.points.gte(1)},},
-   2: {requirementDescription: "2 Total Objects",
-         effectDescription: "Autobuy Money and Notes.",
+   2: {requirementDescription: "2 Total Onions",
+         effectDescription: "Autobuy Money and Notebooks.",
             done() { return player.o.total.gte(2)},},
     
-    3: {requirementDescription: "4 Total Objects",
-         effectDescription: "x1.1 Objects.",
+    3: {requirementDescription: "4 Total Onions",
+         effectDescription: "x1.1 Onions.",
             done() { return player.o.total.gte(4)},},
-    4: {requirementDescription: "16 Total Objects",
+    4: {requirementDescription: "16 Total Onions",
          effectDescription: "Keep Keys upgrades on reset.",
             done() { return player.o.total.gte(16)},},
     
-    5: {requirementDescription: "256 Total Objects",
+    5: {requirementDescription: "256 Total Onions",
          effectDescription: "Keep Lights upgrades on reset.",
             done() { return player.o.total.gte(256)},},
     
-    6: {requirementDescription: "65,536 Total Objects",
+    6: {requirementDescription: "65,536 Total Onions",
          effectDescription: "Keep Money stuff on reset.",
             done() { return player.o.total.gte(65536)},},
-    7: {requirementDescription: "4.294e9 Total Objects",
-         effectDescription: "Keep Notes stuff on reset.",
+    7: {requirementDescription: "4.294e9 Total Onions",
+         effectDescription: "Keep Notebooks stuff on reset.",
             done() { return player.o.total.gte(4.294e9)},},
-    8: {requirementDescription: "1e44 Objects",
+    8: {requirementDescription: "1e44 Onions",
          effectDescription: "Unlock 1 new challenge.",
             done() { return player.o.points.gte(1e44)},},
     },
@@ -395,8 +396,8 @@ addLayer("o", {
    },
    13: {
     name: "Orbs",
-    challengeDescription: "You start with 2 notes.",
-    goalDescription: "2,022 Notes.",
+    challengeDescription: "You start with 2 notebooks.",
+    goalDescription: "2,022 Notebooks.",
     rewardDescription: "Gain ^256 Lights and get a lot of BIGGER boost to keys.",
     canComplete: function() {return player.n.points.gte("2022")},
     unlocked() { return (hasUpgrade('o', 65)) }

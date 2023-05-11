@@ -186,7 +186,7 @@ addLayer("ba", {
         },
         },
         55: { title: "750",
-        description: "Unlock a final reincarnation upgrade and gain x10,000 medals.",
+        description: "Unlock 1 new reincarnation upgrade and gain x10,000 medals.",
         cost: new EN("10^^^4"),
         unlocked() {
             return hasUpgrade("ba", 54)
@@ -201,6 +201,9 @@ addLayer("ba", {
 		points: new EN(0),
         auto: false
     }},
+    passiveGeneration() { 
+        if (hasMilestone("re", 16)) return (hasMilestone("re", 16)?1:0)
+        },  
     color: "#21abcd",
     requires: new EN("10^^^4"), // Can be a function that takes requirement increases into account
     resource: "Balls", // Name of prestige currency
@@ -234,8 +237,25 @@ addLayer("ba", {
         if (hasUpgrade('ba', 52)) mult = mult.pow("10^^1000000000000")
         if (hasUpgrade('ba', 53)) mult = mult.pow("10^^100000000000000000000000000000000")
         if (hasUpgrade('ba', 54)) mult = mult.pow("10^^^4")
+        if (hasUpgrade('re', 114)) mult = mult.times(1000)
+        if (hasUpgrade('ci', 54)) mult = mult.times("10^^^6")
+        if (hasUpgrade('du', 54)) mult = mult.times("10^^^10")
+        if (hasUpgrade('eg', 54)) mult = mult.times("10^^^25")
+        if (hasUpgrade('fi', 54)) mult = mult.times("10^^^50")
+        if (hasUpgrade('ga', 54)) mult = mult.times("10^^^100")
+        if (hasUpgrade('ha', 54)) mult = mult.times("10^^^1000")
+        if (hasUpgrade('is', 54)) mult = mult.times("10^^^9e15")
+        if (hasUpgrade('ju', 54)) mult = mult.times("10^^^1e16")
+
         return mult
     },  
+    doReset(resettingLayer) {
+        let keep = [];
+        if (hasMilestone("re", 18) && resettingLayer=="re") keep.push("upgrades")
+        if (layers[resettingLayer].row > this.row) layerDataReset("ba", keep)
+    },
+    autoUpgrade() { if (hasMilestone("re" , 18)) return true},
+
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new EN(1)
     },

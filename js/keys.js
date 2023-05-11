@@ -11,6 +11,7 @@ addLayer("k", {
                             unlocked() {return (hasAchievement("a", 11))},
                     content: [
                         ["blank", "15px"],
+                        ["raw-html", () => `<h4 style="opacity:.5">You will only be able to get 1 key at a time.<br> But you can spend it on upgrades to increase.</h4>`],
                         ["upgrades", [1,2,3,4,5,6,7,8,9]]
                     ]
                 },
@@ -19,12 +20,12 @@ addLayer("k", {
     upgrades: {
         11: { title: "276",
         description: "Point gain is increased by a lot and gain x2 Keys.",
-        cost: new EN("69"),
+        cost: new EN("1"),
 
         },
         12: { title: "277",
         description: "Square Key Gain.",
-        cost: new EN("420"),
+        cost: new EN("100"),
         unlocked() {
             return hasUpgrade("k", 11)
         }
@@ -233,32 +234,12 @@ addLayer("k", {
         }
         },
     },
-    effect(){
-
-    },
-    effect(){
-        return ExpantaNum.pow(2, player[this.layer].points)
-        /*
-          you should use this.layer instead of <layerID>
-          Decimal.pow(num1, num2) is an easier way to do
-          num1.pow(num2)
-        */
-      },
-      effect(){
-      },
-      effectDescription(){
-
-},
-effectDescription(){
-    return "You can only gain 1 key at a time, can be increased by upgrades."
-    
     /*
       use format(num) whenever displaying a number
     */
    
-  },
     name: "Keys", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "K", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "🔑", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -266,13 +247,15 @@ effectDescription(){
         auto: false
     }},
     color: "#b6c0b3",
-    requires: new EN("eee10"), // Can be a function that takes requirement increases into account
+    requires: new EN("eee9"), // Can be a function that takes requirement increases into account
     resource: "Keys", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type() {if (hasUpgrade("z", 45)) return "static"
+    else return "normal"},    
+    exponent() {if (hasUpgrade("z", 45)) return new EN(Infinity)
+    else return new EN(0)},       
     branches: ["j", "e", "f"],
-    exponent: "0", // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
         if (hasUpgrade('k', 11)) mult = mult.times(2)

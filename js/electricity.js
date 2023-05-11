@@ -40,7 +40,7 @@ addLayer("e", {
         }
         },
         13: { title: "178",
-        description: "Unlock a new prestige upgrade.",
+        description: "Unlock a new people upgrade.",
         cost: new EN("2"),
         unlocked() {
             return hasUpgrade("e", 12)
@@ -54,7 +54,7 @@ addLayer("e", {
         }
         },
         15: { title: "180",
-        description: "Unlock another prestige upgrade.",
+        description: "Unlock another people upgrade.",
         cost: new EN("5"),
         unlocked() {
             return hasUpgrade("e", 14)
@@ -68,7 +68,7 @@ addLayer("e", {
         }
         },
         22: { title: "182",
-        description: "Square PP Gain.",
+        description: "Square People Gain.",
         cost: new EN("8"),
         unlocked() {
             return hasUpgrade("e", 21)
@@ -96,7 +96,7 @@ addLayer("e", {
         }
         },
         31: { title: "186",
-        description: "Cube PP Gain!",
+        description: "Cube People Gain!",
         cost: new EN("9"),
         unlocked() {
             return hasUpgrade("e", 25)
@@ -241,7 +241,7 @@ effectDescription(){
    
   },
     name: "Electricity", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "E", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "⚡", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,

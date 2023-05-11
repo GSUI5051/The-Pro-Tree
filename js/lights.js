@@ -19,7 +19,7 @@ addLayer("l", {
     upgrades: {
         11: { title: "301",
         description: "Gain x69 Lights.",
-        cost: new EN("420"),
+        cost: new EN("10"),
 
         },
         12: { title: "302",
@@ -272,7 +272,7 @@ effectDescription(){
    
   },
     name: "Lights", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "L", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "💡", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -284,9 +284,11 @@ effectDescription(){
     resource: "Lights", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type() {if (hasUpgrade("z", 52)) return "static"
+    else return "normal"},    
+    exponent() {if (hasUpgrade("z", 52)) return new EN(Infinity)
+    else return new EN(0)},     
     branches: ["k", "h", "e"],
-    exponent: "0", // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
         if (hasUpgrade('l', 11)) mult = mult.times(69)
@@ -414,6 +416,7 @@ effectDescription(){
         if (hasUpgrade('y', 54)) mult = mult.pow("10^^1e300")
         if (inChallenge("z", 11)) mult = mult.pow("1")
         if (hasChallenge("k", 66)) mult = mult.times("ee9")
+        if (hasUpgrade('su', 11)) mult = mult.times("eee10")
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

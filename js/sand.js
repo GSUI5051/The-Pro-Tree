@@ -8,9 +8,10 @@ addLayer("s", {
     microtabs: {
     stuff: {
         "Upgrades": {
-            unlocked() {return (hasUpgrade("r", 55))},
+            unlocked() {return (hasAchievement("a", 55))},
     content: [
         ["blank", "15px"],
+        ["raw-html", () => `<h4 style="opacity:.5">You will be able to unlock buyables and sub currency!<br>Which you can spend it on buyables and boost more sand gain!</h4>`],
         ["upgrades", [1,2,3,4,5,6,7,8,9]]
     ]
     
@@ -19,7 +20,7 @@ addLayer("s", {
     unlocked() {return (hasUpgrade("s", 11))},
     content: [
         ["blank", "15px"],
-        ["display-text", () => "You have <h2 style='color: #c2b280; text-shadow: 0 0 10px #c2b280'>" + format(player.s.sanddunes) + "</h2> Sand Dunes, multiplying Sand gain by <h2 style='color: #c2b280; text-shadow: 0 0 10px #c2b280'> <br>" + format(player.s.sanddunes.max(1).pow(0.5)) + "x</h2>.<br>" + "<h3>" + format(tmp.s.effect) + " Sand Dust/s<h3> <br>"],
+        ["display-text", () => "You have <h2 style='color: #c2b280; text-shadow: 0 0 10px #c2b280'>" + format(player.s.sanddunes) + "</h2> Sand Dunes 🏖️, multiplying Sand gain by <h2 style='color: #c2b280; text-shadow: 0 0 10px #c2b280'> <br>" + format(player.s.sanddunes.max(1).pow(0.5)) + "x</h2>.<br>" + "<h3>" + format(tmp.s.effect) + " Sand Dust/s<h3> <br>"],
         "buyables"
     ]
 },
@@ -199,7 +200,7 @@ content: [
         }
     },
     55: { title: "475",
-        description: "The Object Upgrade 71 is x256 more powerful and unlock a new layer.",
+        description: "The Onion Upgrade 71 is x256 more powerful and unlock a new layer.",
         cost: new EN("10^^12"),
         unlocked() {
             return player.o.points.gte("10^^20")
@@ -290,7 +291,7 @@ effect() {
     return eff;
 },
     name: "Sand",
-    symbol: "S", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "🏜️", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -305,7 +306,10 @@ effect() {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     branches: ["r", "m"],
-    exponent: "0", // Prestige currency exponent
+    type() {if (hasUpgrade("du", 54)) return "static"
+    else return "normal"},    
+    exponent() {if (hasUpgrade("du", 54)) return new EN(Infinity)
+    else return new EN(0)},    
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
         if (player.s.sanddunes.gte(1)) mult = mult.times(player.s.sanddunes.max(1).pow(0.5))
@@ -339,6 +343,7 @@ effect() {
         if (hasUpgrade('z', 54)) mult = mult.times("10^^1e1250")
         if (hasUpgrade('ar', 54)) mult = mult.pow("10^^^3")
         if (hasUpgrade('ba', 54)) mult = mult.pow("10^^^4")
+        if (hasUpgrade('ci', 54)) mult = mult.times("10^^^6")
 
         return mult
     },
@@ -432,6 +437,6 @@ effect() {
     hotkeys: [
         {key: "s", description: "S: Reset for Sand", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    
-    layerShown(){return (hasChallenge("o", 22) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("du", 54)) return false
+    else return (hasChallenge("o", 22) || player[this.layer].unlocked)},
 })

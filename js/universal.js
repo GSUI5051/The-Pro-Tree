@@ -18,7 +18,7 @@ addLayer("u", {
 unlocked() {return (hasUpgrade("u", 11))},
         content: [
     ["blank", "15px"],
-    ["display-text", () => "You have <h2 style='color: #e5e500; text-shadow: 0 0 10px #e5e500'>" + format(player.u.stars) + "</h2> Stars, multiplying Universal gain by <h2 style='color: #e5e500; text-shadow: 0 0 10px #e5e500'> <br>" + format(player.u.stars.max(1).pow(0.69420)) + "x</h2>."],
+    ["display-text", () => "You have <h2 style='color: #e5e500; text-shadow: 0 0 10px #e5e500'>" + format(player.u.stars) + "</h2> Stars ⭐, multiplying Universal gain by <h2 style='color: #e5e500; text-shadow: 0 0 10px #e5e500'> <br>" + format(player.u.stars.max(1).pow(0.69420)) + "x</h2>."],
     "buyables"
         ]
     },
@@ -202,7 +202,7 @@ unlocked() {return (hasUpgrade("u", 11))},
     }
     },
     55: { title: "525",
-    description: "The Object Upgrade 71 is x4.294e9 more powerful and unlock a new layer!",
+    description: "The Onoin Upgrade 71 is x4.294e9 more powerful and unlock a new layer!",
     cost: new EN("10^^300"),
     unlocked() {
         return player.o.points.gte("10^^500")
@@ -357,7 +357,7 @@ unlocked() {return (hasUpgrade("u", 11))},
         player.u.stars = player.u.stars.add(buyableEffect("u", 11).mul(diff))
       },
     name: "Universal", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "U", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "🌌", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -370,10 +370,11 @@ unlocked() {return (hasUpgrade("u", 11))},
     resource: "Universal", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     branches: ["t", "n"],
-    exponent: "0", // Prestige currency exponent
-    gainMult() { // Calculate the multiplier for main currency from bonuses
+    type() {if (hasUpgrade("ga", 54)) return "static"
+    else return "normal"},    
+    exponent() {if (hasUpgrade("ga", 54)) return new EN(Infinity)
+    else return new EN(0)},    gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
         if (player.u.stars.gte(1)) mult = mult.times(player.u.stars.max(1).pow(0.69420))
         if (hasMilestone('re', 2)) mult = mult.times(2)
@@ -388,6 +389,10 @@ unlocked() {return (hasUpgrade("u", 11))},
         if (hasUpgrade('z', 54)) mult = mult.times("10^^1e700")
         if (hasUpgrade('ar', 54)) mult = mult.pow("10^^^3")
         if (hasUpgrade('ba', 54)) mult = mult.pow("10^^^4")
+        if (hasUpgrade('ci', 54)) mult = mult.times("10^^^6")
+        if (hasUpgrade('du', 54)) mult = mult.times("10^^^10")
+        if (hasUpgrade('eg', 54)) mult = mult.times("10^^^25")
+        if (hasUpgrade('fi', 54)) mult = mult.times("10^^^50")
 
         return mult
     },
@@ -406,5 +411,6 @@ unlocked() {return (hasUpgrade("u", 11))},
     hotkeys: [
         {key: "u", description: "U: Reset for Universal", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasChallenge("o", 23) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("ga", 54)) return false
+    else return (hasChallenge("o", 23) || player[this.layer].unlocked)},
 })

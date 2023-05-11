@@ -183,7 +183,7 @@ addLayer("r", {
         }
         },
         55: { title: "450",
-        description: "The Object Upgrade 71 is x16 more powerful and unlock a challenge!",
+        description: "The Onion Upgrade 71 is x16 more powerful and unlock a challenge!",
         cost: new EN("eeeee10"),
         unlocked() {
             return player.o.points.gte("eeeeeeeee10")
@@ -191,7 +191,7 @@ addLayer("r", {
         },
     },
     name: "Rings", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "R", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "💍", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -203,9 +203,11 @@ addLayer("r", {
     resource: "Rings", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type() {if (hasUpgrade("ci", 54)) return "static"
+    else return "normal"},    
+    exponent() {if (hasUpgrade("ci", 54)) return new EN(Infinity)
+    else return new EN(0)},     
     branches: ["q", "l"],
-    exponent: "0", // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
         if (hasUpgrade('r', 11)) mult = mult.times(3)
@@ -265,5 +267,6 @@ addLayer("r", {
     hotkeys: [
         {key: "r", description: "R: Reset for Rings", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasChallenge("o", 21) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("ci", 54)) return false
+    else return (hasChallenge("o", 21) || player[this.layer].unlocked)},
 })

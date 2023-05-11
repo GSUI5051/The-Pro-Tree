@@ -1,9 +1,10 @@
-function makeBlue(c){
-    return "<span style='color:#4444bb'>" + c + "</span>"
+function makeRed(c){
+    return "<span style='color:#FF0000'>" + c + "</span>"
 }
+
 addLayer("p", {
-    name: "Prestige", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
+    name: "People", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "🧍", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
@@ -11,11 +12,13 @@ addLayer("p", {
     }},
     color: "3399FF",
     requires: new ExpantaNum([10]), // Can be a function that takes requirement increases into account
-    resource: "Prestige Points", // Name of prestige currency
+    resource: "People", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.5, // Prestige currency exponent
+    type() {if (hasUpgrade("z", 12)) return "static"
+    else return "normal"},    
+    exponent() {if (hasUpgrade("z", 12)) return new EN(Infinity)
+    else return new EN(0.5)},      
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new ExpantaNum(1)
         return mult
@@ -29,9 +32,9 @@ addLayer("p", {
         if (hasUpgrade('p', 24)) mult = mult.times(4)
         if (hasUpgrade('b', 22)) mult = mult.times(100)
         if (hasUpgrade('b', 24)) mult = mult.times(6969)
-        if (hasUpgrade('asc', 14)) mult = mult.times(6969)
-        if (hasUpgrade('asc', 22)) mult = mult.times(10000)
-        if (hasUpgrade('asc', 24)) mult = mult.times(100000)
+        if (hasUpgrade('ant', 14)) mult = mult.times(6969)
+        if (hasUpgrade('ant', 22)) mult = mult.times(10000)
+        if (hasUpgrade('ant', 24)) mult = mult.times(100000)
         if (hasUpgrade('p', 41)) mult = mult.times(1000000)
         if (hasUpgrade('p', 45)) mult = mult.times(1e10)
         if (hasUpgrade('p', 53)) mult = mult.times(1e10)
@@ -40,7 +43,7 @@ addLayer("p", {
         if (hasUpgrade('b', 41)) mult = mult.pow(1.01)
         if (hasUpgrade('b', 42)) mult = mult.pow(1.05)
         if (hasUpgrade('b', 52)) mult = mult.times(1e15)
-        if (hasUpgrade('asc', 33)) mult = mult.times(1e33)
+        if (hasUpgrade('ant', 33)) mult = mult.times(1e33)
         if (hasUpgrade('c', 14)) mult = mult.times(1e20)
         if (hasUpgrade('g', 31)) mult = mult.pow(1.04)
         if (hasUpgrade('g', 34)) mult = mult.times(1e69)
@@ -48,7 +51,7 @@ addLayer("p", {
         if (hasUpgrade('d', 22)) mult = mult.pow(1.05)
         if (hasUpgrade('d', 25)) mult = mult.times(1e100)
         if (hasUpgrade('c', 32)) mult = mult.pow(1.08)
-        if (hasUpgrade('asc', 51)) mult = mult.times(1e150)
+        if (hasUpgrade('ant', 51)) mult = mult.times(1e150)
         if (hasUpgrade('d', 35)) mult = mult.pow(1.1)
         if (hasUpgrade('d', 35)) mult = mult.times("1.79e308")
         if (hasUpgrade('f', 14)) mult = mult.times(1e123)
@@ -88,10 +91,23 @@ addLayer("p", {
                             unlocked() {return (hasAchievement("a", 11))},
                     content: [
                         ["blank", "15px"],
+                        ["raw-html", () => `<h4 style="opacity:.5">Welcome to the Pro Tree!<br> Your goal is to reach the endgame. You can press P to gain People.<br> Which is used to buy upgrades.</h4>`],
                         ["upgrades", [1,2,3,4,5,6,7,8,9]]
-                    ]
+                    ],
+                    "Tutorial": {
+                        unlocked() {return (hasAchievement("a", 11))},
+                        content: [
+                            ["blank", "15px"],
+                            "lore"
+                        ]
+                        
+                    },
                 },
             },
+        },
+        update(diff){
+            player.bestPoints = player.bestPoints.max(player.points)
+            player.bestNS = player.bestNS.max(player.su.points)
         },
     upgrades: {
         11: { title: "1",
@@ -100,7 +116,7 @@ addLayer("p", {
 
         },
         12: { title: "2",
-        description: "Point gain is boosted by Prestige Points.",
+        description: "Point gain is boosted by People.",
         cost: new ExpantaNum(5),
         effect() {
             return player[this.layer].points.add(1).pow("0.5").min("ee6")
@@ -111,7 +127,7 @@ addLayer("p", {
         }
         },
         13: { title: "3",
-        description: "Prestige Point gain is boosted by Points.",
+        description: "People gain is boosted by Points.",
         cost: EN("10"),
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         effect() {
@@ -140,7 +156,7 @@ addLayer("p", {
         }
         },
         21: { title: "6",
-        description: "Gain 3x More Prestige Points",
+        description: "Gain 3x More People",
         cost: new EN(1e9),
         unlocked() {
             return hasUpgrade("b", 15)
@@ -209,7 +225,7 @@ addLayer("p", {
         }
         },
         34: { title: "14",
-        description: "69,420x Prestige Points.",
+        description: "69,420x People.",
         cost: EN(1e54),
         unlocked() {
             return hasUpgrade("p", 33)
@@ -223,7 +239,7 @@ addLayer("p", {
         }
         },
         41: { title: "16",
-        description: "1,000,000x Prestige Points",
+        description: "1,000,000x People",
         cost: EN(1e220),
         unlocked() {
             return hasUpgrade("b", 35)
@@ -251,7 +267,7 @@ addLayer("p", {
         }
         },
         45: { title: "20",
-        description: "1e10x Prestige Points.",
+        description: "1e10x People.",
         cost: EN("1e477"),
         unlocked() {
             return hasUpgrade("p", 44)
@@ -272,7 +288,7 @@ addLayer("p", {
         }
         },
         53: { title: "23",
-        description: "1e10x Prestige Points.",
+        description: "1e10x People.",
         cost: EN("1e603"),
         unlocked() {
             return hasUpgrade("p", 52)
@@ -286,14 +302,14 @@ addLayer("p", {
         }
         },
         55: { title: "25",
-        description: "^1.01 Points, 1e6x PP, BP.",
+        description: "^1.01 Points, 1e6x People, BP.",
         cost: EN("1e678"),
         unlocked() {
             return hasUpgrade("p", 54)
         }
         },
         61: { title: "?",
-        description: "Point gain is Boosted by Prestige Points at a reduced rate.",
+        description: "Point gain is Boosted by People at a reduced rate.",
         cost: EN("1e2000000"),
         effect() {
             return player[this.layer].points.add(1).pow(0.05).min("3e109258")
@@ -304,7 +320,7 @@ addLayer("p", {
         }
         },
         62: { title: "?",
-        description: "Point gain is Boosted by Prestige Points at a reduced rate. (^0.2)",
+        description: "Point gain is Boosted by People at a reduced rate. (^0.2)",
         cost: EN("1e2000000"),
         effect() {
             return player[this.layer].points.add(1).pow(0.1).min("e258609")
@@ -315,7 +331,7 @@ addLayer("p", {
         }
         },
         63: { title: "?",
-        description: "Point gain is Boosted by Prestige Points.",
+        description: "Point gain is Boosted by People.",
         cost: EN("1e2000000"),
         effect() {
             return player[this.layer].points.add(1).pow(0.5).min("ee1000000")
@@ -384,14 +400,14 @@ addLayer("p", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "p", description: "P: Reset for People", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     
     ],
     doReset(resettingLayer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
         if(layers[resettingLayer].row > this.row) {
         layerDataReset(this.layer)
         if(hasUpgrade("b",21)) player.p.upgrades.push("11", "12", "13", "14", "15", "21", "22", "23", "24", "25")
-        if(hasUpgrade("asc",15)) player.p.upgrades.push("31", "32", "33", "34", "35")    
+        if(hasUpgrade("ant",15)) player.p.upgrades.push("31", "32", "33", "34", "35")    
         if(hasUpgrade("g",14)) player.p.upgrades.push("11", "12", "13", "14", "15", "21", "22", "23", "24", "25", "31", "32", "33", "34", "35", "41", "42", "43", "44", "45")
         if(hasUpgrade("g",24)) player.p.upgrades.push("51", "52", "53", "54", "55")    
         if(hasUpgrade("f",11)) player.p.upgrades.push("11", "12", "13", "14", "15", "21", "22", "23", "24", "25", "31", "32", "33", "34", "35", "41", "42", "43", "44", "45", "51", "52", "53", "54", "55")
@@ -404,8 +420,112 @@ addLayer("p", {
     },
     passiveGeneration() {
         if (hasUpgrade("z", 12)) return (hasUpgrade("z", 12)?0:0)
-        if (hasMilestone("asc", 1)) return (hasMilestone("asc", 1)?1:0)
+        if (hasMilestone("ant", 1)) return (hasMilestone("ant", 1)?1:0)
         },
     layerShown(){if (hasUpgrade("z", 12)) return false
     else return (hasAchievement("a", 11) || player[this.layer].unlocked)}
 })
+addLayer("stat", {
+    name: "statistics", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "📈", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        points: 0,
+        unlocked: true,
+    }},
+    color: "#ffffff",
+    tooltip(){return "Statistics"},
+    row: "side", // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return true},
+    tabFormat:{
+        "Stats":{
+            content:[
+                ["display-text",function(){return getStatTab()}]
+            ]
+        },
+    },
+})
+function getStatTab(){
+    let br = "<br>"
+    let x = "<h1 style='color: #ffffff'>Points</h1>"
+    x += br
+    x += "<h3>You have " + format(player.points) + " Points.</h3>"
+    x += br
+    x += "<h3>Your best amount of points was " + format(player.bestPoints) + ".</h3>"    
+    x += br
+    x+= "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+    x += br
+    x += "<h1>Time:🕒</h1>"
+    x += br
+    x += "<h3>You have played for " + formatTime(player.timePlayed, true + ".</h3>")
+   x += br
+    x+= "<h4>―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</h4>"
+    if (player.re.unlocked){
+        x += br
+        x += "<h1 style='color: #39e75f'>Reincarnation</h1>"
+        x += br
+        x += "<h3>You have " + formatWhole(player.re.points) + " Medals (" + formatWhole(player.re.total) + " total).</h3>"
+       
+        x += br
+       x += "<h3>You have spent " + formatTime(player.re.resetTime, true) + " in this Reincarnation.</h3>"
+       x += br
+       x+= "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+    }
+       if (hasUpgrade("re", 55)){
+        x += br
+        x += "<h1 style='color: #468990'>Badges</h1>"
+    x += br
+    x += "<h3>You have " + formatWhole(player.re.badges) + " Badges" + " (" + formatWhole(tmp.re.effect)  + " Badges/s).</h3>"
+    x += br
+    x += "<h3>(For you to get more badges, check the buyables.)</h3>"
+    x += br
+    x+= "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+    }
+    if (player.ju.unlocked){
+        x += br
+        x += "<h1 style='color: #da614e'>Juice:🍊</h1>"
+        x += br
+        x += "<h3>You have " + formatWhole(player.ju.points) + " Juices.</h3>"
+        x += br
+        x += "<h3>You have spent " + formatTime(player.ju.resetTime, true) + " in this Juice.</h3>"
+        x += br
+        x+= "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+        x += br
+    }
+    if (player.su.unlocked){
+        x += br
+        x += "<h1 style='color: #FFB437'>Supernova</h1>"
+        x += br
+        x += "<h3>You have " + formatWhole(player.su.points) + " Neutron Stars.</h3>"
+        x += br
+        x += "<h3>You have spent " + formatTime(player.su.resetTime, true) + " in this Supernova.</h3>"
+        x += br
+        x+= "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+        x += br
+    }
+    x += br
+    x += "<h1 style='color: white'>Layers</h1>"
+    x += br
+    x += "<h3>There are 38 layers in this game.</h3>"
+    x += br
+    x += "<h3>There are over 1,000+ upgrades in this game.</h3>"
+    x += br
+    x += "<h3>There are 22 buyables in this game.</h3>"
+    x += br
+    x += "<h3>There are over 50+ milestones in this game.</h3>"
+    x += br
+    x += "<h3>There are over 50+ challenges in this game.</h3>"
+    x += br
+    x += "<h3>More Coming Soon!</h3>"
+    x += br
+    x+= "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+    x += br
+    let y = "<h1 style='color: yellow'>Achievements:🏆</h1>"
+    y += br
+    y += "<h3>You have " + format(player.a.points) + " Achievement Points.</h3>"
+    y += br
+    y += "<h3>You have " + format(player.a.achievements.length) + " Achievements.</h3>"
+    y += br
+    y+= "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+    return x+y
+}
