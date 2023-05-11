@@ -17,7 +17,7 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-<h3>v0.8 (12/05/2023)</h3><br>
+<h3>v0.8 (11/05/2023)</h3><br>
 		- Endgame: GGG1.000 Points = 10^^^^3.<br>
 		- Added 10 new layers!! (8 of them are normal.)<br>
 		- Added more buyables!<br>
