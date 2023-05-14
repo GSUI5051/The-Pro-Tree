@@ -202,7 +202,7 @@ unlocked() {return (hasUpgrade("u", 11))},
     }
     },
     55: { title: "525",
-    description: "The Onoin Upgrade 71 is x4.294e9 more powerful and unlock a new layer!",
+    description: "The Onion Upgrade 71 is x4.294e9 more powerful and unlock a new layer!",
     cost: new EN("10^^300"),
     unlocked() {
         return player.o.points.gte("10^^500")

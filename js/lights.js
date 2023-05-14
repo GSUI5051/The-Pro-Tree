@@ -24,7 +24,7 @@ addLayer("l", {
         },
         12: { title: "302",
         description: "Gain x420 Lights.",
-        cost: new EN("6969"),
+        cost: new EN("500"),
         unlocked() {
             return hasUpgrade("l", 11)
         }

@@ -241,7 +241,7 @@ addLayer("ci", {
     doReset(resettingLayer) {
         let keep = [];
         if (hasMilestone("re", 20) && resettingLayer=="re") keep.push("upgrades")
-        if (layers[resettingLayer].row > this.row) layerDataReset("ba", keep)
+        if (layers[resettingLayer].row > this.row) layerDataReset("ci", keep)
     },
     autoUpgrade() { if (hasMilestone("re" , 19)) return true},
     gainExp() { // Calculate the exponent on main currency from bonuses
