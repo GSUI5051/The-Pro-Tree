@@ -19,7 +19,7 @@ let VERSION = {
 let changelog = `<h1>Changelog:</h1><br>
 <h3>v0.8a (14/05/2023)</h3><br>
 		- Bug Fixes.<br>
-		- Dropped the 2nd light upgrade cost to 500.<br>
+		- Dropped the 2nd light upgrade cost to 500.<br><br>
 <h3>v0.8 (11/05/2023)</h3><br>
 		- Endgame: GGG1.000 Points = 10^^^^3.<br>
 		- Added 10 new layers!! (8 of them are normal.)<br>
