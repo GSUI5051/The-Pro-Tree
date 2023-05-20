@@ -124,10 +124,12 @@ microtabs: {
                 
             },
             "Crystal": {
+                unlocked() {return (hasUpgrade("su", 55))},
                 content: [
                     ["blank", "15px"],
                     ["display-text", () => "You have <h2 style='color: #a7d8de ; text-shadow: 0 0 10px #a7d8de '>" + format(player.su.crystal) + "</h2> Crystal, raising stone - cobalt gain by <h2 style='color: #a7d8de ; text-shadow: 0 0 10px #a7d8de '> <br>^" + format(player.su.crystal.max(1).pow(1)) + ".</h2><br>-------------------------------------------------------------------------------------"],
-                   ["buyable", 21],
+                   
+                    ["buyable", 21],
                     
                 ]
                 

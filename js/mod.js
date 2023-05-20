@@ -12,11 +12,13 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.8a",
+	num: "0.8b",
 	name: "Stats + Revamp!"
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+<h3>v0.8b (20/05/2023)</h3><br>
+		- Changes to the game.<br><br>
 <h3>v0.8a (14/05/2023)</h3><br>
 		- Bug Fixes.<br>
 		- Dropped the 2nd light upgrade cost to 500.<br><br>
