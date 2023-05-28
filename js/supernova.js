@@ -1588,7 +1588,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    281: { title: "Fifty-Sixth Tree Upgrade",
+    281: { title: "Fifty-Seventh Tree Upgrade",
         description: "Raise Neutron Star gain by 1.5 again, stone by 1.1, coal by 1.3 again, iron by 1.25 and gold by 1.2.",
         currencyDisplayName: "Diamond",
         currencyInternalName: "diamond",
@@ -1604,7 +1604,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    291: { title: "Fifty-Seventh Tree Upgrade",
+    291: { title: "Fifty-Eighth Tree Upgrade",
         description: "Unlock a new buyable.",
         currencyDisplayName: "Diamond",
         currencyInternalName: "diamond",
@@ -1620,7 +1620,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    301: { title: "Fifty-Eighth Tree Upgrade",
+    301: { title: "Fifty-Ninth Tree Upgrade",
         description: "Stone boosts ruby gain.",
         currencyDisplayName: "Stone",
         currencyInternalName: "stones",
@@ -1648,7 +1648,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    302: { title: "Fifty-Ninth Tree Upgrade",
+    302: { title: "Sixtieth Tree Upgrade",
         description: "Coal boosts ruby gain.",
         currencyDisplayName: "Coal",
         currencyInternalName: "coal",
@@ -1676,7 +1676,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    303: { title: "Sixtieth Tree Upgrade",
+    303: { title: "Sixty-First Tree Upgrade",
         description: "Iron boosts ruby gain.",
         currencyDisplayName: "Iron",
         currencyInternalName: "iron",
@@ -1704,7 +1704,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    304: { title: "Sixty-First Tree Upgrade",
+    304: { title: "Sixty-Second Tree Upgrade",
         description: "Gold boosts ruby gain.",
         currencyDisplayName: "Gold",
         currencyInternalName: "gold",
@@ -1732,7 +1732,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    305: { title: "Sixty-Second Tree Upgrade",
+    305: { title: "Sixty-Third Tree Upgrade",
         description: "Diamond boosts ruby gain.",
         currencyDisplayName: "Diamond",
         currencyInternalName: "diamond",
@@ -1760,7 +1760,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    311: { title: "Sixty-Third Tree Upgrade",
+    311: { title: "Sixty-Fourth Tree Upgrade",
         description: "Neutron stars boosts ruby gain.",
         currencyDisplayName: "Ruby",
         currencyInternalName: "ruby",
@@ -1780,7 +1780,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    321: { title: "Sixty-Fourth Tree Upgrade",
+    321: { title: "Sixty-Fifth Tree Upgrade",
         description: "Ruby boosts neutron star gain.",
         currencyDisplayName: "Ruby",
         currencyInternalName: "ruby",
@@ -1808,7 +1808,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    322: { title: "Sixty-Fourth Tree Upgrade",
+    322: { title: "Sixty-Sixth Tree Upgrade",
         description: "Ruby boosts itself.",
         currencyDisplayName: "Ruby",
         currencyInternalName: "ruby",
@@ -1836,7 +1836,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    331: { title: "Sixty-Fifth Tree Upgrade",
+    331: { title: "Sixty-Seventh Tree Upgrade",
         description: "Each Supernova Upgrade, increases ruby gain by 15%.",
         currencyDisplayName: "Ruby",
         currencyInternalName: "ruby",
@@ -1865,7 +1865,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    341: { title: "Sixty-Sixth Tree Upgrade",
+    341: { title: "Sixty-Eighth Tree Upgrade",
         description: "Raise Coal, Iron, Gold gain by 1.25 and diamond by 1.2.",
         currencyDisplayName: "Ruby",
         currencyInternalName: "ruby",
@@ -1881,7 +1881,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    351: { title: "Sixty-Seventh Tree Upgrade",
+    351: { title: "Sixty-Ninth Tree Upgrade (nice)",
         description: "Unlock a new buyable.",
         currencyDisplayName: "Ruby",
         currencyInternalName: "ruby",
@@ -1897,7 +1897,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    361: { title: "Sixty-Eighth Tree Upgrade",
+    361: { title: "Seventieth Tree Upgrade",
         description: "Stone boosts emerald gain.",
         currencyDisplayName: "Stone",
         currencyInternalName: "stones",
@@ -1925,7 +1925,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    362: { title: "Sixty-Ninth Tree Upgrade (nice)",
+    362: { title: "Seventy-First Tree Upgrade",
         description: "Coal boosts emerald gain.",
         currencyDisplayName: "Coal",
         currencyInternalName: "coal",
@@ -1953,7 +1953,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    363: { title: "Seventieth Tree Upgrade",
+    363: { title: "Seventy-Second Tree Upgrade",
         description: "Iron boosts emerald gain.",
         currencyDisplayName: "Iron",
         currencyInternalName: "iron",
@@ -1981,7 +1981,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    364: { title: "Seventy-First Tree Upgrade",
+    364: { title: "Seventy-Third Tree Upgrade",
         description: "Gold boosts emerald gain.",
         currencyDisplayName: "Gold",
         currencyInternalName: "gold",
@@ -2009,7 +2009,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    365: { title: "Seventy-Second Tree Upgrade",
+    365: { title: "Seventy-Fourth Tree Upgrade",
         description: "Diamond boosts emerald gain.",
         currencyDisplayName: "Diamond",
         currencyInternalName: "diamond",
@@ -2037,7 +2037,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    371: { title: "Seventy-Third Tree Upgrade",
+    371: { title: "Seventy-Fifth Tree Upgrade",
         description: "Ruby boosts emerald gain.",
         currencyDisplayName: "Ruby",
         currencyInternalName: "ruby",
@@ -2057,7 +2057,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    381: { title: "Seventy-Fourth Tree Upgrade",
+    381: { title: "Seventy-Sixth Tree Upgrade",
         description: "Neutron star boosts emerald gain.",
         currencyDisplayName: "Emerald",
         currencyInternalName: "emerald",
@@ -2085,7 +2085,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    382: { title: "Seventy-Fifth Tree Upgrade (nice)",
+    382: { title: "Seventy-Seventh Tree Upgrade (nice)",
         description: "Emerald boosts neutron star gain.",
         currencyDisplayName: "Emerald",
         currencyInternalName: "emerald",
@@ -2113,7 +2113,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    383: { title: "Seventy-Sixth Tree Upgrade",
+    383: { title: "Seventy-Eighth Tree Upgrade",
         description: "Emerald boosts itself.",
         currencyDisplayName: "Emerald",
         currencyInternalName: "emerald",
@@ -2141,7 +2141,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    384: { title: "Seventy-Seventh Tree Upgrade",
+    384: { title: "Seventy-Ninth Tree Upgrade",
         description: "Each Supernova upgrade, increases emerald gain by 25%.",
         currencyDisplayName: "Emerald",
         currencyInternalName: "emerald",
@@ -2170,7 +2170,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    385: { title: "Seventy-Eighth Tree Upgrade",
+    385: { title: "Eightieth Tree Upgrade",
         description: "Raise Coal gain by 1.3, iron, gold, ruby by 1.25 and diamond by 1.2.",
         currencyDisplayName: "Emerald",
         currencyInternalName: "emerald",
@@ -2194,7 +2194,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    391: { title: "Seventy-Ninth Tree Upgrade",
+    391: { title: "Eighty-First Tree Upgrade",
         description: "Unlock a new buyable.",
         currencyDisplayName: "Emerald",
         currencyInternalName: "emerald",
@@ -2210,7 +2210,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    401: { title: "Eightieth Tree Upgrade",
+    401: { title: "Eighty-Second Tree Upgrade",
         description: "Stone boosts amethyst gain.",
         currencyDisplayName: "Stone",
         currencyInternalName: "stones",
@@ -2238,7 +2238,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    402: { title: "Eighty-First Tree Upgrade",
+    402: { title: "Eighty-Third Tree Upgrade",
         description: "Neutron Star boosts amethyst gain.",
         currencyDisplayName: "Amethyst",
         currencyInternalName: "amethyst",
@@ -2266,7 +2266,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    403: { title: "Eighty-Second Tree Upgrade",
+    403: { title: "Eighty-Fourth Tree Upgrade",
         description: "Amethyst boosts neutron star gain.",
         currencyDisplayName: "Amethyst",
         currencyInternalName: "amethyst",
@@ -2294,7 +2294,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    404: { title: "Eighty-Third Tree Upgrade",
+    404: { title: "Eighty-Fifth Tree Upgrade",
         description: "Amethyst boosts itself.",
         currencyDisplayName: "Amethyst",
         currencyInternalName: "amethyst",
@@ -2322,7 +2322,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    405: { title: "Eighty-Fourth Tree Upgrade",
+    405: { title: "Eighty-Sixth Tree Upgrade",
         description: "Unlock the final buyable.",
         currencyDisplayName: "Amethyst",
         currencyInternalName: "amethyst",
@@ -2346,7 +2346,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    411: { title: "Eighty-Fifth Tree Upgrade",
+    411: { title: "Eighty-Seventh Tree Upgrade",
         description: "Stone boosts Cobalt gain.",
         currencyDisplayName: "Stone",
         currencyInternalName: "stones",
@@ -2366,7 +2366,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    421: { title: "Eighty-Sixth Tree Upgrade",
+    421: { title: "Eighty-Eighth Tree Upgrade",
         description: "Neutron Star boosts cobalt gain.",
         currencyDisplayName: "Cobalt",
         currencyInternalName: "cobalt",
@@ -2394,7 +2394,7 @@ microtabs: {
         },
         style: { margin: "10px" }
     },
-    422: { title: "Eighty-Seventh Tree Upgrade",
+    422: { title: "Eighty-Ninth Tree Upgrade",
         description: "Cobalt boosts neutron star gain.",
         currencyDisplayName: "Cobalt",
         currencyInternalName: "cobalt",
