@@ -524,7 +524,7 @@ function getStatTab(){
     y += br
     y += "<h3>You have " + format(player.a.points) + " Achievement Points.</h3>"
     y += br
-    y += "<h3>You have " + format(player.a.achievements.length) + " Achievements.</h3>"
+    y += "<h3>You have " + formatWhole(player.a.achievements.length) +  "/" + (Object.keys(tmp.a.achievements).length - 2) + " Achievements.</h3>"
     y += br
     y+= "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
     return x+y

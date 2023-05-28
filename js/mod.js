@@ -17,6 +17,8 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+<h3>v0.8d</h3><br>
+		- Some changes in the statistics.<br><br>
 <h3>v0.8c (28/05/2023)</h3><br>
 		- Bug Fixes again.<br><br>
 <h3>v0.8b (20/05/2023)</h3><br>
