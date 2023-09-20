@@ -18,6 +18,7 @@ effectDescription(){
       use format(num) whenever displaying a number
     */
   },
+  
   clickables: {
     11: {
         display() {
@@ -127,6 +128,7 @@ microtabs: {
                     if (hasUpgrade('su', 52)) mult2 = mult2.pow(2)
                     if (hasUpgrade('re', 261)) mult2 = mult2.pow(1.1)
                     if (hasUpgrade('re', 262)) mult2 = mult2.pow(1.05)
+                    if (hasMilestone('re', 7)) mult2 = mult2.pow(3)
                     return mult2
             },
         },
@@ -149,6 +151,8 @@ microtabs: {
               if (hasUpgrade('su', 52)) mult2 = mult2.pow(2)
               if (hasUpgrade('re', 261)) mult2 = mult2.pow(1.1)
               if (hasUpgrade('re', 262)) mult2 = mult2.pow(1.05)
+              if (hasMilestone('re', 7)) mult2 = mult2.pow(3)
+
               return new EN(mult2)}
           },
           21: {
@@ -169,6 +173,8 @@ microtabs: {
                 if (hasUpgrade('su', 52)) mult2 = mult2.pow(2)
                 if (hasUpgrade('re', 261)) mult2 = mult2.pow(1.1)
                 if (hasUpgrade('re', 262)) mult2 = mult2.pow(1.05)
+                if (hasMilestone('re', 7)) mult2 = mult2.pow(3)
+
                 return mult2
         },
     },
@@ -190,6 +196,8 @@ microtabs: {
             if (hasUpgrade('su', 52)) mult2 = mult2.pow(2)
             if (hasUpgrade('re', 261)) mult2 = mult2.pow(1.1)
             if (hasUpgrade('re', 262)) mult2 = mult2.pow(1.05)
+            if (hasMilestone('re', 7)) mult2 = mult2.pow(3)
+
             return mult2
     },
 },
@@ -551,7 +559,7 @@ microtabs: {
         },
         },
         105: { title: "575",
-            description: "Pentate point gain based on your reincarnation spent on this reset, also unlocks a new layer! (Big Timewall) (But RU11 and OU61 does nothing.)",
+            description: "Pentate point gain based on your reincarnation spent on this reset, also unlocks a new layer! (But RU11 and OU61 does nothing.)",
             cost: new EN("1.4411519e17"),
             unlocked() {
                 return hasUpgrade("re", 104)
@@ -823,7 +831,7 @@ microtabs: {
         description: "The previous upgrade is tripled.",
         currencyDisplayName: "Medals",
         cost() {
-            let cost = EN("3.434e3434")
+            let cost = EN("1e3333")
             let ugs = EN("e466")
             for (let a = 181; a <= 182; a++) if (hasUpgrade("re", a)) {
                 cost = cost.mul(ugs)
@@ -845,7 +853,7 @@ microtabs: {
         description: "Power your medals based on your reincarnation time spent on this reset (Hardcaps at 1.1)",
         currencyDisplayName: "Medals",
         cost() {
-            let cost = EN("3.434e3434")
+            let cost = EN("1e3333")
             let ugs = EN("e166")
             for (let a = 181; a <= 182; a++) if (hasUpgrade("re", a)) {
                 cost = cost.mul(ugs)
@@ -1266,7 +1274,7 @@ microtabs: {
     name: "Log^^6",
     challengeDescription: "RU105 is powered to 0.125.",
     goalDescription: "1F8 Points.",
-    rewardDescription: "Gain x100 medals, unlock a new layer and x69,420 reincarnation upgrade 105 effect (Timewall).",
+    rewardDescription: "Gain x100 medals, unlock a new layer and x69,420 reincarnation upgrade 105 effect.",
     canComplete: function() {return player.points.gte("10^^8")},
     unlocked() { return (hasUpgrade('re', 132)) },
 },

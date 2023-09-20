@@ -460,26 +460,16 @@ function getStatTab(){
     x += "<h3>You have played for " + formatTime(player.timePlayed, true + ".</h3>")
    x += br
     x+= "<h4>―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</h4>"
-    if (player.re.unlocked){
+    if (player.su.unlocked){
         x += br
-        x += "<h1 style='color: #39e75f'>Reincarnation</h1>"
+        x += "<h1 style='color: orange'>Supernova</h1>"
         x += br
-        x += "<h3>You have " + formatWhole(player.re.points) + " Medals (" + formatWhole(player.re.total) + " total).</h3>"
+        x += "<h3>You have " + formatWhole(player.su.points) + " Neutron Stars (" + formatWhole(player.su.total) + " total).</h3>"
        
         x += br
-       x += "<h3>You have spent " + formatTime(player.re.resetTime, true) + " in this Reincarnation.</h3>"
+       x += "<h3>You have spent " + formatTime(player.su.resetTime, true) + " in this Supernova.</h3>"
        x += br
        x+= "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
-    }
-       if (hasUpgrade("re", 55)){
-        x += br
-        x += "<h1 style='color: #468990'>Badges</h1>"
-    x += br
-    x += "<h3>You have " + formatWhole(player.re.badges) + " Badges" + " (" + formatWhole(tmp.re.effect)  + " Badges/s).</h3>"
-    x += br
-    x += "<h3>(For you to get more badges, check the buyables.)</h3>"
-    x += br
-    x+= "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
     }
     if (player.ju.unlocked){
         x += br
@@ -492,13 +482,11 @@ function getStatTab(){
         x+= "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
         x += br
     }
-    if (player.su.unlocked){
+    if (player.ap.unlocked){
         x += br
-        x += "<h1 style='color: #FFB437'>Supernova</h1>"
+        x += "<h1 style='color: yellow'>Ascension</h1>"
         x += br
-        x += "<h3>You have " + formatWhole(player.su.points) + " Neutron Stars.</h3>"
-        x += br
-        x += "<h3>You have spent " + formatTime(player.su.resetTime, true) + " in this Supernova.</h3>"
+        x += "<h3>You have " + formatWhole(player.ap.points) + " Ascension Points.</h3>"
         x += br
         x+= "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
         x += br
@@ -506,11 +494,11 @@ function getStatTab(){
     x += br
     x += "<h1 style='color: white'>Layers</h1>"
     x += br
-    x += "<h3>There are 38 layers in this game.</h3>"
+    x += "<h3>There are 40+ layers in this game.</h3>"
     x += br
     x += "<h3>There are over 1,000+ upgrades in this game.</h3>"
     x += br
-    x += "<h3>There are 22 buyables in this game.</h3>"
+    x += "<h3>There are 30+ buyables in this game.</h3>"
     x += br
     x += "<h3>There are over 50+ milestones in this game.</h3>"
     x += br

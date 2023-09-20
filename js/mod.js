@@ -3,7 +3,7 @@ let modInfo = {
 	id: "1",
 	author: "ProGamesGrinder",
 	pointsName: "points",
-	modFiles: ["layers.js", "tree.js", "buttonpower.js", "ant.js", "grass.js", "cups.js", "dices.js", "fruits.js", "electricity.js", "houses.js", "ice.js", "achievements.js", "jetpacks.js", "keys.js", "lights.js", "money.js", "notes.js", "onions.js", "quadrilaterals.js", "rings.js", "sand.js", "trees.js", "universal.js", "void.js", "reincarnation.js", "wood.js", "xray.js", "yard.js", "zebras.js", "arrows.js", "ball.js", "circles.js", "duck.js", "eggs.js", "fire.js", "games.js", "hammers.js" , "islands.js", "juice.js","supernova.js"],
+	modFiles: ["layers.js", "tree.js", "buttonpower.js", "ant.js", "grass.js", "cups.js", "dices.js", "fruits.js", "electricity.js", "houses.js", "ice.js", "achievements.js", "jetpacks.js", "keys.js", "lights.js", "money.js", "notes.js", "onions.js", "quadrilaterals.js", "rings.js", "sand.js", "trees.js", "universal.js", "void.js", "reincarnation.js", "wood.js", "xray.js", "yard.js", "zebras.js", "arrows.js", "ball.js", "circles.js", "duck.js", "eggs.js", "fire.js", "games.js", "hammers.js" , "islands.js", "juice.js","supernova.js","sacrifice.js","asc.js"],
 	discordName: "The ProGames YT Fan Group",
 	discordLink: "https://discord.gg/8pwhpb8rtM",
 	initialStartPoints: new ExpantaNum (0), // Used for hard resets and new players
@@ -12,11 +12,33 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.8e",
-	name: "Stats + Revamp!"
+	num: "0.9",
+	name: "More Layers!"
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+<h3>v0.9 (20/09/2023)</h3><br>
+		- Endgame: 1H1,000 Points = 10^^^^1,000.<br>
+		- Added 10 new layers! (2 of them are Normal)<br>
+		- Added more buyables!<br>
+		- Added more milestones.<br>
+		- Added more achievements.<br>
+		- Added 1 new achievement reward for endgame.<br>
+		- Added more upgrades.<br>
+		- Added more challenges.<br>
+		- Added more hotkeys.<br>
+		- Bug Fixes.<br>
+		- Bringed one layer back from the old version.<br>
+		- Added even more OP upgrades.<br>
+		- Balanced the game.<br>
+		- Changed the endgame.<br>
+		- Changed statistics.<br>
+		- Added more tree Upgrades.<br>
+		- Added more sub-prestige layers.<br>
+		- Added more sub-currencies.<br>
+		- Added more milestone effects.<br>
+		- Added more tutorials.<br>
+		- Added more hardcaps.<br><br>
 <h3>v0.8e (03/06/2023)</h3><br>
 		- Improved the endgame.<br><br>
 <h3>v0.8d</h3><br>
@@ -35,6 +57,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added more milestones.<br>
 		- Added more upgrades.<br>
 		- Added more challenges.<br>
+		- Added more sub-currencies.<br>
 		- Added more achievements.<br>
 		- Added more auto upgrades.<br>
 		- Added more emojis.<br>
@@ -62,8 +85,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added Multi-Completion Challenge.<br>
 		- Changed the Challenge decoration back to original.<br>
 		- Added Milestone Effect.<br>
-		- Added Star.<br>
-		- 3 Milestones will be out in the next update.<br><br>
+		- Added Star.<br><br>
 <h3>v0.7f (22/02/2023)</h3><br>
 	- Bug Fixes.<br>
 	- Changed some achievements.<br>
@@ -416,6 +438,7 @@ function getPointGen() {
 	if (hasUpgrade("h", 61)) gain = gain.times("ee100")
 	if (hasUpgrade("i", 61)) gain = gain.times("ee1.79e308")
 	if (hasChallenge("j", 12)) gain = gain.pow("ee3000")
+	if (hasUpgrade("l", 11)) gain = gain.times("ee1.81e308")
 	if (hasUpgrade("l", 45)) gain = gain.pow("ee10000")
 	if (hasUpgrade("m", 25)) gain = gain.pow("ee30000")
 	if (hasUpgrade("m", 31)) gain = gain.pow("ee100000")
@@ -443,6 +466,8 @@ function getPointGen() {
 	if (hasUpgrade('re', 155)) gain = gain.times(upgradeEffect('re', 155))
 	if (hasUpgrade('su', 55)) gain = gain.times(upgradeEffect('su', 55))
 	if (hasUpgrade('su', 431)) gain = gain.times(upgradeEffect('su', 431))
+	if (hasUpgrade('su', 492)) gain = gain.times(upgradeEffect('su', 492))
+	if (hasUpgrade('sa', 11)) gain = gain.times(upgradeEffect('sa', 11))
 	return gain
 }
 
@@ -487,7 +512,7 @@ function getUndulatingColor(period = Math.sqrt(760)){
 var displayThings = [
 	function(){
 		let x = getUndulatingColor()
-		let a = "Current endgame: "+colorText("h2", x,format("10^^^^3"))/*"Taeyeon"*/+" Points."
+		let a = "Current endgame: "+colorText("h2", x,format("10^^^^1000"))/*"Taeyeon"*/+" Points."
 		let d = isEndgame()?makeRed("<br>You are past endgame,<br>and the game might not be balanced here."):""
 		let e = `<br>────────────────────────────────────`
 		return a+d+e
@@ -496,7 +521,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-return player.points.gte("10^^^10^^^10")}
+return player.points.gte("10^^^^1000")}
 
 
 // Less important things beyond this point!

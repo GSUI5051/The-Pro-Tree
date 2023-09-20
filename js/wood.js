@@ -284,10 +284,11 @@ automate(){
     resource: "Wood", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     branches: ["q" , "v"],
-    exponent: "0", // Prestige currency exponent
-    gainMult() { // Calculate the multiplier for main currency from bonuses
+    type() {if (hasUpgrade("su", 535)) return "normal"
+    else return "normal"},    
+    exponent() {if (hasUpgrade("su", 535)) return new EN(0)
+    else return new EN(0)},    gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1).mul(buyableEffect("w", 11)).pow(buyableEffect("w", 12))
         if (hasUpgrade('re', 34)) mult = mult.times(2)
         if (hasUpgrade('re', 35)) mult = mult.times(1.5)
@@ -348,5 +349,6 @@ automate(){
     hotkeys: [
         {key: "w", description: "W: Reset for Wood", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasUpgrade("re",31) || player[this.layer].unlocked)},
+    layerShown(){if (hasUpgrade("su", 535)) return false
+    else return (hasUpgrade("re", 31) || player[this.layer].unlocked)},
 })

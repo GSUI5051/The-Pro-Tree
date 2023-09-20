@@ -202,14 +202,15 @@ addLayer("ar", {
         auto: false
     }},
     color: "#ffffff",
-    requires: new EN("10^^^3"), // Can be a function that takes requirement increases into account
+    requires: new EN("10^^10^^5"), // Can be a function that takes requirement increases into account
     resource: "Arrows", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     branches: ["u" , "z"],
-    exponent: "0", // Prestige currency exponent
-    gainMult() { // Calculate the multiplier for main currency from bonuses
+    type() {if (hasUpgrade("su", 535)) return "normal"
+    else return "normal"},    
+    exponent() {if (hasUpgrade("su", 535)) return new EN(0)
+    else return new EN(0)},   gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
         if (hasUpgrade('ar', 12)) mult = mult.times(25)
         if (hasUpgrade('ar', 13)) mult = mult.times(1e35)
@@ -264,5 +265,5 @@ addLayer("ar", {
     hotkeys: [
         {key: "?", description: "Shift+?: Reset for Arrows", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasUpgrade("re",105) || player[this.layer].unlocked)},
-})
+    layerShown(){if (hasUpgrade("su", 535)) return false
+    else return (hasUpgrade("re", 105) || player[this.layer].unlocked)},})

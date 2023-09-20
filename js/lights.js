@@ -18,8 +18,8 @@ addLayer("l", {
         },
     upgrades: {
         11: { title: "301",
-        description: "Gain x69 Lights.",
-        cost: new EN("10"),
+        description: "Gain x69 Lights & boost point gain.",
+        cost: new EN("1"),
 
         },
         12: { title: "302",

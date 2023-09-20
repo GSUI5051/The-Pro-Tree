@@ -212,10 +212,11 @@ addLayer("ha", {
     resource: "Hammers", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     branches: ["ar", "ga"],
-    exponent: "0", // Prestige currency exponent
-    gainMult() { // Calculate the multiplier for main currency from bonuses
+    type() {if (hasUpgrade("su", 535)) return "normal"
+    else return "normal"},    
+    exponent() {if (hasUpgrade("su", 535)) return new EN(0)
+    else return new EN(0)},    gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1)
         if (hasUpgrade('ha', 12)) mult = mult.times(10)
         if (hasUpgrade('ha', 13)) mult = mult.times(100)
@@ -254,5 +255,5 @@ addLayer("ha", {
     hotkeys: [
         {key: "%", description: "Shift+%: Reset for Hammers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasChallenge("re",52) || player[this.layer].unlocked)},
-})
+    layerShown(){if (hasUpgrade("su", 535)) return false
+    else return (hasChallenge("re", 52) || player[this.layer].unlocked)},})

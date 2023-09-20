@@ -204,10 +204,10 @@ addLayer("y", {
         },
         },
         55: { title: "675",
-        description: "Onoin Upgrade 61 ^8 but divide your medal gain by 3.",
+        description: "Onion Upgrade 61 ^8 but divide your medal gain by 3.",
         cost: new EN("10^^1e15"),
         unlocked() {
-            return player.points.gte("10^^1e904")
+            return player.points.gte("10^^1e800")
         },
         },
     },
@@ -284,10 +284,11 @@ milestones: {
     resource: "Yard", // Name of prestige currency
     baseResource: "Points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     branches: ["s" , "x"],
-    exponent: "0", // Prestige currency exponent
-    gainMult() { // Calculate the multiplier for main currency from bonuses
+    type() {if (hasUpgrade("su", 535)) return "normal"
+    else return "normal"},    
+    exponent() {if (hasUpgrade("su", 535)) return new EN(0)
+    else return new EN(0)},    gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new EN(1).mul(buyableEffect("y", 11)).pow(buyableEffect("y", 12))
         if (hasUpgrade('re', 82)) mult = mult.times(3125)
         if (hasUpgrade('y', 12)) mult = mult.times(5)
@@ -343,5 +344,5 @@ milestones: {
     hotkeys: [
         {key: "y", description: "Y: Reset for Yard", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasUpgrade("re",81) || player[this.layer].unlocked)},
-})
+    layerShown(){if (hasUpgrade("su", 535)) return false
+    else return (hasUpgrade("re", 81) || player[this.layer].unlocked)},})

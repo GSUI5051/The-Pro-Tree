@@ -50,7 +50,7 @@ microtabs: {
                 content: [
                     ["blank", "15px"],
                     ["raw-html", () => `<h4 style="opacity:.5">Welcome to the Supernova! Resets everything except achievements.<br> You will gain 10 neutron stars on your first supernova reset.</h4>`],
-                    ["upgrades", [1,2,3,4,5,43]]
+                    ["upgrades", [1,2,3,4,5,43,49,50,51,53]]
                 ]
             },
             "Mining": {
@@ -106,6 +106,13 @@ microtabs: {
                     ["row", [["upgrade", 401], ["upgrade", 402],["upgrade", 403],["upgrade", 404],["upgrade", 405]]],
                     ["row", [["upgrade", 411]]],
                     ["row", [["upgrade", 421], ["upgrade", 422]]],
+                    ["row", [["upgrade", 441]]],
+                    ["row", [["upgrade", 451]]],
+                    ["row", [["upgrade", 461]]],
+                    ["row", [["upgrade", 471]]],
+                    ["row", [["upgrade", 481]]],
+                    ["row", [["upgrade", 521]]],
+
                 ]
                     },
                     "Buyables": {
@@ -128,9 +135,18 @@ microtabs: {
                 content: [
                     ["blank", "15px"],
                     ["display-text", () => "You have <h2 style='color: #a7d8de ; text-shadow: 0 0 10px #a7d8de '>" + format(player.su.crystal) + "</h2> Crystal, raising stone - cobalt gain by <h2 style='color: #a7d8de ; text-shadow: 0 0 10px #a7d8de '> <br>^" + format(player.su.crystal.max(1).pow(1)) + ".</h2><br>-------------------------------------------------------------------------------------"],
-                   
+                    ["display-text", () => "You have <h2 style='color: #ffc0cb ; text-shadow: 0 0 10px #a7d8de '>" + formatWhole(player.su.crystaltiers) + "</h2> Crystal Tiers, multiplying crystal gain by <h2 style='color: #a7d8de ; text-shadow: 0 0 10px #a7d8de '> <br>x" + format(player.su.crystaltiers.max(1).pow(10)) + ".</h2><br>-------------------------------------------------------------------------------------"],
+                    ["display-text", () => "You have <h2 style='color: #00008b ; text-shadow: 0 0 10px #a7d8de '>" + formatWhole(player.su.crystallevels) + "</h2> Crystal Levels, tetrating crystal tier and crystal gain by <h2 style='color: #ffc0cb ; text-shadow: 0 0 10px #ffc0cb '> <br>^^" + format(player.su.crystallevels.max(1).pow(1)) + ".</h2><br>-------------------------------------------------------------------------------------"],
+                    ["display-text", () => "You have <h2 style='color: #FFFFFF ; text-shadow: 0 0 10px #a7d8de '>" + formatWhole(player.su.crystalstages) + "</h2> Crystal Stages, pentating crystal level, crystal tier and crystal gain by <h2 style='color: #00008b ; text-shadow: 0 0 10px #a7d8de '> <br>^^^" + format(player.su.crystalstages.max(1).pow(1)) + ".</h2><br>-------------------------------------------------------------------------------------"],
                     ["buyable", 21],
-                    
+                    ["buyable", 22],
+                    ["buyable", 23],
+                    ["buyable", 24],
+                    ["buyable", 25],
+                    ["buyable", 26],
+                    ["buyable", 27],
+                    ["buyable", 28],
+                    ["buyable", 29],
                 ]
                 
             },
@@ -139,6 +155,9 @@ microtabs: {
         tooltip() {
             return ("Supernova")
         },
+        passiveGeneration() { 
+            if (hasMilestone("sa", 1)) return (hasMilestone("sa", 1)?1:0)
+            },
         buyables: {
             11: {
               title: "<h3>Eightteenth Buyable<h3>",
@@ -160,6 +179,7 @@ microtabs: {
                 mult2 = mult2.pow(hasUpgrade("su",281)?1.3:1)
                 mult2 = mult2.pow(hasUpgrade("su",341)?1.3:1)
                 mult2 = mult2.pow(hasUpgrade("su",385)?1.3:1)
+                mult2 = mult2.pow(hasUpgrade("su",441)?upgradeEffect("su",441):1)
             if (player.su.iron.gte(1)) mult2 = mult2.times(player.su.iron.max(1).pow(0.1))
             if (player.su.gold.gte(1)) mult2 = mult2.times(player.su.gold.max(1).pow(0.16))
             if (player.su.diamond.gte(1)) mult2 = mult2.times(player.su.diamond.max(1).pow(0.25))
@@ -192,6 +212,8 @@ microtabs: {
                 mult2 = mult2.pow(hasUpgrade("su",281)?1.25:1)
                 mult2 = mult2.pow(hasUpgrade("su",341)?1.3:1)
                 mult2 = mult2.pow(hasUpgrade("su",385)?1.25:1)
+                mult2 = mult2.pow(hasUpgrade("su",441)?upgradeEffect("su",441):1)
+
                 if (player.su.gold.gte(1)) mult2 = mult2.times(player.su.gold.max(1).pow(0.16))
                 if (player.su.diamond.gte(1)) mult2 = mult2.times(player.su.diamond.max(1).pow(0.25))
                 if (player.su.ruby.gte(1)) mult2 = mult2.times(player.su.ruby.max(1).pow(0.36))
@@ -223,6 +245,8 @@ microtabs: {
                 mult2 = mult2.pow(hasUpgrade("su",281)?1.2:1)
                 mult2 = mult2.pow(hasUpgrade("su",341)?1.3:1)
                 mult2 = mult2.pow(hasUpgrade("su",385)?1.25:1)
+                mult2 = mult2.pow(hasUpgrade("su",441)?upgradeEffect("su",441):1)
+
                 if (player.su.diamond.gte(1)) mult2 = mult2.times(player.su.diamond.max(1).pow(0.25))
                 if (player.su.ruby.gte(1)) mult2 = mult2.times(player.su.ruby.max(1).pow(0.36))
                 if (player.su.emerald.gte(1)) mult2 = mult2.times(player.su.emerald.max(1).pow(0.5))
@@ -253,6 +277,8 @@ microtabs: {
                 mult2 = mult2.mul(hasUpgrade("su",273)?upgradeEffect("su",273):1)
                 mult2 = mult2.pow(hasUpgrade("su",341)?1.2:1)
                 mult2 = mult2.pow(hasUpgrade("su",385)?1.2:1)
+                mult2 = mult2.pow(hasUpgrade("su",441)?upgradeEffect("su",441):1)
+
                 if (player.su.ruby.gte(1)) mult2 = mult2.times(player.su.ruby.max(1).pow(0.36))
                 if (player.su.emerald.gte(1)) mult2 = mult2.times(player.su.emerald.max(1).pow(0.5))
                 if (player.su.amethyst.gte(1)) mult2 = mult2.times(player.su.amethyst.max(1).pow(0.64))
@@ -282,6 +308,8 @@ microtabs: {
                 mult2 = mult2.mul(hasUpgrade("su",322)?upgradeEffect("su",322):1)
                 mult2 = mult2.mul(hasUpgrade("su",331)?upgradeEffect("su",331):1)
                 mult2 = mult2.pow(hasUpgrade("su",385)?1.25:1)
+                mult2 = mult2.pow(hasUpgrade("su",441)?upgradeEffect("su",441):1)
+
                 if (player.su.emerald.gte(1)) mult2 = mult2.times(player.su.emerald.max(1).pow(0.5))
                 if (player.su.amethyst.gte(1)) mult2 = mult2.times(player.su.amethyst.max(1).pow(0.64))
                 if (player.su.cobalt.gte(1)) mult2 = mult2.times(player.su.cobalt.max(1).pow(0.81))
@@ -310,6 +338,8 @@ microtabs: {
                 mult2 = mult2.mul(hasUpgrade("su",381)?upgradeEffect("su",381):1)
                 mult2 = mult2.mul(hasUpgrade("su",383)?upgradeEffect("su",383):1)
                 mult2 = mult2.mul(hasUpgrade("su",384)?upgradeEffect("su",384):1)
+                mult2 = mult2.pow(hasUpgrade("su",441)?upgradeEffect("su",441):1)
+
                 if (player.su.amethyst.gte(1)) mult2 = mult2.times(player.su.amethyst.max(1).pow(0.64))
                 if (player.su.cobalt.gte(1)) mult2 = mult2.times(player.su.cobalt.max(1).pow(0.81))
                 if (player.su.crystal.gte(1)) mult2 = mult2.pow(player.su.crystal.max(1).pow(1))
@@ -331,6 +361,8 @@ microtabs: {
                   mult2 = mult2.mul(hasUpgrade("su",401)?upgradeEffect("su",401):1)
                   mult2 = mult2.mul(hasUpgrade("su",402)?upgradeEffect("su",402):1)
                   mult2 = mult2.mul(hasUpgrade("su",404)?upgradeEffect("su",404):1)
+                  mult2 = mult2.pow(hasUpgrade("su",441)?upgradeEffect("su",441):1)
+
                   if (player.su.cobalt.gte(1)) mult2 = mult2.times(player.su.cobalt.max(1).pow(0.81))
                   if (player.su.crystal.gte(1)) mult2 = mult2.pow(player.su.crystal.max(1).pow(1))
 
@@ -350,6 +382,8 @@ microtabs: {
                   mult2 = new EN(x)
                   mult2 = mult2.mul(hasUpgrade("su",411)?upgradeEffect("su",411):1)
                   mult2 = mult2.mul(hasUpgrade("su",421)?upgradeEffect("su",421):1)
+                  mult2 = mult2.pow(hasUpgrade("su",441)?upgradeEffect("su",441):1)
+
                   if (player.su.crystal.gte(1)) mult2 = mult2.pow(player.su.crystal.max(1).pow(1))
                   return new EN(mult2)}
               },
@@ -362,7 +396,21 @@ microtabs: {
               effect(){return new EN(0).add(getBuyableAmount(this.layer,this.id))},
                 canAfford() { return player[this.layer].cobalt.gte(this.cost()) },
               unlocked(){return hasUpgrade(this.layer,11)||getBuyableAmount(this.layer,this.id).gte(1)},
-                buy() {
+              effect(x) { 
+                mult2 = new EN(x)
+                mult2 = mult2.mul(hasUpgrade("su",451)?upgradeEffect("su",451):1)
+                mult2 = mult2.mul(hasUpgrade("su",461)?upgradeEffect("su",461):1)
+                mult2 = mult2.mul(hasUpgrade("su",471)?upgradeEffect("su",471):1)
+                mult2 = mult2.pow(hasUpgrade("su",435)?upgradeEffect("su",435):1)
+                mult2 = mult2.pow(hasUpgrade("su",491)?upgradeEffect("su",491):1)
+                mult2 = mult2.pow(hasUpgrade("su",493)?upgradeEffect("su",493):1)
+                mult2 = mult2.pow(hasUpgrade("su",495)?upgradeEffect("su",495):1)
+                mult2 = mult2.pow(hasMilestone("su",9)?2:1)
+                if (player.su.crystaltiers.gte(1)) mult2 = mult2.pow(player.su.crystaltiers.max(1).pow(1))
+                if (player.su.crystallevels.gte(1)) mult2 = mult2.tetr(player.su.crystallevels.max(1).pow(1))
+                if (player.su.crystalstages.gte(1)) mult2 = mult2.pent(player.su.crystalstages.max(1).pow(1))
+                return new EN(mult2)},
+              buy() {
                     if(!hasMilestone("su",6)){
                 player[this.layer].points = new EN(0)
                   player.su.stones=new EN(0)
@@ -378,6 +426,342 @@ microtabs: {
                     }
                     setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
                 },
+                
+        },
+        22: {
+            title: "<h3>Second Sub-Prestige-Layer<h3>",
+            cost() {
+              let n = getBuyableAmount(this.layer,this.id)
+              return new EN(1e10).pow(EN.pow(Infinity,n.pow(Infinity))) },
+            display() { return "<h3>Reset upgrades and all of your ores including neutron stars, but you will earn Crystal tier!</h3>"+ "<h3><br>Currently: +"+format(this.effect())+ "/s</h3>" + "\n<h3>Requires: "+format(this.cost())+" Crystal</h3>\n\n<h3>You have done "+formatWhole(getBuyableAmount(this.layer,this.id))+" crystal tiers resets.<h/3>" },
+          effect(){return new EN(0).add(getBuyableAmount(this.layer,this.id))},
+            canAfford() { return player[this.layer].crystal.gte(this.cost()) },
+          unlocked(){return hasUpgrade(this.layer,11)||getBuyableAmount(this.layer,this.id).gte(1)},
+          effect(x) { 
+            mult2 = new EN(0.01)
+            mult2 = mult2.mul(hasUpgrade("su",434)?100:1)
+            mult2 = mult2.mul(hasMilestone("su",9)?10:1)
+            mult2 = mult2.mul(hasUpgrade("su",493)?100:1)
+            mult2 = mult2.pow(hasUpgrade("su",494)?3:1)
+            mult2 = mult2.mul(hasUpgrade("su",501)?upgradeEffect("su",501):1)
+            mult2 = mult2.pow(hasUpgrade("su",502)?upgradeEffect("su",502):1)
+            mult2 = mult2.mul(hasUpgrade("su",503)?upgradeEffect("su",503):1)
+            mult2 = mult2.pow(hasUpgrade("su",504)?upgradeEffect("su",504):1)
+            mult2 = mult2.pow(hasUpgrade("su",505)?upgradeEffect("su",505):1)
+            if (player.su.crystallevels.gte(1)) mult2 = mult2.tetr(player.su.crystallevels.max(1).pow(1))
+            if (player.su.crystalstages.gte(1)) mult2 = mult2.pent(player.su.crystalstages.max(1).pow(1))
+
+            return new EN(mult2)},
+          buy() {
+                if(!hasMilestone("su",9)){
+            player[this.layer].points = new EN(0)
+              player.su.stones=new EN(0)
+              player.su.coal=new EN(0)
+              player.su.iron=new EN(0)
+              player.su.gold=new EN(0)
+              player.su.diamond=new EN(0)
+              player.su.ruby=new EN(0)
+              player.su.emerald=new EN(0)
+              player.su.amethyst=new EN(0)
+              player.su.cobalt=new EN(0)
+              player.su.crystal=new EN(0)
+                player.su.upgrades=[]
+                }
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+        },
+        23: {
+            title: "<h3>Third Sub-Prestige-Layer<h3>",
+            cost() {
+              let n = getBuyableAmount(this.layer,this.id)
+              return new EN("10^^1000").pow(EN.pow(Infinity,n.pow(Infinity))) },
+            display() { return "<h3>Reset upgrades and all of your ores including neutron stars, but you will earn Crystal level!</h3>"+ "<h3><br>Currently: +"+format(this.effect())+ "/s</h3>" + "\n<h3>Requires: "+format(this.cost())+" Crystal</h3>\n\n<h3>You have done "+formatWhole(getBuyableAmount(this.layer,this.id))+" crystal levels resets.<h/3>" },
+          effect(){return new EN(0).add(getBuyableAmount(this.layer,this.id))},
+            canAfford() { return player[this.layer].crystal.gte(this.cost()) },
+          unlocked(){return hasUpgrade(this.layer,11)||getBuyableAmount(this.layer,this.id).gte(1)},
+          effect(x) { 
+            mult2 = new EN(1)
+            mult2 = mult2.mul(hasUpgrade("su",511)?upgradeEffect("su",511):1)
+            mult2 = mult2.mul(hasUpgrade("su",512)?upgradeEffect("su",512):1)
+            mult2 = mult2.mul(hasUpgrade("su",513)?upgradeEffect("su",513):1)
+            mult2 = mult2.pow(hasUpgrade("su",514)?upgradeEffect("su",514):1)
+            mult2 = mult2.pow(hasUpgrade("su",515)?upgradeEffect("su",515):1)
+            mult2 = mult2.tetr(hasUpgrade("su",521)?upgradeEffect("su",521):1)
+            if (player.su.crystalstages.gte(1)) mult2 = mult2.pent(player.su.crystalstages.max(1).pow(1))
+            return new EN(mult2)},
+          buy() {
+            player[this.layer].points = new EN(0)
+              player.su.stones=new EN(0)
+              player.su.coal=new EN(0)
+              player.su.iron=new EN(0)
+              player.su.gold=new EN(0)
+              player.su.diamond=new EN(0)
+              player.su.ruby=new EN(0)
+              player.su.emerald=new EN(0)
+              player.su.amethyst=new EN(0)
+              player.su.cobalt=new EN(0)
+              player.su.crystal=new EN(0)
+                player.su.crystaltiers=new EN(0)
+                player.su.upgrades=[]
+                
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+        },
+        24: {
+            title: "<h3>Fourth Sub-Prestige-Layer<h3>",
+            cost() {
+              let n = getBuyableAmount(this.layer,this.id)
+              return new EN("10^^^1000").pow(EN.pow(Infinity,n.pow(Infinity))) },
+            display() { return "<h3>Reset upgrades and all of your ores including neutron stars, but you will earn Crystal stage!</h3>"+ "<h3><br>Currently: +"+format(this.effect())+ "/s</h3>" + "\n<h3>Requires: "+format(this.cost())+" Crystal</h3>\n\n<h3>You have done "+formatWhole(getBuyableAmount(this.layer,this.id))+" crystal stages resets.<h/3>" },
+          effect(){return new EN(0).add(getBuyableAmount(this.layer,this.id))},
+            canAfford() { return player[this.layer].crystal.gte(this.cost()) },
+          unlocked(){return hasUpgrade(this.layer,11)||getBuyableAmount(this.layer,this.id).gte(1)},
+          effect(x) { 
+            mult2 = new EN(1)
+            mult2 = mult2.mul(hasUpgrade("su",531)?upgradeEffect("su",531):1)
+            mult2 = mult2.mul(hasUpgrade("su",532)?upgradeEffect("su",532):1)
+            mult2 = mult2.mul(hasUpgrade("su",533)?upgradeEffect("su",533):1)
+            mult2 = mult2.pow(hasUpgrade("su",534)?upgradeEffect("su",534):1)
+            mult2 = mult2.pow(hasUpgrade("sa",12)?upgradeEffect("sa",12):1)
+            mult2 = mult2.tetr(hasUpgrade("sa",13)?upgradeEffect("sa",13):1)
+            mult2 = mult2.mul(hasUpgrade("sa",14)?upgradeEffect("sa",14):1)
+            mult2 = mult2.mul(hasUpgrade("sa",21)?upgradeEffect("sa",21):1)
+            mult2 = mult2.mul(hasUpgrade("sa",41)?upgradeEffect("sa",41):1)
+            if (player.sa.challengeexp.gte(1)) mult2 = mult2.pent(player.sa.challengeexp.max(1).pow(4))
+            if (player.sa.challengetet.gte(1)) mult2 = mult2.pent(player.sa.challengetet.max(1).pow(5))
+            if (player.sa.challengepent.gte(1)) mult2 = mult2.pent(player.sa.challengepent.max(1).tetr(6))
+
+            return new EN(mult2)},
+          buy() {
+            player[this.layer].points = new EN(0)
+              player.su.stones=new EN(0)
+              player.su.coal=new EN(0)
+              player.su.iron=new EN(0)
+              player.su.gold=new EN(0)
+              player.su.diamond=new EN(0)
+              player.su.ruby=new EN(0)
+              player.su.emerald=new EN(0)
+              player.su.amethyst=new EN(0)
+              player.su.cobalt=new EN(0)
+              player.su.crystal=new EN(0)
+                player.su.crystaltiers=new EN(0)
+                player.su.crystallevels=new EN(0)
+                player.su.upgrades=[]
+                
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+        },
+        25: {
+            title: "<h3>Fifth Sub-Prestige-Layer<h3>",
+            cost() {
+              let n = getBuyableAmount(this.layer,this.id)
+              return new EN("1e255").pow(EN.pow(Infinity,n.pow(Infinity))) },
+            display() { return "<h3>Reset upgrades and all of your ores including neutron stars and SP, but you will earn Challenge Points</h3>"+ "<h3><br>Currently: +"+format(this.effect())+ "/s</h3>" + "\n<h3>Requires: "+format(this.cost())+" SP</h3>\n\n<h3>You have done "+formatWhole(getBuyableAmount(this.layer,this.id))+" CP resets.<h/3>" },
+          effect(){return new EN(0).add(getBuyableAmount(this.layer,this.id))},
+            canAfford() { return player.sa.points.gte(this.cost()) },
+          unlocked(){return hasUpgrade(this.layer,535)||getBuyableAmount(this.layer,this.id).gte(1)},
+          effect(x) { 
+            mult2 = new EN(1)
+            mult2 = mult2.mul(hasChallenge("sa",12)?3:1)
+            mult2 = mult2.mul(hasChallenge("sa",13)?2:1)
+            mult2 = mult2.mul(hasMilestone("sa",4)?milestoneEffect("sa",4):1)
+            mult2 = mult2.mul(hasChallenge("sa",21)?6.9420:1)
+            mult2 = mult2.mul(hasMilestone("sa",5)?milestoneEffect("sa",5):1)
+            mult2 = mult2.mul(hasChallenge("sa",22)?10:1)
+            mult2 = mult2.mul(hasChallenge("sa",23)?4:1)
+            mult2 = mult2.mul(hasChallenge("sa",31)?7.77777777777777:1)
+            mult2 = mult2.mul(hasChallenge("sa",32)?1000:1)
+            mult2 = mult2.mul(hasChallenge("sa",33)?69:1)
+            mult2 = mult2.mul(hasChallenge("sa",41)?420:1)
+            if (player.sa.challengepower.gte(1)) mult2 = mult2.tetr(player.sa.challengepower.max(1).pow(3))
+            if (player.sa.challengeexp.gte(1)) mult2 = mult2.pent(player.sa.challengeexp.max(1).pow(4))
+            if (player.sa.challengetet.gte(1)) mult2 = mult2.pent(player.sa.challengetet.max(1).pow(5))
+            if (player.sa.challengepent.gte(1)) mult2 = mult2.pent(player.sa.challengepent.max(1).tetr(6))
+
+            return new EN(mult2)},
+          buy() {
+            player[this.layer].points = new EN(0)
+              player.su.stones=new EN(0)
+              player.su.coal=new EN(0)
+              player.su.iron=new EN(0)
+              player.su.gold=new EN(0)
+              player.su.diamond=new EN(0)
+              player.su.ruby=new EN(0)
+              player.su.emerald=new EN(0)
+              player.su.amethyst=new EN(0)
+              player.su.cobalt=new EN(0)
+              player.su.crystal=new EN(0)
+                player.su.crystaltiers=new EN(0)
+                player.su.crystallevels=new EN(0)
+                player.sa.points = new EN(0)
+                player.su.upgrades=[]
+                player.sa.upgrades=[]
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+        },
+        26: {
+            title: "<h3>Sixth Sub-Prestige-Layer<h3>",
+            cost() {
+              let n = getBuyableAmount(this.layer,this.id)
+              return new EN("10^^1000").pow(EN.pow(Infinity,n.pow(Infinity))) },
+            display() { return "<h3>Reset upgrades and all of your ores including neutron stars and SP, but you will earn Challenge Power</h3>"+ "<h3><br>Currently: +"+format(this.effect())+ "/s</h3>" + "\n<h3>Requires: "+format(this.cost())+" SP</h3>\n\n<h3>You have done "+formatWhole(getBuyableAmount(this.layer,this.id))+" CP^2 resets.<h/3>" },
+          effect(){return new EN(0).add(getBuyableAmount(this.layer,this.id))},
+            canAfford() { return player.sa.points.gte(this.cost()) },
+          unlocked(){return hasUpgrade(this.layer,535)||getBuyableAmount(this.layer,this.id).gte(1)},
+          effect(x) { 
+            mult2 = new EN(1)
+            mult2 = mult2.mul(hasMilestone("sa",6)?milestoneEffect("sa",6):1)
+            mult2 = mult2.pow(hasMilestone("sa",7)?milestoneEffect("sa",7):1)
+            mult2 = mult2.tetr(hasMilestone("sa",8)?milestoneEffect("sa",8):1)
+            
+            if (player.sa.challengeexp.gte(1)) mult2 = mult2.pent(player.sa.challengeexp.max(1).pow(4))
+            if (player.sa.challengetet.gte(1)) mult2 = mult2.pent(player.sa.challengetet.max(1).pow(5))
+            if (player.sa.challengepent.gte(1)) mult2 = mult2.pent(player.sa.challengepent.max(1).tetr(6))
+
+            return new EN(mult2)},
+          buy() {
+            player[this.layer].points = new EN(0)
+              player.su.stones=new EN(0)
+              player.su.coal=new EN(0)
+              player.su.iron=new EN(0)
+              player.su.gold=new EN(0)
+              player.su.diamond=new EN(0)
+              player.su.ruby=new EN(0)
+              player.su.emerald=new EN(0)
+              player.su.amethyst=new EN(0)
+              player.su.cobalt=new EN(0)
+              player.su.crystal=new EN(0)
+                player.su.crystaltiers=new EN(0)
+                player.su.crystallevels=new EN(0)
+                player.sa.points = new EN(0)
+                player.sa.challengepoint = new EN(0)
+                player.su.upgrades=[]
+                player.sa.upgrades=[]
+                player.sa.challenges=[]
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+        },
+        27: {
+            title: "<h3>Seventh Sub-Prestige-Layer<h3>",
+            cost() {
+              let n = getBuyableAmount(this.layer,this.id)
+              return new EN("10^^^5000").pow(EN.pow(Infinity,n.pow(Infinity))) },
+            display() { return "<h3>Reset upgrades and all of your ores including neutron stars and SP, but you will earn Challenge Exponential</h3>"+ "<h3><br>Currently: +"+format(this.effect())+ "/s</h3>" + "\n<h3>Requires: "+format(this.cost())+" SP</h3>\n\n<h3>You have done "+formatWhole(getBuyableAmount(this.layer,this.id))+" CE resets.<h/3>" },
+          effect(){return new EN(0).add(getBuyableAmount(this.layer,this.id))},
+            canAfford() { return player.sa.points.gte(this.cost()) },
+          unlocked(){return hasUpgrade(this.layer,535)||getBuyableAmount(this.layer,this.id).gte(1)},
+          effect(x) { 
+            mult2 = new EN(1)
+            mult2 = mult2.mul(hasMilestone("sa",9)?milestoneEffect("sa",9):1)
+            mult2 = mult2.pow(hasMilestone("sa",10)?milestoneEffect("sa",10):1)
+            mult2 = mult2.tetr(hasMilestone("sa",11)?milestoneEffect("sa",11):1)
+            mult2 = mult2.tetr(hasUpgrade("sa",61)?upgradeEffect("sa",61):1)
+            if (player.sa.challengetet.gte(1)) mult2 = mult2.pent(player.sa.challengetet.max(1).pow(5))
+            if (player.sa.challengepent.gte(1)) mult2 = mult2.pent(player.sa.challengepent.max(1).tetr(6))
+            return new EN(mult2)},
+          buy() {
+            player[this.layer].points = new EN(0)
+              player.su.stones=new EN(0)
+              player.su.coal=new EN(0)
+              player.su.iron=new EN(0)
+              player.su.gold=new EN(0)
+              player.su.diamond=new EN(0)
+              player.su.ruby=new EN(0)
+              player.su.emerald=new EN(0)
+              player.su.amethyst=new EN(0)
+              player.su.cobalt=new EN(0)
+              player.su.crystal=new EN(0)
+                player.su.crystaltiers=new EN(0)
+                player.su.crystallevels=new EN(0)
+                player.sa.points = new EN(0)
+                player.sa.challengepoint = new EN(0)
+                player.sa.challengepower = new EN(0)
+                player.su.upgrades=[]
+                player.sa.upgrades=[]
+                player.sa.challenges=[]
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+        },
+        28: {
+            title: "<h3>Eighth Sub-Prestige-Layer<h3>",
+            cost() {
+              let n = getBuyableAmount(this.layer,this.id)
+              return new EN("10^^^10^^^1e20").pow(EN.pow(Infinity,n.pow(Infinity))) },
+            display() { return "<h3>Reset sacrifice upgrades & challenges and all of your ores including neutron stars and SP, but you will earn Challenge Tetrational</h3>"+ "<h3><br>Currently: +"+format(this.effect())+ "/s</h3>" + "\n<h3>Requires: "+format(this.cost())+" SP</h3>\n\n<h3>You have done "+formatWhole(getBuyableAmount(this.layer,this.id))+" CT resets.<h/3>" },
+          effect(){return new EN(0).add(getBuyableAmount(this.layer,this.id))},
+            canAfford() { return player.sa.points.gte(this.cost()) },
+          unlocked(){return hasUpgrade(this.layer,535)||getBuyableAmount(this.layer,this.id).gte(1)},
+          effect(x) { 
+            mult2 = new EN(2)
+            mult2 = mult2.tetr(hasUpgrade("sa",62)?upgradeEffect("sa",62):1)
+            if (player.sa.challengepent.gte(1)) mult2 = mult2.pent(player.sa.challengepent.max(1).tetr(6))
+            return new EN(mult2)},
+          buy() {
+            player[this.layer].points = new EN(0)
+              player.su.stones=new EN(0)
+              player.su.coal=new EN(0)
+              player.su.iron=new EN(0)
+              player.su.gold=new EN(0)
+              player.su.diamond=new EN(0)
+              player.su.ruby=new EN(0)
+              player.su.emerald=new EN(0)
+              player.su.amethyst=new EN(0)
+              player.su.cobalt=new EN(0)
+              player.su.crystal=new EN(0)
+                player.su.crystaltiers=new EN(0)
+                player.su.crystallevels=new EN(0)
+                player.sa.points = new EN(0)
+                player.sa.challengepoint = new EN(0)
+                player.sa.challengepower = new EN(0)
+                player.sa.challengeexp = new EN(0)
+                player.sa.upgrades=[]
+                player.sa.challenges=[]
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+        },
+        29: {
+            title: "<h3>Ninth Sub-Prestige-Layer<h3>",
+            cost() {
+              let n = getBuyableAmount(this.layer,this.id)
+              return new EN("10^^^10^^^10^^^1e7").pow(EN.pow(Infinity,n.pow(Infinity))) },
+            display() { return "<h3>Reset sacrifice upgrades & challenges and all of your ores including neutron stars and SP, but you will earn Challenge Pentational</h3>"+ "<h3><br>Currently: +"+format(this.effect())+ "/s</h3>" + "\n<h3>Requires: "+format(this.cost())+" SP</h3>\n\n<h3>You have done "+formatWhole(getBuyableAmount(this.layer,this.id))+" CP^3 resets.<h/3>" },
+          effect(){return new EN(0).add(getBuyableAmount(this.layer,this.id))},
+            canAfford() { return player.sa.points.gte(this.cost()) },
+          unlocked(){return hasUpgrade(this.layer,535)||getBuyableAmount(this.layer,this.id).gte(1)},
+          effect(x) { 
+            mult2 = new EN(1)
+            mult2 = mult2.mul(hasUpgrade("ap",11)?69:1)
+            mult2 = mult2.mul(hasUpgrade("ap",12)?420:1)
+            mult2 = mult2.mul(hasMilestone("sa",12)?milestoneEffect("sa",12):1)
+            mult2 = mult2.pow(hasMilestone("sa",13)?milestoneEffect("sa",13):1)
+            mult2 = mult2.tetr(hasMilestone("sa",14)?milestoneEffect("sa",14):1)
+            mult2 = mult2.pent(hasUpgrade("sa",63)?upgradeEffect("sa",63):1)
+            mult2 = mult2.tetr(hasUpgrade("sa",64)?upgradeEffect("sa",64):1)
+            mult2 = mult2.mul(hasUpgrade("ap",15)?upgradeEffect("ap",15):1)
+            return new EN(mult2)},
+          buy() {
+            player[this.layer].points = new EN(0)
+              player.su.stones=new EN(0)
+              player.su.coal=new EN(0)
+              player.su.iron=new EN(0)
+              player.su.gold=new EN(0)
+              player.su.diamond=new EN(0)
+              player.su.ruby=new EN(0)
+              player.su.emerald=new EN(0)
+              player.su.amethyst=new EN(0)
+              player.su.cobalt=new EN(0)
+              player.su.crystal=new EN(0)
+                player.su.crystaltiers=new EN(0)
+                player.su.crystallevels=new EN(0)
+                player.sa.points = new EN(0)
+                player.sa.challengepoint = new EN(0)
+                player.sa.challengepower = new EN(0)
+                player.sa.challengeexp = new EN(0)
+                player.sa.challengetet = new EN(0)
+                player.sa.upgrades=[]
+                player.sa.challenges=[]
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
         },
     },
     upgrades: {
@@ -2434,6 +2818,434 @@ microtabs: {
         },
         effectDisplay() { return "^" + format(this.effect()) },
         },
+        432: { title: "977",
+        description: "Raise Neutron star gain based on your supernova time spent on this reset.",
+        cost: new EN("e1e50"),
+        unlocked() {
+            return hasUpgrade("su", 431)
+        },
+        effect() {
+            let time = EN(player.su.resetTime)
+            return EN.pow(10, time.pow("1").pow(1), time)
+        },
+        effectDisplay() { return "^" + format(this.effect()) },
+        },
+        433: { title: "978",
+        description: "Unlock more tree upgrades.",
+        cost: new EN("e1e308"),
+        unlocked() {
+            return hasUpgrade("su", 432)
+        },
+        },
+        434: { title: "979",
+        description: "Speed up Crystal Tier!",
+        cost: new EN("e2e22222"),
+        unlocked() {
+            return hasUpgrade("su", 481)
+        },
+        },
+        435: { title: "980",
+        description: "Crystal Tiers raises crystal gain.",
+        cost: new EN("ee3e6"),
+        effectDisplay() { return "^" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        effect() {
+            return player.su.crystaltiers.add(1).pow("0.1").min("1e8")
+        },
+        unlocked() {
+            return hasUpgrade("su", 434)
+        },
+        },
+        441: { title: "Ninty Tree Upgrade",
+        description: "Raise all ores gains based on supernova time spent on this reset. (Excluding Crystal)",
+        currencyDisplayName: "Crystal",
+        currencyInternalName: "crystal",
+        currencyLayer: "su",
+        effect() {
+            let time = EN(player.su.resetTime)
+            return EN.mul(10, time.mul("10").mul(10), time)
+        },
+        effectDisplay() { return "^" + format(this.effect()) },
+        cost() {
+            let cost = EN("1e6")
+            let ugs = EN("e1")
+            for (let a = 441; a <= 442; a++) if (hasUpgrade("su", a)) {
+                cost = cost.mul(ugs)
+                ugs = ugs.mul("1")
+            }
+            return cost
+         },
+        req: [421, 422],
+        unlocked() {
+            return hasUpgrade("su", 433)
+        },
+        branches() { 
+            let col = hasUpgrade(this.layer, this.id) ? "#77df5f" : "#9c7575"
+            return this.req.map(x => [x, col]) 
+        },
+        style: { margin: "10px" }
+    },
+    451: { title: "Ninty-First Tree Upgrade",
+        description: "Cobalt boosts Crystal gain.",
+        currencyDisplayName: "Crystal",
+        currencyInternalName: "crystal",
+        currencyLayer: "su",
+        effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        effect() {
+            return player.su.cobalt.add(1).pow("0.0000000000000001").min("1000")
+        },
+        cost() {
+            let cost = EN("2e6")
+            let ugs = EN("e1")
+            for (let a = 451; a <= 452; a++) if (hasUpgrade("su", a)) {
+                cost = cost.mul(ugs)
+                ugs = ugs.mul("1")
+            }
+            return cost
+         },
+        req: [441],
+        unlocked() {
+            return hasUpgrade("su", 441)
+        },
+        branches() { 
+            let col = hasUpgrade(this.layer, this.id) ? "#77df5f" : "#9c7575"
+            return this.req.map(x => [x, col]) 
+        },
+        style: { margin: "10px" }
+    },
+    461: { title: "Ninty-Second Tree Upgrade",
+        description: "Crystal boosts itself.",
+        currencyDisplayName: "Crystal",
+        currencyInternalName: "crystal",
+        currencyLayer: "su",
+        effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        effect() {
+            return player.su.crystal.add(1).pow("0.1").min("1e100")
+        },
+        cost() {
+            let cost = EN("5e6")
+            let ugs = EN("e1")
+            for (let a = 461; a <= 462; a++) if (hasUpgrade("su", a)) {
+                cost = cost.mul(ugs)
+                ugs = ugs.mul("1")
+            }
+            return cost
+         },
+        req: [451],
+        unlocked() {
+            return hasUpgrade("su", 451)
+        },
+        branches() { 
+            let col = hasUpgrade(this.layer, this.id) ? "#77df5f" : "#9c7575"
+            return this.req.map(x => [x, col]) 
+        },
+        style: { margin: "10px" }
+    },
+    471: { title: "Ninty-Third Tree Upgrade",
+        description: "Crystal gain is boosted based on supernova time spent on this reset.",
+        currencyDisplayName: "Crystal",
+        currencyInternalName: "crystal",
+        currencyLayer: "su",
+        effect() {
+            let time = EN(player.su.resetTime)
+            return EN.mul(1, time.mul("0.1").mul(0.1), time)
+        },
+        effectDisplay() { return "x" + format(this.effect()) },
+        cost() {
+            let cost = EN("1e7")
+            let ugs = EN("e1")
+            for (let a = 471; a <= 472; a++) if (hasUpgrade("su", a)) {
+                cost = cost.mul(ugs)
+                ugs = ugs.mul("1")
+            }
+            return cost
+         },
+        req: [461],
+        unlocked() {
+            return hasUpgrade("su", 461)
+        },
+        branches() { 
+            let col = hasUpgrade(this.layer, this.id) ? "#77df5f" : "#9c7575"
+            return this.req.map(x => [x, col]) 
+        },
+        style: { margin: "10px" }
+    },
+    481: { title: "Ninty-Fourth Tree Upgrade",
+        description: "Unlock Crystal Tiers.",
+        currencyDisplayName: "Crystal",
+        currencyInternalName: "crystal",
+        currencyLayer: "su",
+
+        cost() {
+            let cost = EN("1e10")
+            let ugs = EN("e1")
+            for (let a = 481; a <= 482; a++) if (hasUpgrade("su", a)) {
+                cost = cost.mul(ugs)
+                ugs = ugs.mul("1")
+            }
+            return cost
+         },
+        req: [471],
+        unlocked() {
+            return hasUpgrade("su", 471)
+        },
+        branches() { 
+            let col = hasUpgrade(this.layer, this.id) ? "#77df5f" : "#9c7575"
+            return this.req.map(x => [x, col]) 
+        },
+        style: { margin: "10px" }
+    },
+    491: { title: "981",
+        description: "Raise Crystal based on supernova time spent on this reset.",
+        cost: new EN("ee2.5e7"),
+        unlocked() {
+            return hasUpgrade("su", 435)
+        },
+        effect() {
+            let time = EN(player.su.resetTime)
+            return EN.pow(2, time.mul("0.1").mul(1), time).min("1000")
+        },
+        effectDisplay() { return "^" + format(this.effect()) },
+        },
+        492: { title: "982",
+        description: "Gain more points based on your supernova time spent on this reset.",
+        cost: new EN("eee10"),
+        unlocked() {
+            return hasUpgrade("su", 491)
+        },
+        effect() {
+            let time = EN(player.su.resetTime)
+            return EN.pent("1e308", time.pent("1e308").pent("1e308"), time)
+        },
+        effectDisplay() { return "^" + format(this.effect()) },
+        },
+        493: { title: "983",
+        description: "Gain 100x Crystal Tier and per supernova upgrade, raise crystal gain by 1.2.",
+        cost: new EN("ee2e10"),
+        unlocked() {
+            return hasUpgrade("su", 492)
+        },
+        effect() {
+            let effect = ExpantaNum.pow(1.2, player.su.upgrades.length)
+            return effect
+        },
+        effectDisplay() { return "^" + format(upgradeEffect(this.layer, this.id))}, // Add formatting to the effect      ,
+        },
+        494: { title: "984",
+        description: "Cube Crystal Tier gain..",
+        cost: new EN("ee1e21"),
+        unlocked() {
+            return hasUpgrade("su", 493)
+        },
+        },
+        495: { title: "985",
+        description: "Raise Crystal based on supernova time spent on this reset (Stronger).",
+        cost: new EN("ee1e28"),
+        unlocked() {
+            return hasUpgrade("su", 494)
+        },
+        effect() {
+            let time = EN(player.su.resetTime)
+            return EN.pow(10, time.mul("1").mul(1), time)
+        },
+        effectDisplay() { return "^" + format(this.effect()) },
+        },
+        501: { title: "986",
+        description: "Gain more Crystal Tiers based on supernova time spent on this reset.",
+        cost: new EN("ee1.79e308"),
+        unlocked() {
+            return hasUpgrade("su", 495)
+        },
+        effect() {
+            let time = EN(player.su.resetTime)
+            return EN.pow(2, time.mul("1").mul(1), time)
+        },
+        effectDisplay() { return "x" + format(this.effect()) },
+        },
+        502: { title: "987",
+        description: "Raise Crystal Tier gain based on your supernova time spent on this reset.",
+        cost: new EN("eee420"),
+        unlocked() {
+            return hasUpgrade("su", 501)
+        },
+        effect() {
+            let time = EN(player.su.resetTime)
+            return EN.mul(1, time.mul("0.1").mul(1), time)
+        },
+        effectDisplay() { return "^" + format(this.effect()) },
+        },
+        503: { title: "988",
+        description: "Crystal Tiers boosts itself.",
+        cost: new EN("eeee3"),
+        unlocked() {
+            return hasUpgrade("su", 502)
+        },
+        effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        effect() {
+            return player.su.crystaltiers.add(1).pow("0.090909090909")
+        },
+        },
+        504: { title: "989",
+        description: "Crystal Tiers raises itself.",
+        cost: new EN("ee1e3003"),
+        unlocked() {
+            return hasUpgrade("su", 503)
+        },
+        effectDisplay() { return "^" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        effect() {
+            return player.su.crystaltiers.add(1).pow("0.0001").min("1000")
+        },
+        },
+        505: { title: "990 (10 More to 1K)",
+        description: "Unlock Crystal Levels and crystal tiers raises itself by even more.",
+        cost: new EN("eeeee3"),
+        unlocked() {
+            return hasUpgrade("su", 504)
+        },
+        effectDisplay() { return "^" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        effect() {
+            return player.su.crystaltiers.add(1).pow("1")
+        },
+    },
+    511: { title: "991",
+        description: "Crystal levels boosts itself.",
+        cost: new EN("10^^1e6"),
+        unlocked() {
+            return hasUpgrade("su", 505)
+        },
+        effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        effect() {
+            return player.su.crystallevels.add(1).pow("0.5")
+        },
+    },
+    512: { title: "992",
+        description: "Crystal levels is boosted based on supernova time spent on this reset.",
+        cost: new EN("10^^1e7"),
+        unlocked() {
+            return hasUpgrade("su", 511)
+        },
+        effect() {
+            let time = EN(player.su.resetTime)
+            return EN.mul(1, time.mul("1").mul(1), time)
+        },
+        effectDisplay() { return "x" + format(this.effect()) },
+    },
+    513: { title: "993",
+        description: "Every Supernova Upgrade = 10% more Crystal Levels.",
+        cost: new EN("10^^1e11"),
+        unlocked() {
+            return hasUpgrade("su", 512)
+        },
+        effect() {
+            let effect = ExpantaNum.pow(1.1, player.su.upgrades.length)
+            return effect
+        },
+        effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id))}, // Add formatting to the effect      ,
+        },
+        514: { title: "994",
+        description: "Crystal levels is raised based on supernova time spent on this reset.",
+        cost: new EN("10^^1e20"),
+        unlocked() {
+            return hasUpgrade("su", 513)
+        },
+        effect() {
+            let time = EN(player.su.resetTime)
+            return EN.mul(1, time.mul("0.1").mul(1), time)
+        },
+        effectDisplay() { return "^" + format(this.effect()) },
+    },
+    515: { title: "995",
+        description: "Crystal levels raises itself, unlock more tree upgrades.",
+        cost: new EN("10^^10^1e308"),
+        unlocked() {
+            return hasUpgrade("su", 514)
+        },
+        effectDisplay() { return "^" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        effect() {
+            return player.su.crystallevels.add(1).tetr("1")
+        },
+    },
+    521: { title: "Ninty-Fifth Tree Upgrade",
+        description: "Crystal levels tetrates itself and unlock Crystal Stages.",
+        currencyDisplayName: "Crystal Levels",
+        currencyInternalName: "crystallevels",
+        currencyLayer: "su",
+        effectDisplay() { return "^^" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        effect() {
+            return player.su.crystallevels.add(1).pow("0.1")
+        },
+        cost() {
+            let cost = EN("10^^1000")
+            let ugs = EN("e1")
+            for (let a = 521; a <= 522; a++) if (hasUpgrade("su", a)) {
+                cost = cost.mul(ugs)
+                ugs = ugs.mul("1")
+            }
+            return cost
+         },
+        req: [481],
+        unlocked() {
+            return hasUpgrade("su", 515)
+        },
+        branches() { 
+            let col = hasUpgrade(this.layer, this.id) ? "#77df5f" : "#9c7575"
+            return this.req.map(x => [x, col]) 
+        },
+        style: { margin: "10px" }
+    },
+    531: { title: "996",
+        description: "Crystal stages boosts itself.",
+        cost: new EN("10^^^300"),
+        unlocked() {
+            return hasUpgrade("su", 521)
+        },
+        effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        effect() {
+            return player.su.crystalstages.add(1).pow("0.5")
+        },
+    },
+    532: { title: "997",
+        description: "Crystal stages is boosted based on supernova time spent on this reset.",
+        cost: new EN("10^^^10000"),
+        unlocked() {
+            return hasUpgrade("su", 531)
+        },
+        effect() {
+            let time = EN(player.su.resetTime)
+            return EN.mul(1, time.mul("1").mul(1), time)
+        },
+        effectDisplay() { return "x" + format(this.effect()) },
+    },
+    533: { title: "998",
+        description: "Every Supernova Upgrade = 5% more Crystal Stages.",
+        cost: new EN("10^^^2e7"),
+        unlocked() {
+            return hasUpgrade("su", 532)
+        },
+        effect() {
+            let effect = ExpantaNum.pow(1.05, player.su.upgrades.length)
+            return effect
+        },
+        effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id))}, // Add formatting to the effect      ,
+        },
+        534: { title: "999",
+        description: "Crystal stages is raised based on supernova time spent on this reset.",
+        cost: new EN("10^^^1e13"),
+        unlocked() {
+            return hasUpgrade("su", 533)
+        },
+        effect() {
+            let time = EN(player.su.resetTime)
+            return EN.mul(1, time.mul("0.1").mul(1), time)
+        },
+        effectDisplay() { return "^" + format(this.effect()) },
+    },
+    535: { title: "1,000!",
+        description: "Unlock a new prestige layer but remove row 6-7 layers (Excluding Void).",
+        cost: new EN("10^^^10^1e308"),
+        unlocked() {
+            return hasUpgrade("su", 534)
+        },
+    },
 },
     clickables: {
         11: {
@@ -2476,6 +3288,9 @@ microtabs: {
         amethyst: new EN(0),
         cobalt: new EN(0),
         crystal: new EN(0),
+        crystaltiers: new EN(0),
+        crystallevels: new EN(0),
+        crystalstages: new EN(0),
         auto: false,
     }},
     color: "#FFB437",
@@ -2511,6 +3326,8 @@ microtabs: {
         if (hasUpgrade('su', 382)) mult = mult.times(upgradeEffect('su', 382))
         if (hasUpgrade('su', 403)) mult = mult.times(upgradeEffect('su', 403))
         if (hasUpgrade('su', 422)) mult = mult.times(upgradeEffect('su', 422))
+        if (hasUpgrade('su', 432)) mult = mult.pow(upgradeEffect('su', 432))
+        if (hasMilestone('su', 8)) mult = mult.pow(milestoneEffect('su', 8))
         return mult
     },
     
@@ -2540,6 +3357,22 @@ microtabs: {
         return eff2;
     },
     update(diff) {
+        if (player.su.buyables[29].gte(1)) {
+            player.sa.challengepent = player.sa.challengepent.add(buyableEffect("su", 29).times(diff))}
+        if (player.su.buyables[28].gte(1)) {
+            player.sa.challengetet = player.sa.challengetet.add(buyableEffect("su", 28).times(diff))}
+        if (player.su.buyables[27].gte(1)) {
+            player.sa.challengeexp = player.sa.challengeexp.add(buyableEffect("su", 27).times(diff))}
+        if (player.su.buyables[26].gte(1)) {
+            player.sa.challengepower = player.sa.challengepower.add(buyableEffect("su", 26).times(diff))}
+        if (player.su.buyables[25].gte(1)) {
+            player.sa.challengepoint = player.sa.challengepoint.add(buyableEffect("su", 25).times(diff))}
+        if (player.su.buyables[24].gte(1)) {
+            player.su.crystalstages = player.su.crystalstages.add(buyableEffect("su", 24).times(diff))}
+        if (player.su.buyables[23].gte(1)) {
+            player.su.crystallevels = player.su.crystallevels.add(buyableEffect("su", 23).times(diff))}
+        if (player.su.buyables[22].gte(1)) {
+            player.su.crystaltiers = player.su.crystaltiers.add(buyableEffect("su", 22).times(diff))}
         if (player.su.buyables[21].gte(1)) {
             player.su.crystal = player.su.crystal.add(buyableEffect("su", 21).times(diff))}
         if (player.su.buyables[18].gte(1)) {
@@ -2600,24 +3433,25 @@ layerShown(){return (hasUpgrade("re", 231) || player[this.layer].unlocked)},
     done() { return getBuyableAmount("su", 21).gte("5")},
 },
 7: {
-    requirementDescription: "e?.???e??? Total Neutron Stars",
-    effectDescription: "Automatically Buy Reincarnation Buyables and they are cubed! (Not implemented)",
-    done() { return player.su.total.gte("10^^^^^^^^^^^^^^^^^10") }
+    requirementDescription: "e1.797e308 Total Neutron Stars",
+    effectDescription: "Reincarnation Buyables are cubed!",
+    done() { return player.su.total.gte("e1.797e308") }
 },
 8: {
-    requirementDescription: "e?.???e?,??? Total Neutron Stars",
+    requirementDescription: "e1e9,000 Total Neutron Stars",
     effect() {
-        let eff = player.su.crystal.pow(0.5)
+        let eff = player.su.crystal.pow(3)
         return eff
     },
     effectDescription() {
-        return "Crystal also raises neutron star gain at a reduced rate. (Not implemented)<br>Currently: ^"+format(milestoneEffect("su",8))+""}
-        ,    done() { return player.su.total.gte("10^^^^^^^^^^^^^^^^^10") }
+        return "Crystal also raises neutron star gain at a reduced rate.<br>Currently: ^"+format(milestoneEffect("su",8))+""}
+        ,    done() { return player.su.total.gte("ee9000") }
+        
     },
     9: {
-        requirementDescription: "e?.???e??,??? Total Neutron Stars",
-        effectDescription: "Crystal effect is better. (Not implemented)",
-        done() { return player.su.total.gte("10^^^^^^^^^^^^^^^^^10") }
+        requirementDescription: "e1e1,000,000 Total Neutron Stars",
+        effectDescription: "Crystal Tier is faster again and square crystal gain.",
+        done() { return player.su.total.gte("eee6") }
     },
     },
 })
