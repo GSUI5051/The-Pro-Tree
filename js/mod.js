@@ -12,11 +12,14 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.9a",
-	name: "Bug Fix"
+	num: "0.9b",
+	name: "Bug Fix+"
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+<h3>v0.9b</h3><br>
+- Balanced the game again.<br>
+- Fixed the same text in the 2nd last layer of the game.<br><br>
 <h3>v0.9a (21/09/2023)</h3><br>
 - Fixed No Offline Progress Bug.<br>
 - Added 5 new upgrades.<br>

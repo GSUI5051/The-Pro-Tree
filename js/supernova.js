@@ -723,7 +723,7 @@ microtabs: {
             title: "<h3>Ninth Sub-Prestige-Layer<h3>",
             cost() {
               let n = getBuyableAmount(this.layer,this.id)
-              return new EN("10^^^10^^^10^^^1e7").pow(EN.pow(Infinity,n.pow(Infinity))) },
+              return new EN("10^^^10^^^10^^10^^2").pow(EN.pow(Infinity,n.pow(Infinity))) },
             display() { return "<h3>Reset sacrifice upgrades & challenges and all of your ores including neutron stars and SP, but you will earn Challenge Pentational</h3>"+ "<h3><br>Currently: +"+format(this.effect())+ "/s</h3>" + "\n<h3>Requires: "+format(this.cost())+" SP</h3>\n\n<h3>You have done "+formatWhole(getBuyableAmount(this.layer,this.id))+" CP^3 resets.<h/3>" },
           effect(){return new EN(0).add(getBuyableAmount(this.layer,this.id))},
             canAfford() { return player.sa.points.gte(this.cost()) },
