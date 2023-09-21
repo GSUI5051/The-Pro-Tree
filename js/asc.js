@@ -90,10 +90,51 @@ unlocked() {
 },
 effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
     effect() {
+        return player.su.crystal.add(1).pow("0.5").min("10^^^^500")
+    },},
+21: { title: "1,031",
+description: "3x AP.",
+cost: new EN(10000),
+unlocked() {
+    return hasUpgrade("ap", 15)
+
+}
+},
+22: { title: "1,032",
+description: "1.5x AP.",
+cost: new EN(100000),
+unlocked() {
+    return hasUpgrade("ap", 21)
+
+}
+},
+23: { title: "1,033",
+description: "1.25x AP.",
+cost: new EN(500000),
+unlocked() {
+    return hasUpgrade("ap", 22)
+
+}
+},
+24: { title: "1,034",
+description: "2x AP.",
+cost: new EN(1000000),
+unlocked() {
+    return hasUpgrade("ap", 23)
+
+}
+},
+25: { title: "1,035",
+description: "Challenge Pentational is boosted by a lot based on Crystal.",
+cost: new EN(5000000),
+unlocked() {
+    return hasUpgrade("ap", 24)
+},
+effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+    effect() {
         return player.su.crystal.add(1).pow("0.5").min("10^^^^998")
     },},
-},
-
+    },
     name: "Ascension", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "Asc", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
@@ -115,6 +156,11 @@ effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // 
         if (hasUpgrade('ap', 11)) mult = mult.times(upgradeEffect('ap', 11))
         if (hasUpgrade('ap', 13)) mult = mult.times(3)
         if (hasUpgrade('ap', 14)) mult = mult.times(2)
+        if (hasUpgrade('ap', 21)) mult = mult.times(3)
+        if (hasMilestone('ap', 3)) mult = mult.times(2)
+        if (hasUpgrade('ap', 22)) mult = mult.times(1.5)
+        if (hasUpgrade('ap', 23)) mult = mult.times(1.25)
+        if (hasUpgrade('ap', 24)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -135,6 +181,11 @@ layerShown(){return (hasChallenge("sa", 42) || player[this.layer].unlocked)},
             requirementDescription: "10 Ascension Points",
             effectDescription: "Keep Sacrifice Upgrades on reset.",
             done() { return player.ap.points.gte(10) }
+        },
+        3: {
+            requirementDescription: "69,420 Ascension Points",
+            effectDescription: "2x AP.",
+            done() { return player.ap.points.gte(69420) }
         },
     },
 })

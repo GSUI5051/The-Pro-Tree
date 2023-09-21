@@ -12,11 +12,16 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.9",
-	name: "More Layers!"
+	num: "0.9a",
+	name: "Bug Fix"
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+<h3>v0.9a (21/09/2023)</h3><br>
+- Fixed No Offline Progress Bug.<br>
+- Added 5 new upgrades.<br>
+- Added 1 new milestone.<br>
+- Changed 1 upgrade effect.<br><br>
 <h3>v0.9 (20/09/2023)</h3><br>
 		- Endgame: 1H1,000 Points = 10^^^^1,000.<br>
 		- Added 10 new layers! (2 of them are Normal)<br>

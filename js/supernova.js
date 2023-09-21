@@ -738,6 +738,7 @@ microtabs: {
             mult2 = mult2.pent(hasUpgrade("sa",63)?upgradeEffect("sa",63):1)
             mult2 = mult2.tetr(hasUpgrade("sa",64)?upgradeEffect("sa",64):1)
             mult2 = mult2.mul(hasUpgrade("ap",15)?upgradeEffect("ap",15):1)
+            mult2 = mult2.mul(hasUpgrade("ap",25)?upgradeEffect("ap",25):1)
             return new EN(mult2)},
           buy() {
             player[this.layer].points = new EN(0)
