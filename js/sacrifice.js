@@ -292,7 +292,7 @@ effectDisplay() { return "^^" + format(this.effect()) },
 },
 62: { title: "?",
 description: "Challenge Tetrational is boosted based on reset time.",
-cost: new EN("10^^^10^^^10^^10"),
+cost: new EN("10^^^10^^^10^4"),
 unlocked() {
     return player.sa.challengetet.gte("420")
 },
@@ -304,7 +304,7 @@ effectDisplay() { return "^^" + format(this.effect()) },
 },
 63: { title: "?",
 description: "Challenge Pentational is boosted based on reset time.",
-cost: new EN("10^^^^4"),
+cost: new EN("10^^^10^^^20000"),
 unlocked() {
     return player.sa.challengepent.gte("10^^^4")
 },
